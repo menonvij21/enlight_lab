@@ -1,0 +1,39 @@
+services:
+  - type: web
+    name: enlightlab
+    runtime: node
+    buildCommand: npm install
+    startCommand: node backend/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: FRONTEND_URL
+        value: https://enlightlab.onrender.com
+      - key: RETELL_API_KEY
+        sync: false
+      - key: RETELL_OUTBOUND_AGENT_ID
+        sync: false
+      - key: RETELL_INBOUND_AGENT_ID
+        sync: false
+      - key: RETELL_CHAT_AGENT_ID
+        sync: false
+      - key: RETELL_WEBHOOK_SECRET
+        sync: false
+      - key: EMAIL_HOST
+        value: smtp.gmail.com
+      - key: EMAIL_PORT
+        value: 587
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+      - key: EMAIL_FROM
+        sync: false
+      - key: EMAIL_TO
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
