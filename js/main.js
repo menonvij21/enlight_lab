@@ -170,7 +170,6 @@ if (contactForm) {
 
         var countryCode = document.getElementById('countryCode').value;
         var rawPhone = document.getElementById('phone').value.replace(/\D/g, '');
-        // Build E.164 phone — avoid double country code
         var fullPhone = countryCode + rawPhone;
         if (!fullPhone.startsWith('+')) fullPhone = '+' + fullPhone;
 
@@ -180,14 +179,13 @@ if (contactForm) {
             email: document.getElementById('email').value.trim(),
             countryCode: countryCode,
             phone: document.getElementById('phone').value.trim(),
-            // Send the already-combined E.164 number so the server uses it directly
             fullPhone: fullPhone,
             company: document.getElementById('company').value.trim(),
             service: document.getElementById('service').value,
             message: document.getElementById('message').value.trim(),
         };
 
-        fetch('http://localhost:3001/api/contact/submit', {
+        fetch('/api/contact/submit', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData),
@@ -215,7 +213,6 @@ if (contactForm) {
         });
     });
 
-    // Clear errors on input
     document.querySelectorAll('#contactForm input, #contactForm select, #contactForm textarea').forEach(function(input) {
         input.addEventListener('input', function() {
             this.classList.remove('error');
@@ -231,7 +228,7 @@ if (contactForm) {
 (function() {
     'use strict';
 
-    var API_ENDPOINT = 'http://localhost:3001/api/calls/schedule';
+    var API_ENDPOINT = '/api/calls/schedule';
     var currentStep = 1;
     var selectedSlot = null;
     var bookingRef = '';
@@ -255,7 +252,6 @@ if (contactForm) {
         calendarBtns: document.getElementById('calendarBtns'),
     };
 
-    // Exit if booking widget not on page
     if (!els.step1) return;
 
     function generateSlots(daysAhead) {
@@ -270,7 +266,6 @@ if (contactForm) {
             var date = new Date(now);
             date.setDate(now.getDate() + offset);
 
-            // FIX: skip weekends to match server-side slot generation
             if (date.getDay() === 0 || date.getDay() === 6) continue;
             daysAdded++;
 
@@ -418,7 +413,6 @@ if (contactForm) {
     function renderReview() {
         var countryCode = document.getElementById('bookCountryCode').value;
         var rawPhone = formData.phone.replace(/[\s\-\(\)]/g, '');
-        // Build E.164 — avoid double country code if user already typed it
         var fullPhone = rawPhone.startsWith('+') ? rawPhone : (countryCode + rawPhone);
         if (!fullPhone.startsWith('+')) fullPhone = '+' + fullPhone;
 
@@ -485,13 +479,11 @@ if (contactForm) {
         .then(function(res) { return res.json().then(function(data) { return { ok: res.ok, data: data }; }); })
         .then(function(result) {
             if (!result.ok) throw new Error(result.data.message || result.data.error || 'Request failed');
-            // FIX: API returns `bookingId`, not `callId`
             bookingRef = result.data.bookingId || ('EL-' + Math.random().toString(36).slice(2, 8).toUpperCase());
             showSuccess();
         })
         .catch(function(error) {
             if (els.apiError) els.apiError.innerHTML = '<div class="api-error">\u26a0 ' + (error.message || 'Something went wrong') + '</div>';
-            // Demo fallback so UX doesn't get stuck
             bookingRef = 'EL-DEMO-' + Math.random().toString(36).slice(2, 8).toUpperCase();
             showSuccess();
         })
@@ -549,5 +541,3 @@ if (contactForm) {
     }
     console.log('\uD83D\uDE80 AI Booking System Initialized');
 })();
-
-
