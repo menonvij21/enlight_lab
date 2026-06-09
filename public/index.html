@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enlight Lab — Next-Gen AI-Powered Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* ─────────────────── RESET & VARIABLES ─────────────────── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+:root{
+  --blue:#1E3FFF;--blue-dark:#1530CC;--blue-light:#3D5AFF;
+  --navy:#0D1B6E;--navy-light:#112288;
+  --white:#FFFFFF;--off-white:#F4F6FB;--light:#EEF1FA;
+  --text:#0C1A3A;--text-2:#3B4A6B;--text-3:#6B7A9E;
+  --border:#D8DFEE;
+  --radius:10px;--radius-lg:16px;--radius-xl:24px;
+  --shadow:0 2px 16px rgba(30,63,255,.08);
+  --shadow-md:0 6px 32px rgba(30,63,255,.12);
+  --shadow-lg:0 16px 60px rgba(30,63,255,.15);
+  --transition:all .25s cubic-bezier(.4,0,.2,1);
+}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.container{max-width:1180px;margin:0 auto;padding:0 28px}
+.section-tag{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+h1,h2,h3{color:var(--text);font-weight:700;line-height:1.2}
+h1{font-size:clamp(2rem,4vw,3.2rem)}
+h2{font-size:clamp(1.6rem,3vw,2.4rem)}
+h3{font-size:1.15rem}
+.section-header{text-align:center;margin-bottom:52px}
+.section-header p{color:var(--text-3);max-width:620px;margin:.8rem auto 0;font-size:.97rem}
+
+/* ─────────────────── NAVBAR ─────────────────── */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:68px;transition:var(--transition)}
+.navbar.scrolled{box-shadow:var(--shadow)}
+.navbar .container{display:flex;align-items:center;height:100%;gap:20px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1.1rem;color:var(--blue);letter-spacing:-.01em;flex-shrink:0}
+.logo-bracket{font-size:1.3rem;font-weight:800;color:var(--blue)}
+.nav-links{display:flex;align-items:center;gap:6px;margin-left:auto;list-style:none}
+.nav-links li a{padding:6px 12px;font-size:.88rem;font-weight:500;color:var(--text-2);border-radius:6px;transition:var(--transition)}
+.nav-links li a:hover{color:var(--blue)}
+.nav-links .has-dropdown{position:relative}
+.nav-links .has-dropdown > a::after{content:'\f0d7';font-family:'Font Awesome 6 Free';font-weight:900;margin-left:4px;font-size:.7rem}
+.btn-proposal{background:var(--blue)!important;color:var(--white)!important;padding:8px 20px!important;border-radius:7px!important;font-weight:600!important}
+.btn-proposal:hover{background:var(--blue-dark)!important;color:var(--white)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;margin-left:auto}
+.hamburger span{width:22px;height:2px;background:var(--text);border-radius:2px;transition:var(--transition)}
+@media(max-width:860px){
+  .nav-links{display:none;position:fixed;top:68px;left:0;right:0;background:var(--white);flex-direction:column;padding:20px 24px 28px;border-bottom:1px solid var(--border);gap:4px;align-items:flex-start}
+  .nav-links.open{display:flex}
+  .hamburger{display:flex}
+}
+
+/* ─────────────────── HERO ─────────────────── */
+.hero{min-height:calc(100vh - 68px);margin-top:68px;background:var(--off-white);display:flex;align-items:center;padding:60px 0}
+.hero .container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-eyebrow{font-size:.92rem;color:var(--text-2);margin-bottom:16px;font-weight:400}
+.hero h1 .accent{color:var(--blue)}
+.hero-sub{color:var(--text-2);margin:18px 0 8px;max-width:480px;font-size:.97rem}
+.hero-tagline{font-weight:700;font-size:.97rem;color:var(--text);margin-bottom:28px}
+.hero-buttons{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:7px;font-weight:600;font-size:.9rem;cursor:pointer;transition:var(--transition);border:none;font-family:inherit}
+.btn-primary{background:var(--blue);color:var(--white)}
+.btn-primary:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 6px 24px rgba(30,63,255,.3)}
+.btn-outline{background:transparent;color:var(--blue);border:1.5px solid var(--blue)}
+.btn-outline:hover{background:var(--blue);color:var(--white)}
+.hero-illustration{display:flex;align-items:center;justify-content:center}
+.hero-illustration img{max-width:460px;width:100%}
+.hero-illus-placeholder{width:100%;max-width:460px;aspect-ratio:1;background:linear-gradient(135deg,#e8eeff 0%,#dce4ff 100%);border-radius:var(--radius-xl);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.illus-chat{position:absolute;display:flex;flex-direction:column;gap:12px;width:80%}
+.illus-bubble{padding:16px 20px;border-radius:var(--radius-lg);font-size:.85rem}
+.illus-bubble.bot{background:var(--white);border:1px solid var(--border);border-bottom-left-radius:4px;color:var(--text);max-width:80%;box-shadow:var(--shadow)}
+.illus-bubble.user{background:var(--blue);color:var(--white);border-bottom-right-radius:4px;max-width:80%;align-self:flex-end}
+.illus-robot{font-size:3.5rem;margin-bottom:8px;text-align:left}
+.illus-input-bar{background:var(--white);border:1px solid var(--border);border-radius:40px;padding:10px 16px;display:flex;align-items:center;gap:8px;margin-top:10px;box-shadow:var(--shadow)}
+.illus-input-bar span{flex:1;font-size:.78rem;color:var(--text-3)}
+.illus-icons{display:flex;gap:6px;font-size:.9rem;color:var(--text-3)}
+@media(max-width:860px){
+  .hero .container{grid-template-columns:1fr;gap:40px}
+  .hero-illustration{order:-1}
+  .hero-illus-placeholder{max-width:320px;margin:0 auto}
+}
+
+/* ─────────────────── BLUE STRIP / ABOUT BANNER ─────────────────── */
+.about-banner{background:var(--navy);padding:72px 0}
+.about-banner .container{text-align:center}
+.about-banner h2{color:var(--white);font-size:clamp(1.6rem,2.5vw,2rem);margin-bottom:20px}
+.about-banner p{color:rgba(255,255,255,.78);max-width:820px;margin:0 auto 12px;font-size:.97rem}
+
+/* ─────────────────── MISSION / ABOUT BODY ─────────────────── */
+.about-body{padding:80px 0}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.mission-card{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:40px;height:100%}
+.mission-card h3{margin-bottom:14px;font-size:1.1rem}
+.mission-card p{color:var(--text-2);font-size:.93rem;line-height:1.7}
+.about-img{border-radius:var(--radius-lg);overflow:hidden;height:320px;background:linear-gradient(135deg,#1530CC,#3D5AFF);display:flex;align-items:center;justify-content:center;font-size:6rem}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+
+/* ─────────────────── WHY US ─────────────────── */
+.why-us{padding:80px 0;background:var(--off-white)}
+.why-main-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+.why-side-img{grid-row:1/3;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600"><rect fill="%23e0e4f0" width="400" height="600"/><circle cx="200" cy="280" r="120" fill="%23c0c8e8" opacity=".5"/></svg>') center/cover;border-radius:var(--radius-lg);min-height:340px;filter:grayscale(1);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:5rem}
+.why-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;transition:var(--transition)}
+.why-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.why-card-icon{font-size:1.6rem;color:var(--blue);margin-bottom:14px}
+.why-card h3{margin-bottom:10px;font-size:1rem}
+.why-card p{color:var(--text-2);font-size:.88rem;line-height:1.65}
+@media(max-width:860px){.why-main-grid{grid-template-columns:1fr 1fr}.why-side-img{display:none}}
+@media(max-width:580px){.why-main-grid{grid-template-columns:1fr}}
+
+/* ─────────────────── SERVICES ─────────────────── */
+.services{padding:80px 0}
+.tabs-nav{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:44px;overflow-x:auto}
+.tab-btn{background:none;border:none;border-bottom:2px solid transparent;padding:12px 22px;font-family:inherit;font-size:.88rem;font-weight:600;color:var(--text-3);cursor:pointer;white-space:nowrap;margin-bottom:-2px;transition:var(--transition)}
+.tab-btn.active{color:var(--blue);border-bottom-color:var(--blue)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.services-tab-grid{display:flex;flex-direction:column;gap:20px}
+.service-tab-card{background:var(--off-white);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:32px 40px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;transition:var(--transition)}
+.service-tab-card:hover{border-color:var(--blue);box-shadow:var(--shadow-md)}
+.stc-text h3{font-size:1.1rem;margin-bottom:10px}
+.stc-text p{color:var(--text-2);font-size:.9rem;line-height:1.65;margin-bottom:16px}
+.stc-illus{background:linear-gradient(135deg,#e8eeff,#dce4ff);border-radius:var(--radius-lg);height:160px;display:flex;align-items:center;justify-content:center;font-size:4rem}
+@media(max-width:640px){.service-tab-card{grid-template-columns:1fr}.stc-illus{display:none}}
+
+/* ─────────────────── ALLIANCES (blue section) ─────────────────── */
+.alliances{background:var(--navy);padding:72px 0}
+.alliances .section-header h2{color:var(--white)}
+.alliances .section-tag{color:rgba(255,255,255,.6)}
+.alliances .section-header p{color:rgba(255,255,255,.65)}
+.alliances-text-cta{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:52px}
+.alliances-text h2{color:var(--white);margin-bottom:14px}
+.alliances-text p{color:rgba(255,255,255,.7);font-size:.93rem;margin-bottom:24px}
+.btn-white{background:var(--blue);color:var(--white)}
+.btn-white:hover{background:var(--blue-light)}
+.alliances-logos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.alliance-logo{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);padding:16px 20px;color:rgba(255,255,255,.85);font-weight:700;font-size:.88rem;text-align:center}
+@media(max-width:860px){.alliances-text-cta{grid-template-columns:1fr}.alliances-logos{grid-template-columns:repeat(2,1fr)}}
+
+/* ─────────────────── METRICS ─────────────────── */
+.metrics{padding:80px 0;background:var(--off-white)}
+.metrics-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.metrics-title h2{margin-bottom:14px}
+.metrics-title p{color:var(--text-2);font-size:.93rem}
+.metrics-bars{display:flex;flex-direction:column;gap:28px}
+.metric-row{}
+.metric-row-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.metric-label{font-size:.88rem;font-weight:700;color:var(--blue)}
+.metric-sub-label{font-size:.8rem;color:var(--text-3)}
+.metric-value{font-size:.95rem;font-weight:700;color:var(--text)}
+.metric-bar-bg{height:8px;background:var(--border);border-radius:40px;overflow:hidden}
+.metric-bar-fill{height:100%;background:var(--blue);border-radius:40px;transition:width 1.2s ease}
+@media(max-width:640px){.metrics-wrapper{grid-template-columns:1fr}}
+
+/* ─────────────────── EXECUTION FRAMEWORK ─────────────────── */
+.execution{padding:80px 0}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step-card{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;transition:var(--transition)}
+.step-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.step-icon{font-size:1.5rem;color:var(--blue);margin-bottom:14px}
+.step-card h3{margin-bottom:10px;font-size:1rem}
+.step-card p{color:var(--text-2);font-size:.87rem;line-height:1.65}
+@media(max-width:860px){.steps-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){.steps-grid{grid-template-columns:1fr}}
+
+/* ─────────────────── INDUSTRIES ─────────────────── */
+.industries{padding:80px 0;background:var(--off-white)}
+.industries-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.industry-card{border-radius:var(--radius-lg);overflow:hidden;position:relative;height:180px;background:linear-gradient(135deg,#1c2e6b,#2d4dcc);display:flex;align-items:flex-end;padding:20px;cursor:pointer;transition:var(--transition)}
+.industry-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.industry-card h3{color:var(--white);font-size:1rem;position:relative;z-index:1}
+.industry-card .ind-emoji{position:absolute;top:20px;left:20px;font-size:2.2rem;opacity:.6}
+@media(max-width:860px){.industries-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.industries-grid{grid-template-columns:1fr}}
+
+/* ─────────────────── CASE STUDIES (blue bg) ─────────────────── */
+.cases{background:var(--navy);padding:80px 0}
+.cases .section-header h2{color:var(--white)}
+.cases .section-tag{color:rgba(255,255,255,.6)}
+.cases-list{display:flex;flex-direction:column;gap:0}
+.case-item{display:grid;grid-template-columns:300px 1fr;gap:0;border-top:1px solid rgba(255,255,255,.12);padding:40px 0;align-items:center}
+.case-item:last-child{border-bottom:1px solid rgba(255,255,255,.12)}
+.case-img{background:rgba(255,255,255,.1);border-radius:var(--radius-lg);height:160px;margin-right:40px;display:flex;align-items:center;justify-content:center;font-size:4rem}
+.case-body h3{color:var(--white);margin-bottom:10px;font-size:1.1rem}
+.case-body p{color:rgba(255,255,255,.65);font-size:.9rem;line-height:1.65;max-width:620px;margin-bottom:18px}
+.case-link{color:var(--white);font-size:.88rem;font-weight:600;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px}
+@media(max-width:640px){.case-item{grid-template-columns:1fr}.case-img{display:none}}
+
+/* ─────────────────── TESTIMONIALS ─────────────────── */
+.testimonials{padding:80px 0}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.testimonial-card{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;transition:var(--transition)}
+.testimonial-card:hover{box-shadow:var(--shadow-md)}
+.stars{color:#F4B942;font-size:.85rem;margin-bottom:14px;letter-spacing:2px}
+.stars i{margin-right:2px}
+.testimonial-card p{color:var(--text-2);font-size:.9rem;line-height:1.7;margin-bottom:20px}
+.tauthor{display:flex;align-items:center;gap:12px}
+.tauthor-av{width:40px;height:40px;border-radius:50%;background:var(--blue);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0}
+.tauthor strong{display:block;font-size:.88rem;color:var(--text)}
+.tauthor span{font-size:.8rem;color:var(--text-3)}
+@media(max-width:860px){.testimonials-grid{grid-template-columns:1fr}}
+
+/* ─────────────────── FAQ ─────────────────── */
+.faq{padding:80px 0;background:var(--off-white)}
+.faq-list{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;cursor:pointer;font-weight:600;font-size:.95rem;color:var(--text)}
+.faq-q i{font-size:.75rem;color:var(--text-3);transition:transform .3s ease;flex-shrink:0;margin-left:12px}
+.faq-item.open .faq-q i{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 24px 20px;color:var(--text-2);font-size:.9rem;line-height:1.7}
+.faq-item.open .faq-a{display:block}
+
+/* ─────────────────── AI AGENTS SECTION ─────────────────── */
+.ai-agents{padding:80px 0}
+.agents-intro{text-align:center;margin-bottom:52px}
+.agents-intro h2{margin-bottom:12px}
+.agents-intro p{color:var(--text-2);max-width:600px;margin:0 auto;font-size:.97rem}
+.agents-tabs{display:flex;justify-content:center;gap:8px;margin-bottom:40px;flex-wrap:wrap}
+.agent-tab{background:var(--off-white);border:1.5px solid var(--border);border-radius:40px;padding:10px 22px;font-size:.88rem;font-weight:600;cursor:pointer;transition:var(--transition);display:flex;align-items:center;gap:8px;font-family:inherit;color:var(--text-2)}
+.agent-tab.active{background:var(--blue);color:var(--white);border-color:var(--blue)}
+.agent-panel{display:none}
+.agent-panel.active{display:block}
+
+/* Outbound form */
+.outbound-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.outbound-form-card{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px}
+.outbound-form-card h3{margin-bottom:6px}
+.outbound-form-card .sub{color:var(--text-3);font-size:.88rem;margin-bottom:28px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:.83rem;font-weight:600;color:var(--text-2);margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:var(--radius);font-family:inherit;font-size:.9rem;color:var(--text);background:var(--white);transition:var(--transition)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(30,63,255,.1)}
+.form-group textarea{resize:vertical;min-height:90px}
+.phone-row{display:grid;grid-template-columns:130px 1fr;gap:10px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.agent-info-card{background:var(--navy);border-radius:var(--radius-lg);padding:36px;color:rgba(255,255,255,.9)}
+.agent-info-card h3{color:var(--white);margin-bottom:12px}
+.agent-info-card p{font-size:.9rem;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:24px}
+.expect-list{display:flex;flex-direction:column;gap:12px}
+.expect-item{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;color:rgba(255,255,255,.75)}
+.expect-dot{width:8px;height:8px;border-radius:50%;background:var(--blue-light);flex-shrink:0;margin-top:4px}
+.step-progress{display:flex;align-items:center;gap:0;margin-bottom:28px}
+.sp-item{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--text-3);font-weight:500}
+.sp-item.active .sp-num{background:var(--blue);color:var(--white)}
+.sp-item.done .sp-num{background:var(--blue);color:var(--white)}
+.sp-num{width:26px;height:26px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;transition:var(--transition)}
+.sp-line{flex:1;height:2px;background:var(--border);margin:0 8px}
+.sp-line.done{background:var(--blue)}
+.time-slots-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.time-slot{padding:10px;border:1.5px solid var(--border);border-radius:var(--radius);font-size:.82rem;font-weight:600;cursor:pointer;text-align:center;transition:var(--transition);background:var(--white)}
+.time-slot:hover{border-color:var(--blue);color:var(--blue)}
+.time-slot.selected{background:var(--blue);color:var(--white);border-color:var(--blue)}
+.slot-day{font-size:.7rem;color:var(--text-3);display:block;margin-bottom:2px}
+.slot-day-selected{color:rgba(255,255,255,.7)}
+.consent-row{display:flex;align-items:flex-start;gap:10px;margin:16px 0;font-size:.83rem;color:var(--text-2)}
+.consent-row input{margin-top:2px;accent-color:var(--blue);flex-shrink:0}
+.btn-block{width:100%;justify-content:center}
+.btn-row-spaced{display:flex;gap:12px}
+.btn-secondary{background:var(--off-white);color:var(--text);border:1.5px solid var(--border)}
+.btn-secondary:hover{border-color:var(--blue);color:var(--blue)}
+
+/* Inbound widget */
+.inbound-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.inbound-info h3{margin-bottom:12px}
+.inbound-info p{color:var(--text-2);font-size:.93rem;margin-bottom:24px;line-height:1.7}
+.phone-display{background:var(--navy);border-radius:var(--radius-xl);padding:44px;text-align:center;color:var(--white)}
+.pd-label{font-size:.8rem;color:rgba(255,255,255,.55);margin-bottom:12px;text-transform:uppercase;letter-spacing:.08em}
+.pd-number{font-size:1.8rem;font-weight:700;letter-spacing:.05em;margin-bottom:6px}
+.pd-sub{font-size:.8rem;color:rgba(255,255,255,.5);margin-bottom:24px}
+.pd-status{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border-radius:40px;padding:8px 18px;font-size:.8rem}
+.pd-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:pulse 2s infinite}
+.coming-soon-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border-radius:40px;padding:10px 20px;font-size:.85rem;color:rgba(255,255,255,.75);margin-bottom:20px}
+.coming-soon-badge .cs-dot{width:8px;height:8px;border-radius:50%;background:#F4B942;animation:pulse 2s infinite}
+
+/* Chat widget */
+.chat-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.chat-info h3{margin-bottom:12px}
+.chat-info p{color:var(--text-2);font-size:.93rem;margin-bottom:24px}
+.chat-demo{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+.chat-header{background:var(--blue);padding:16px 20px;display:flex;align-items:center;gap:12px;color:var(--white)}
+.chat-header-av{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1rem}
+.chat-header-info strong{display:block;font-size:.9rem}
+.chat-header-info span{font-size:.75rem;opacity:.75}
+.chat-messages{padding:20px;height:280px;overflow-y:auto;display:flex;flex-direction:column;gap:12px}
+.msg{max-width:80%;padding:10px 14px;border-radius:var(--radius-lg);font-size:.85rem;line-height:1.55}
+.msg.bot{background:var(--white);border:1px solid var(--border);color:var(--text);border-bottom-left-radius:4px;align-self:flex-start}
+.msg.user{background:var(--blue);color:var(--white);border-bottom-right-radius:4px;align-self:flex-end}
+.typing-indicator{display:flex;align-items:center;gap:4px;padding:10px 14px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);border-bottom-left-radius:4px;width:fit-content}
+.typing-dot{width:6px;height:6px;border-radius:50%;background:var(--text-3);animation:typing-bounce .8s infinite}
+.typing-dot:nth-child(2){animation-delay:.15s}
+.typing-dot:nth-child(3){animation-delay:.3s}
+.chat-input-area{padding:14px 16px;border-top:1px solid var(--border);display:flex;gap:10px}
+.chat-input-area input{flex:1;padding:9px 14px;border:1.5px solid var(--border);border-radius:20px;font-family:inherit;font-size:.85rem;outline:none;transition:var(--transition)}
+.chat-input-area input:focus{border-color:var(--blue)}
+.chat-send-btn{width:36px;height:36px;border-radius:50%;background:var(--blue);color:var(--white);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;transition:var(--transition)}
+.chat-send-btn:hover{background:var(--blue-dark)}
+
+
+@media(max-width:860px){
+  .outbound-grid,.inbound-wrapper,.chat-wrapper{grid-template-columns:1fr}
+}
+
+/* Success state */
+.booking-success{text-align:center;padding:40px 20px}
+.success-icon{width:64px;height:64px;border-radius:50%;background:var(--blue);color:var(--white);font-size:1.6rem;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.booking-success h3{margin-bottom:10px;font-size:1.3rem}
+.booking-success p{color:var(--text-2);font-size:.93rem;margin-bottom:24px}
+.ref-badge{display:inline-block;background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius);padding:8px 18px;font-size:.83rem;font-weight:700;color:var(--text);margin-bottom:20px}
+
+/* ─────────────────── CONTACT SECTION ─────────────────── */
+.contact{padding:80px 0;background:var(--off-white)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:60px;align-items:start}
+.contact-info h2{margin-bottom:12px}
+.contact-info p{color:var(--text-2);font-size:.93rem;margin-bottom:28px}
+.info-items{display:flex;flex-direction:column;gap:16px;margin-bottom:28px}
+.info-item{display:flex;align-items:center;gap:14px}
+.info-icon{width:42px;height:42px;border-radius:var(--radius);background:var(--light);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.info-item strong{display:block;font-size:.9rem;color:var(--text)}
+.info-item span{font-size:.82rem;color:var(--text-3)}
+.social-links{display:flex;gap:10px}
+.social-links a{width:38px;height:38px;border-radius:var(--radius);background:var(--blue);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:var(--transition)}
+.social-links a:hover{background:var(--blue-dark)}
+.contact-form-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:40px}
+.contact-form-card h3{margin-bottom:4px}
+.contact-form-card .sub{color:var(--text-3);font-size:.85rem;margin-bottom:28px}
+.form-disclaimer{font-size:.78rem;color:var(--text-3);margin-top:10px;display:flex;align-items:center;gap:6px}
+.success-msg{display:none;text-align:center;padding:40px 20px}
+.success-msg .si{width:60px;height:60px;border-radius:50%;background:var(--blue);color:var(--white);font-size:1.4rem;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.success-msg h3{margin-bottom:8px}
+.success-msg p{color:var(--text-2);font-size:.9rem}
+@media(max-width:860px){.contact-grid{grid-template-columns:1fr}}
+
+/* ─────────────────── FOOTER ─────────────────── */
+.footer-trusted{background:var(--navy);padding:24px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer-trusted .container{display:flex;align-items:center;gap:32px;overflow-x:auto}
+.ft-label{color:rgba(255,255,255,.5);font-size:.78rem;font-weight:600;white-space:nowrap;text-transform:uppercase;letter-spacing:.08em;flex-shrink:0}
+.ft-logos{display:flex;gap:32px;align-items:center;flex-wrap:wrap}
+.ft-logo{color:rgba(255,255,255,.7);font-size:.88rem;font-weight:700;white-space:nowrap}
+footer{background:var(--white);padding:60px 0 0}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand p{color:var(--text-3);font-size:.85rem;margin:14px 0 18px;line-height:1.65}
+.footer-email{display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--text-2);margin-bottom:16px}
+.footer-col h4{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);margin-bottom:16px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col ul li a{font-size:.85rem;color:var(--text-3);transition:var(--transition)}
+.footer-col ul li a:hover{color:var(--blue)}
+.footer-bottom{border-top:1px solid var(--border);padding:20px 0;display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:var(--text-3)}
+.footer-bottom-links{display:flex;gap:20px}
+.footer-bottom-links a{color:var(--text-3)}
+.footer-bottom-links a:hover{color:var(--blue)}
+@media(max-width:960px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:12px;text-align:center}}
+
+/* ─────────────────── MARQUEE ─────────────────── */
+.marquee-section{padding:28px 0;background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
+.marquee-track{display:flex;gap:48px;width:max-content;animation:marquee 24s linear infinite}
+.marquee-item{font-size:.88rem;font-weight:700;color:var(--text-3);white-space:nowrap;flex-shrink:0}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes typing-bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-in-up{animation:fadeUp .5s ease both}
+
+/* ─────────────────── TOAST ─────────────────── */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:var(--white);border-radius:var(--radius);padding:12px 20px;font-size:.88rem;display:flex;align-items:center;gap:10px;z-index:9999;transform:translateY(100px);opacity:0;transition:var(--transition);max-width:340px}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.success{background:#166534}
+.toast.error{background:#991b1b}
+.toast-close{background:none;border:none;color:inherit;cursor:pointer;margin-left:auto;opacity:.7;font-size:.85rem}
+
+/* ─────────────────── MISC ─────────────────── */
+.tech-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.tech-badge{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius);padding:14px 12px;text-align:center;font-size:.8rem;font-weight:600;color:var(--text-2);transition:var(--transition)}
+.tech-badge:hover{border-color:var(--blue);color:var(--blue)}
+.tech-emoji{display:block;font-size:1.3rem;margin-bottom:6px}
+@media(max-width:640px){.tech-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* ═══ FLOATING CHAT WIDGET ═══ */
+.chat-widget-container{position:fixed;bottom:24px;right:24px;z-index:9999;font-family:'DM Sans',sans-serif}
+.chat-widget-fab{width:56px;height:56px;border-radius:50%;background:var(--blue);color:var(--white);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(30,63,255,.35);transition:all .3s cubic-bezier(.4,0,.2,1);font-size:1.2rem;position:relative;overflow:hidden}
+.chat-widget-fab:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(30,63,255,.45)}
+.chat-widget-fab:active{transform:scale(.95)}
+.chat-widget-fab .fab-open{display:block}
+.chat-widget-fab .fab-close{display:none}
+.chat-widget-fab.active .fab-open{display:none}
+.chat-widget-fab.active .fab-close{display:block}
+.chat-widget-panel{position:fixed;bottom:90px;right:24px;width:380px;max-width:calc(100vw - 48px);height:520px;max-height:calc(100vh - 120px);background:var(--white);border-radius:var(--radius-lg);box-shadow:0 8px 40px rgba(0,0,0,.15);display:flex;flex-direction:column;overflow:hidden;transition:all .35s cubic-bezier(.4,0,.2,1);transform:translateY(20px) scale(.95);opacity:0;pointer-events:none;z-index:9998;border:1px solid var(--border)}
+.chat-widget-panel.open{transform:translateY(0) scale(1);opacity:1;pointer-events:auto}
+.chat-widget-header{background:var(--blue);padding:16px 20px;display:flex;align-items:center;gap:12px;color:var(--white);flex-shrink:0}
+.chat-widget-header .header-logo{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700}
+.chat-widget-header .header-info{flex:1}
+.chat-widget-header .header-info strong{display:block;font-size:.95rem;font-weight:600}
+.chat-widget-header .header-info span{font-size:.78rem;opacity:.8;display:flex;align-items:center;gap:6px}
+.chat-widget-header .header-info span::before{content:'';width:7px;height:7px;border-radius:50%;background:#4ADE80;display:inline-block;animation:pulse 2s infinite}
+.chat-widget-header .header-close{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.15);border:none;color:var(--white);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all .2s}
+.chat-widget-header .header-close:hover{background:rgba(255,255,255,.25)}
+.chat-widget-messages{flex:1;padding:16px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;background:var(--off-white)}
+.chat-widget-input{padding:12px 16px;border-top:1px solid var(--border);display:flex;gap:10px;align-items:center;background:var(--white);flex-shrink:0}
+.chat-widget-input input{flex:1;padding:10px 14px;border:1.5px solid var(--border);border-radius:20px;font-family:inherit;font-size:.85rem;outline:none;transition:var(--transition);background:var(--off-white)}
+.chat-widget-input input:focus{border-color:var(--blue);background:var(--white)}
+.chat-widget-input button{width:36px;height:36px;border-radius:50%;background:var(--blue);color:var(--white);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;transition:var(--transition)}
+.chat-widget-input button:hover{background:var(--blue-dark)}
+.chat-widget-unread{position:absolute;top:-2px;right:-2px;width:18px;height:18px;border-radius:50%;background:#EF4444;color:white;font-size:.65rem;font-weight:700;display:flex;align-items:center;justify-content:center;animation:pulse 2s infinite}
+@media(max-width:480px){.chat-widget-panel{width:100%;right:0;bottom:0;max-width:100vw;border-radius:var(--radius-lg) var(--radius-lg) 0 0;height:70vh}.chat-widget-fab{bottom:16px;right:16px}}
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<!-- ───── NAVBAR ───── -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="#" class="logo">
+      <span class="logo-bracket">{-}</span>
+      <span>Enlight Lab</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li class="has-dropdown"><a href="#services">Services</a></li>
+      <li class="has-dropdown"><a href="#industries">Industries</a></li>
+      <li><a href="#cases">Case Studies</a></li>
+      <li><a href="#blog">Blogs</a></li>
+      <li><a href="#contact" class="btn btn-proposal">Get a Proposal</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ───── HERO ───── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Your Award-Winning Technology Partner Delivering</p>
+      <h1>Next-Gen <span class="accent">AI-Powered<br>Solutions</span></h1>
+      <p class="hero-sub">Leverage our AI software development services to transform your business operations with future-ready solutions that boost efficiency, drive innovation, and create a lasting competitive edge.</p>
+      <p class="hero-tagline">Ship faster. Scale Smarter. Innovate Confidently.</p>
+      <div class="hero-buttons">
+        <a href="#ai-agents" class="btn btn-primary">Start with a Free Consultation</a>
+      </div>
+    </div>
+    <div class="hero-illustration">
+      <div class="hero-illus-placeholder">
+        <div class="illus-chat">
+          <div class="illus-robot"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="14" width="32" height="26" rx="6" fill="#1E3FFF"/><rect x="16" y="22" width="6" height="6" rx="3" fill="white"/><rect x="26" y="22" width="6" height="6" rx="3" fill="white"/><rect x="18" y="32" width="12" height="3" rx="1.5" fill="white" opacity=".6"/><rect x="21" y="8" width="6" height="8" rx="3" fill="#3D5AFF"/><rect x="0" y="22" width="6" height="10" rx="3" fill="#3D5AFF"/><rect x="42" y="22" width="6" height="10" rx="3" fill="#3D5AFF"/></svg></div>
+          <div class="illus-bubble bot">Hi! How can I assist your business today?</div>
+          <div class="illus-bubble user">Tell me about your AI solutions</div>
+          <div class="illus-input-bar">
+            <span>Type a message...</span>
+            <div class="illus-icons">
+              <span style="font-size:1rem;color:var(--text-3)"><i class="far fa-smile"></i></span><span style="font-size:1rem;color:var(--text-3)"><i class="fas fa-paperclip"></i></span><span style="font-size:1rem;color:var(--text-3)"><i class="fas fa-microphone"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── MARQUEE ───── -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">Mozilla Foundation</span>
+    <span class="marquee-item">qPress</span>
+    <span class="marquee-item">Emblazer</span>
+    <span class="marquee-item">Go2ANDAMAN</span>
+    <span class="marquee-item">Homeloft</span>
+    <span class="marquee-item">MAERSK</span>
+    <span class="marquee-item">HUMA</span>
+    <span class="marquee-item">Pasqal</span>
+    <span class="marquee-item">AccessTruth</span>
+    <span class="marquee-item">United Healthcare</span>
+    <span class="marquee-item">Mozilla Foundation</span>
+    <span class="marquee-item">qPress</span>
+    <span class="marquee-item">Emblazer</span>
+    <span class="marquee-item">Go2ANDAMAN</span>
+    <span class="marquee-item">Homeloft</span>
+    <span class="marquee-item">MAERSK</span>
+    <span class="marquee-item">HUMA</span>
+    <span class="marquee-item">Pasqal</span>
+    <span class="marquee-item">AccessTruth</span>
+    <span class="marquee-item">United Healthcare</span>
+  </div>
+</div>
+
+<!-- ───── ABOUT BANNER ───── -->
+<section class="about-banner" id="about">
+  <div class="container">
+    <h2>About Us</h2>
+    <p>We are a top-tier, remote-first IT consulting &amp; software outsourcing company, founded 18 years ago with a vision to build next-generation software products.</p>
+    <p>With a dynamic team of skilled professionals, we have worked with startups, growing companies, and enterprises across the globe. Our consistent commitment to quality and high delivery standards has earned us notable recognition within the IT-software industry.</p>
+  </div>
+</section>
+
+<!-- ───── ABOUT BODY ───── -->
+<section class="about-body">
+  <div class="container">
+    <div class="about-grid">
+      <div class="mission-card">
+        <h3>Our Mission</h3>
+        <p>Our mission is to empower businesses of all sizes with client-centric, high-impact digital solutions. Based on our core principles of Ideate, Innovate, Create, we combine strategic thinking, advanced technologies, and engineering excellence in building solutions that optimize resources and add immense value to businesses.</p>
+      </div>
+      <div class="about-img"><svg width="120" height="120" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="40" stroke="white" stroke-width="2" opacity=".3"/><circle cx="60" cy="60" r="25" stroke="white" stroke-width="2" opacity=".5"/><circle cx="60" cy="60" r="10" fill="white" opacity=".9"/><line x1="60" y1="15" x2="60" y2="35" stroke="white" stroke-width="2" opacity=".6"/><line x1="60" y1="85" x2="60" y2="105" stroke="white" stroke-width="2" opacity=".6"/><line x1="15" y1="60" x2="35" y2="60" stroke="white" stroke-width="2" opacity=".6"/><line x1="85" y1="60" x2="105" y2="60" stroke="white" stroke-width="2" opacity=".6"/><circle cx="60" cy="20" r="4" fill="white" opacity=".8"/><circle cx="60" cy="100" r="4" fill="white" opacity=".8"/><circle cx="20" cy="60" r="4" fill="white" opacity=".8"/><circle cx="100" cy="60" r="4" fill="white" opacity=".8"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── WHY US ───── -->
+<section class="why-us">
+  <div class="container">
+    <div class="section-header" style="text-align:left">
+      <h2>Why Us?</h2>
+      <p style="margin-left:0;text-align:left">At Enlight Lab, our core values define how we deliver measurable value, execute with excellence, and honor our commitment to every engagement.</p>
+    </div>
+    <div class="why-main-grid">
+      <div class="why-card">
+        <div class="why-card-icon"><i class="fas fa-lightbulb"></i></div>
+        <h3>Value-Driven Outcomes</h3>
+        <p>Our primary focus is to create meaningful value for our clients — helping them drive revenue growth, strengthen their technology foundations, and achieve sustainable business progress.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon"><i class="fas fa-code"></i></div>
+        <h3>Commitment to Delivery</h3>
+        <p>We are deeply committed to delivering every project within agreed timelines, without compromising on quality. Reliability and accountability guide our approach to every client engagement.</p>
+      </div>
+      <div class="why-side-img"><svg width="140" height="140" viewBox="0 0 140 140" fill="none"><circle cx="70" cy="50" r="22" fill="white" opacity=".15"/><circle cx="70" cy="50" r="14" fill="white" opacity=".25"/><rect x="40" y="80" width="60" height="36" rx="8" fill="white" opacity=".12"/><rect x="48" y="88" width="20" height="20" rx="4" fill="white" opacity=".2"/><rect x="74" y="88" width="20" height="8" rx="2" fill="white" opacity=".2"/><rect x="74" y="100" width="14" height="4" rx="2" fill="white" opacity=".15"/><path d="M55 45 L65 55 L80 38" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/></svg></div>
+      <div class="why-card">
+        <div class="why-card-icon"><i class="fas fa-chart-bar"></i></div>
+        <h3>Execution Excellence</h3>
+        <p>Our high-performance delivery mindset enables us to execute efficiently, adapt quickly, and consistently deliver dependable results across complex engineering challenges.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon"><i class="fas fa-search"></i></div>
+        <h3>Collaboration &amp; Ownership</h3>
+        <p>Leadership, to us, means inspiring progress and delivering results. We believe great results come from strong collaboration and shared ownership of every goal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── SERVICES ───── -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Our Services</span>
+      <h2>Prolific Technology Consulting Services</h2>
+    </div>
+    <div class="tabs-nav">
+      <button class="tab-btn active" data-tab="ai">Artificial Intelligence</button>
+      <button class="tab-btn" data-tab="de">Digital Engineering</button>
+      <button class="tab-btn" data-tab="cd">Clouds &amp; DevOps</button>
+      <button class="tab-btn" data-tab="cm">Cooperation Models</button>
+    </div>
+    <div class="tab-content active" id="tab-ai">
+      <div class="services-tab-grid">
+        <div class="service-tab-card">
+          <div class="stc-text">
+            <h3>AI Agent Development</h3>
+            <p>We design and deploy task-specific AI agents that automate operations, enhance support, and boost productivity by working like your best teammates alongside existing systems.</p>
+            <a href="#ai-agents" class="btn btn-primary">To know more</a>
+          </div>
+          <div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><rect x="18" y="20" width="36" height="28" rx="8" fill="#1E3FFF" opacity=".15"/><rect x="26" y="28" width="8" height="8" rx="4" fill="#1E3FFF" opacity=".7"/><rect x="42" y="28" width="8" height="8" rx="4" fill="#1E3FFF" opacity=".7"/><rect x="30" y="42" width="12" height="3" rx="1.5" fill="#1E3FFF" opacity=".4"/><rect x="33" y="12" width="6" height="10" rx="3" fill="#1E3FFF" opacity=".5"/><rect x="8" y="30" width="8" height="12" rx="4" fill="#1E3FFF" opacity=".3"/><rect x="56" y="30" width="8" height="12" rx="4" fill="#1E3FFF" opacity=".3"/></svg></div>
+        </div>
+        <div class="service-tab-card">
+          <div class="stc-text">
+            <h3>AI Consulting</h3>
+            <p>From use-case discovery to workflow automation and model selection, we help you integrate AI safely that accelerates efficiency, drives growth, and delivers measurable business impact.</p>
+            <a href="#contact" class="btn btn-primary">To know more</a>
+          </div>
+          <div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="20" stroke="#1E3FFF" stroke-width="2" opacity=".3"/><circle cx="36" cy="36" r="12" stroke="#1E3FFF" stroke-width="2" opacity=".5"/><circle cx="36" cy="36" r="5" fill="#1E3FFF" opacity=".8"/><line x1="36" y1="10" x2="36" y2="20" stroke="#1E3FFF" stroke-width="2" opacity=".5"/><line x1="36" y1="52" x2="36" y2="62" stroke="#1E3FFF" stroke-width="2" opacity=".5"/><line x1="10" y1="36" x2="20" y2="36" stroke="#1E3FFF" stroke-width="2" opacity=".5"/><line x1="52" y1="36" x2="62" y2="36" stroke="#1E3FFF" stroke-width="2" opacity=".5"/></svg></div>
+        </div>
+        <div class="service-tab-card">
+          <div class="stc-text">
+            <h3>Claude AI Development Services</h3>
+            <p>Delivering enterprise-grade Claude AI solutions that transform how organizations build, debug, and maintain software at scale.</p>
+            <a href="#contact" class="btn btn-primary">To know more</a>
+          </div>
+          <div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><path d="M20 52L36 16L52 52" stroke="#1E3FFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/><path d="M26 40H46" stroke="#1E3FFF" stroke-width="3" stroke-linecap="round" opacity=".4"/></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-content" id="tab-de">
+      <div class="services-tab-grid">
+        <div class="service-tab-card"><div class="stc-text"><h3>Mobile App Development</h3><p>Native or cross-platform mobile apps built for performance, usability, and scale.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="60" height="72" viewBox="0 0 60 72" fill="none"><rect x="8" y="4" width="44" height="64" rx="8" fill="#1E3FFF" opacity=".15"/><rect x="14" y="12" width="32" height="44" rx="3" fill="#1E3FFF" opacity=".2"/><circle cx="30" cy="62" r="3" fill="#1E3FFF" opacity=".5"/></svg></div></div>
+        <div class="service-tab-card"><div class="stc-text"><h3>Web Development</h3><p>Modern, high-performance web applications built with cutting-edge frameworks and technologies.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="60" viewBox="0 0 72 60" fill="none"><rect x="4" y="4" width="64" height="44" rx="6" fill="#1E3FFF" opacity=".15"/><rect x="4" y="4" width="64" height="10" rx="6" fill="#1E3FFF" opacity=".2"/><circle cx="14" cy="9" r="2.5" fill="#1E3FFF" opacity=".5"/><circle cx="22" cy="9" r="2.5" fill="#1E3FFF" opacity=".3"/><circle cx="30" cy="9" r="2.5" fill="#1E3FFF" opacity=".2"/><rect x="12" y="22" width="20" height="3" rx="1.5" fill="#1E3FFF" opacity=".4"/><rect x="12" y="30" width="32" height="3" rx="1.5" fill="#1E3FFF" opacity=".25"/><rect x="24" y="52" width="24" height="4" rx="2" fill="#1E3FFF" opacity=".3"/></svg></div></div>
+        <div class="service-tab-card"><div class="stc-text"><h3>MVP Development</h3><p>Build fast, validate smarter. Launch your minimum viable product with speed and confidence in 8 weeks.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><path d="M36 8L44 28H64L48 40L54 60L36 48L18 60L24 40L8 28H28L36 8Z" fill="#1E3FFF" opacity=".2" stroke="#1E3FFF" stroke-width="2" stroke-linejoin="round" opacity=".5"/></svg></div></div>
+      </div>
+    </div>
+    <div class="tab-content" id="tab-cd">
+      <div class="services-tab-grid">
+        <div class="service-tab-card"><div class="stc-text"><h3>CTO as a Service</h3><p>Elite fractional CTO leadership to guide your technology strategy, architecture, and team execution.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="26" r="14" fill="#1E3FFF" opacity=".2" stroke="#1E3FFF" stroke-width="2" opacity=".4"/><path d="M16 58c0-11 9-18 20-18s20 7 20 18" stroke="#1E3FFF" stroke-width="2.5" stroke-linecap="round" opacity=".5"/></svg></div></div>
+        <div class="service-tab-card"><div class="stc-text"><h3>DevOps &amp; Infra Consulting</h3><p>Automate CI/CD pipelines, optimize cloud infrastructure, and ensure reliable deployments at scale.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><path d="M20 44a16 16 0 1 1 32 0" stroke="#1E3FFF" stroke-width="2.5" stroke-linecap="round" opacity=".5"/><ellipse cx="36" cy="50" rx="20" ry="8" fill="#1E3FFF" opacity=".15" stroke="#1E3FFF" stroke-width="1.5" opacity=".3"/><line x1="36" y1="28" x2="36" y2="42" stroke="#1E3FFF" stroke-width="2" stroke-linecap="round" opacity=".6"/></svg></div></div>
+      </div>
+    </div>
+    <div class="tab-content" id="tab-cm">
+      <div class="services-tab-grid">
+        <div class="service-tab-card"><div class="stc-text"><h3>Staff Augmentation</h3><p>Plug in top-tier engineers on-demand. Scale your team with vetted developers who integrate seamlessly.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="24" cy="26" r="10" fill="#1E3FFF" opacity=".2" stroke="#1E3FFF" stroke-width="1.5" opacity=".4"/><circle cx="48" cy="26" r="10" fill="#1E3FFF" opacity=".2" stroke="#1E3FFF" stroke-width="1.5" opacity=".4"/><path d="M8 56c0-8.8 7.2-14 16-14s16 5.2 16 14" stroke="#1E3FFF" stroke-width="2" stroke-linecap="round" opacity=".4"/><path d="M32 56c0-8.8 7.2-14 16-14s16 5.2 16 14" stroke="#1E3FFF" stroke-width="2" stroke-linecap="round" opacity=".6"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── ALLIANCES ───── -->
+<section class="alliances">
+  <div class="container">
+    <div class="alliances-text-cta">
+      <div class="alliances-text">
+        <p style="color:rgba(255,255,255,.6);font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Build &amp; Scale Faster With Our</p>
+        <h2>30+ Alliances</h2>
+        <p>Harness the power of world-class cloud platforms for unmatched performance, scalability, and security. Benefit from technologies that deliver efficiency, integration, and reliability.</p>
+        <a href="#contact" class="btn btn-white">Get Started &nbsp;→</a>
+      </div>
+      <div class="alliances-logos">
+        <div class="alliance-logo">qPress</div>
+        <div class="alliance-logo">MAERSK</div>
+        <div class="alliance-logo">AccessTruth</div>
+        <div class="alliance-logo">Emblazer</div>
+        <div class="alliance-logo">HUMA</div>
+        <div class="alliance-logo">United Healthcare</div>
+        <div class="alliance-logo">Go2ANDAMAN</div>
+        <div class="alliance-logo">Mozilla Foundation</div>
+        <div class="alliance-logo">Homeloft</div>
+      </div>
+    </div>
+    <div class="section-header" style="text-align:left;margin-top:52px;margin-bottom:0">
+      <h2 style="color:var(--white)">Why Enlight Lab Is One of the Top Tech Consulting Firms</h2>
+      <p style="color:rgba(255,255,255,.65);margin-left:0;text-align:left">We help early-stage startups and scaling enterprises move from idea to product to scale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ───── EXECUTION FRAMEWORK ───── -->
+<section class="execution">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Our Process</span>
+      <h2>Project Execution Framework from Strategy to Shipping</h2>
+      <p>From the first conversation to the final handover, our approach is designed to keep your project moving smoothly, confidently, and strategically.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card"><div class="step-icon"><i class="fas fa-clipboard-list"></i></div><h3>Assessment</h3><p>We begin by getting aligned — your goals, your constraints, and real-world conditions to build a clear project foundation.</p></div>
+      <div class="step-card"><div class="step-icon"><i class="fas fa-lightbulb"></i></div><h3>Solution Design</h3><p>Here's where vision turns into a structured plan. We outline the architecture, delivery roadmap, KPIs, and potential risks.</p></div>
+      <div class="step-card"><div class="step-icon"><i class="fas fa-code"></i></div><h3>Build Execution</h3><p>Our team delivers in clear, iterative cycles, giving you visibility at every step and consistent progress with quality you can count on.</p></div>
+      <div class="step-card"><div class="step-icon"><i class="fas fa-chart-line"></i></div><h3>Scaling &amp; Optimization</h3><p>As the solution matures, we fine-tune performance, build resilience, and automate where possible so the product is fully prepared to scale.</p></div>
+      <div class="step-card"><div class="step-icon"><i class="fas fa-handshake"></i></div><h3>Transition &amp; Handover</h3><p>We wrap with a clean, confident transition. Documentation, training, and operational guidance ensure your team takes over seamlessly.</p></div>
+      <div class="step-card"><div class="step-icon"><i class="fas fa-robot"></i></div><h3>Collaboration</h3><p>We use modern collaboration tools to streamline communication and ensure the entire project's operations stay connected and friction-free.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── METRICS ───── -->
+<section class="metrics" style="padding:80px 0;background:var(--off-white)">
+  <div class="container">
+    <div class="metrics-wrapper">
+      <div class="metrics-title">
+        <h2>What You Gain with Enlight Lab in Numbers</h2>
+      </div>
+      <div class="metrics-bars">
+        <div class="metric-row">
+          <div class="metric-row-top"><div><div class="metric-label">Faster Resolution</div><div class="metric-sub-label">After deploying a Custom AI Agent.</div></div><div class="metric-value">38%</div></div>
+          <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:38%"></div></div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-row-top"><div><div class="metric-label">Reduction</div><div class="metric-sub-label">In cloud and infrastructure costs</div></div><div class="metric-value">28%</div></div>
+          <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:28%"></div></div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-row-top"><div><div class="metric-label">Weeks</div><div class="metric-sub-label">From concept to a fully working MVP.</div></div><div class="metric-value">8 Weeks</div></div>
+          <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:12%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── INDUSTRIES ───── -->
+<section class="industries" id="industries">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Industries</span>
+      <h2>Industry We Serve</h2>
+      <p>Where innovation meets impact — transforming industries through strategic technology solutions.</p>
+    </div>
+    <div class="industries-grid">
+      <div class="industry-card"><i class="fas fa-hospital" style="font-size:2rem;opacity:.7"></i><h3>Healthcare</h3></div>
+      <div class="industry-card"><i class="fas fa-credit-card" style="font-size:2rem;opacity:.7"></i><h3>FinTech</h3></div>
+      <div class="industry-card"><i class="fas fa-laptop-code" style="font-size:2rem;opacity:.7"></i><h3>Technology &amp; Startup</h3></div>
+      <div class="industry-card"><i class="fas fa-graduation-cap" style="font-size:2rem;opacity:.7"></i><h3>Education</h3></div>
+      <div class="industry-card"><i class="fas fa-home" style="font-size:2rem;opacity:.7"></i><h3>Real Estate</h3></div>
+      <div class="industry-card"><i class="fas fa-shopping-cart" style="font-size:2rem;opacity:.7"></i><h3>Ecommerce</h3></div>
+      <div class="industry-card"><i class="fas fa-shield-alt" style="font-size:2rem;opacity:.7"></i><h3>Insurance</h3></div>
+      <div class="industry-card"><i class="fas fa-plane" style="font-size:2rem;opacity:.7"></i><h3>Travel &amp; Hospitality</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── CASE STUDIES ───── -->
+<section class="cases" id="cases">
+  <div class="container">
+    <div class="section-header"><span class="section-tag" style="color:rgba(255,255,255,.5)">Case Studies</span><h2>How We Help Clients Scale Fast</h2></div>
+    <div class="cases-list">
+      <div class="case-item">
+        <div class="case-img"><i class="fas fa-bolt" style="font-size:2rem;color:white;opacity:.7"></i></div>
+        <div class="case-body">
+          <h3>Emblazer.ai</h3>
+          <p>The platform is designed to interactively understand user preferences before delivering results. The client approached our team with a vision of building a comprehensive AI agent development platform from scratch.</p>
+          <a href="#" class="case-link">Read Case Study</a>
+        </div>
+      </div>
+      <div class="case-item">
+        <div class="case-img"><i class="fas fa-hospital" style="font-size:2rem;color:white;opacity:.7"></i></div>
+        <div class="case-body">
+          <h3>Huma: A Remote Patient Monitoring Platform</h3>
+          <p>As a fast-growing leader in modern healthcare, Huma approached our team with a vision to build a digital health application — helping doctors monitor patient records remotely, run virtual hospital wards, and support medical research.</p>
+          <a href="#" class="case-link">Read Case Study</a>
+        </div>
+      </div>
+      <div class="case-item">
+        <div class="case-img"><svg width="64" height="64" viewBox="0 0 64 64" fill="none"><path d="M32 8L40 28H56L44 38L48 58L32 48L16 58L20 38L8 28H24L32 8Z" fill="white" opacity=".15" stroke="white" stroke-width="1.5"/></svg></div>
+        <div class="case-body">
+          <h3>Mozilla Foundation</h3>
+          <p>The client partnered with us to create a simple, secure website that encourages more people to support their mission and communicate their impact more clearly — inspiring greater support for open-source innovation and trustworthy AI.</p>
+          <a href="#" class="case-link">Read Case Study</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── TESTIMONIALS ───── -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Testimonials</span>
+      <h2>Our Testimonials</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p>Enlight Lab proved to be a highly reliable partner by consistently delivering timely, accurate updates throughout the entire engagement.</p>
+        <div class="tauthor"><div class="tauthor-av">JD</div><div><strong>John Doe</strong><span>Director</span></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p>Along with solid technical expertise, Enlight Lab showed a clear understanding of business needs and delivered solutions that truly moved the needle.</p>
+        <div class="tauthor"><div class="tauthor-av">BS</div><div><strong>Bill Sequeira</strong><span>CEO at Alida Inc</span></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p>Enlight Lab brings hands-on involvement in addressing platform complexities. A truly productive collaboration and one I'd recommend to any growth-stage company.</p>
+        <div class="tauthor"><div class="tauthor-av">BC</div><div><strong>Ben Christine</strong><span>Product Designer</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── FAQ ───── -->
+<section class="faq">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">FAQ</span>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Why choose Enlight Lab for outsourcing? <i class="fas fa-chevron-down"></i></div><div class="faq-a">We combine top-tier engineering talent with a product-first mindset to build future-ready software that genuinely moves your business forward.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is your pricing model? <i class="fas fa-chevron-down"></i></div><div class="faq-a">We follow a transparent pricing model based on project scope, team composition, and engagement type — whether fixed-price, T&amp;M, or retainer.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you provide post-launch IT support? <i class="fas fa-chevron-down"></i></div><div class="faq-a">Yes, we provide reliable post-launch IT support and maintenance to keep your product running smoothly, with SLA-backed response times.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can you create custom AI tools for our workflows? <i class="fas fa-chevron-down"></i></div><div class="faq-a">Yes, our AI engineers provide custom-built tools tailored to your exact workflows — from document processing to voice agents and everything in between.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How does the AI calling agent work? <i class="fas fa-chevron-down"></i></div><div class="faq-a">Our AI voice agents are powered by Enlight Lab AI. You fill in your details and preferred time, and the agent calls you at the scheduled time for a fully conversational demo experience.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     AI AGENTS SECTION
+═══════════════════════════════════════════════════════ -->
+<section class="ai-agents" id="ai-agents">
+  <div class="container">
+    <div class="agents-intro">
+      <span class="section-tag">AI Voice &amp; Chat Agents</span>
+      <h2>Experience Our AI Agents Live</h2>
+      <p>We've integrated three AI agents — an outbound caller that schedules calls with you, an inbound line that answers your questions, and a chat assistant available right here.</p>
+    </div>
+    <div class="agents-tabs">
+      <button class="agent-tab active" onclick="switchAgent('outbound', this)"><i class="fas fa-phone-alt"></i> Outbound Call Demo</button>
+      <button class="agent-tab" onclick="switchAgent('inbound', this)"><i class="fas fa-headset"></i> Inbound Call Line</button>
+      <button class="agent-tab" onclick="switchAgent('chat', this)"><i class="fas fa-comments"></i> Chat Assistant</button>
+    </div>
+
+    <!-- OUTBOUND PANEL -->
+    <div class="agent-panel active" id="panel-outbound">
+      <div id="outbound-step1">
+        <div class="outbound-grid">
+          <div class="outbound-form-card">
+            <h3>Schedule an AI Demo Call</h3>
+            <p class="sub">Fill in your details and our AI agent will call you at your chosen time.</p>
+            <div class="step-progress">
+              <div class="sp-item active" id="sp1"><div class="sp-num">1</div><span>Details</span></div>
+              <div class="sp-line" id="spline1"></div>
+              <div class="sp-item" id="sp2"><div class="sp-num">2</div><span>Time Slot</span></div>
+              <div class="sp-line" id="spline2"></div>
+              <div class="sp-item" id="sp3"><div class="sp-num">3</div><span>Confirm</span></div>
+            </div>
+            <!-- Step 1: Details -->
+            <div id="ob-form-1">
+              <div class="form-row">
+                <div class="form-group"><label>Full Name *</label><input type="text" id="ob-name" placeholder="Your full name"></div>
+                <div class="form-group"><label>Company</label><input type="text" id="ob-company" placeholder="Company name"></div>
+              </div>
+              <div class="form-group"><label>Email Address *</label><input type="email" id="ob-email" placeholder="you@company.com"></div>
+              <div class="form-group">
+                <label>Phone Number * <small style="color:var(--text-3)">(The AI will call this number)</small></label>
+                <div class="phone-row">
+                  <select id="ob-cc"><option value="+1">US +1</option><option value="+44">UK +44</option><option value="+91" selected>IN +91</option><option value="+61">AU +61</option><option value="+49">DE +49</option><option value="+33">FR +33</option><option value="+81">JP +81</option><option value="+65">SG +65</option><option value="+971">AE +971</option></select>
+                  <input type="tel" id="ob-phone" placeholder="98765 43210">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Industry *</label>
+                <select id="ob-industry"><option value="">Select industry…</option><option>E-Commerce</option><option>EdTech</option><option>HealthTech</option><option>BFSI / FinTech</option><option>Hospitality</option><option>Real Estate</option><option>SaaS / Startup</option><option>Other</option></select>
+              </div>
+              <div class="form-group"><label>What would you like to discuss? <small style="color:var(--text-3)">(optional)</small></label><textarea id="ob-message" placeholder="e.g. AI agent development for customer support automation…"></textarea></div>
+              <div class="consent-row"><input type="checkbox" id="ob-consent"><label for="ob-consent">I agree to receive an automated AI voice call. I can end the call at any time.</label></div>
+              <button class="btn btn-primary btn-block" onclick="obNextStep(1)">Choose a Time Slot →</button>
+            </div>
+            <!-- Step 2: Slots -->
+            <div id="ob-form-2" style="display:none">
+              <p style="font-size:.85rem;color:var(--text-3);margin-bottom:16px">Select your preferred time slot (your local timezone)</p>
+              <div class="time-slots-grid" id="ob-slots"></div>
+              <div class="btn-row-spaced" style="margin-top:20px">
+                <button class="btn btn-secondary" onclick="obPrevStep(2)">← Back</button>
+                <button class="btn btn-primary" id="ob-next2-btn" onclick="obNextStep(2)" disabled>Review Booking →</button>
+              </div>
+            </div>
+            <!-- Step 3: Review -->
+            <div id="ob-form-3" style="display:none">
+              <div id="ob-review-box" style="background:var(--light);border-radius:var(--radius);padding:20px;font-size:.88rem;color:var(--text-2);margin-bottom:20px;line-height:1.8"></div>
+              <div style="background:#EFF6FF;border:1px solid #BFDBFE;border-radius:var(--radius);padding:16px;font-size:.83rem;color:#1e40af;margin-bottom:20px">
+                <strong style="display:block;margin-bottom:4px">How this works</strong>
+                Our AI voice agent will call your number at the scheduled time. The conversation is fully natural — ask anything, interrupt anytime. Average duration: 5–10 minutes.
+              </div>
+              <div class="btn-row-spaced">
+                <button class="btn btn-secondary" onclick="obPrevStep(3)">← Back</button>
+                <button class="btn btn-primary" id="ob-confirm-btn" onclick="obConfirm()">Confirm &amp; Schedule Call</button>
+              </div>
+            </div>
+            <!-- Step 4: Success -->
+            <div id="ob-form-4" style="display:none">
+              <div class="booking-success">
+                <div class="success-icon"><i class="fas fa-check"></i></div>
+                <h3>Call Scheduled!</h3>
+                <p id="ob-success-msg">Your AI demo call has been confirmed.</p>
+                <div class="ref-badge" id="ob-ref"></div>
+                <button class="btn btn-secondary" onclick="obReset()" style="margin-top:16px">Book Another Call</button>
+              </div>
+            </div>
+          </div>
+          <div class="agent-info-card">
+            <h3>Experience AI Voice Technology</h3>
+            <p>Our outbound AI calling agent is powered by Enlight Lab AI. Schedule a live demo and hear first-hand how conversational AI can transform your business — from sales outreach to appointment booking and customer support.</p>
+            <div class="expect-list">
+              <div class="expect-item"><div class="expect-dot"></div>AI calls your number at the scheduled time</div>
+              <div class="expect-item"><div class="expect-dot"></div>Fully conversational — interrupt, ask, redirect anytime</div>
+              <div class="expect-item"><div class="expect-dot"></div>Agent is pre-briefed on your industry and notes</div>
+              <div class="expect-item"><div class="expect-dot"></div>Average call duration: 5–10 minutes</div>
+              <div class="expect-item"><div class="expect-dot"></div>Missed call? We'll send a follow-up email automatically</div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INBOUND PANEL -->
+    <div class="agent-panel" id="panel-inbound">
+      <div class="inbound-wrapper">
+        <div class="inbound-info">
+          <h3>AI Inbound Call Line</h3>
+          <p>Our inbound AI voice agent answers questions about Enlight Lab's services, pricing, and capabilities — 24/7, in natural conversational language. Call our dedicated AI line anytime.</p>
+          <div class="expect-list" style="--dot-color:var(--blue)">
+            <div class="expect-item" style="color:var(--text-2)"><div class="expect-dot" style="background:var(--blue)"></div>Available 24/7, no hold times</div>
+            <div class="expect-item" style="color:var(--text-2)"><div class="expect-dot" style="background:var(--blue)"></div>Answers questions about services, pricing &amp; timelines</div>
+            <div class="expect-item" style="color:var(--text-2)"><div class="expect-dot" style="background:var(--blue)"></div>Can schedule a consultation callback</div>
+            <div class="expect-item" style="color:var(--text-2)"><div class="expect-dot" style="background:var(--blue)"></div>Seamlessly hands off to human team when needed</div>
+          </div>
+        </div>
+        <div class="phone-display">
+          <div class="coming-soon-badge" id="inboundBadge"><div class="cs-dot"></div>Phone number coming soon</div>
+          <div class="pd-label">Inbound AI Agent Line</div>
+          <div class="pd-number" id="inboundNumber">+1 (___) ___-____</div>
+          <div class="pd-sub" id="inboundSub">An AI-powered number will be assigned here soon</div>
+          <div class="pd-status" id="inboundStatus"><div class="pd-dot"></div>Agent Online &amp; Ready</div>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAT PANEL -->
+    <div class="agent-panel" id="panel-chat">
+      <div class="chat-wrapper">
+        <div class="chat-info">
+          <h3>Chat with Our AI Assistant</h3>
+          <p>Ask anything about our services, case studies, pricing, or technology stack. The chat agent is trained on Enlight Lab's full knowledge base and responds in real-time.</p>
+          <div class="expect-list" style="margin-bottom:20px">
+            <div class="expect-item" style="color:var(--text-2)"><div class="expect-dot" style="background:var(--blue)"></div>Instant answers about all our services</div>
+            <div class="expect-item" style="color:var(--text-2)"><div class="expect-dot" style="background:var(--blue)"></div>Collects your details for follow-up</div>
+            <div class="expect-item" style="color:var(--text-2)"><div class="expect-dot" style="background:var(--blue)"></div>Escalates to human team when complex</div>
+          </div>
+          
+        </div>
+        <div class="chat-demo">
+          <div class="chat-header">
+            <div <div <div class="chat-header-av" style="font-family:DM Sans,sans-serif;font-weight:700;font-size:1.1rem;color:#1E3FFF;display:flex;align-items:center;gap:4px"><span style="font-size:1.2rem">{-}</span></div>
+            <div class="chat-header-info"><strong>EnlightLab AI Assistant</strong><span style="display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;border-radius:50%;background:#4ADE80;display:inline-block"></span> Online</span></div>
+          </div>
+          <div class="chat-messages" id="chatMessages">
+            <div class="msg bot">Hi! I'm the EnlightLab AI assistant. How can I help you today?</div>
+            <div class="msg bot">I can answer questions about our AI services, pricing, case studies, or help you book a consultation.</div>
+          </div>
+          <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="Ask me anything…" onkeydown="if(event.key==='Enter')sendChat()">
+            <button class="chat-send-btn" onclick="sendChat()"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── TECHNOLOGY ───── -->
+<section style="padding:80px 0;background:var(--off-white)">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Technology</span>
+      <h2>Engineered with World-Class Technology</h2>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-badge"><span class="tech-emoji" style="color:#61DAFB;font-weight:700">Rx</span>ReactJS</div>
+      <div class="tech-badge"><span class="tech-emoji" style="color:#000;font-weight:700">Nx</span>NextJS</div>
+      <div class="tech-badge"><span class="tech-emoji" style="color:#DD0031;font-weight:700">Ng</span>Angular</div>
+      <div class="tech-badge"><span class="tech-emoji">🟢</span>NodeJS</div>
+      <div class="tech-badge"><span class="tech-emoji" style="color:#3776AB;font-weight:700">Py</span>Python</div>
+      <div class="tech-badge"><span class="tech-emoji" style="color:#1E3FFF;font-weight:700">AI</span>GenAI</div>
+      <div class="tech-badge"><span class="tech-emoji" style="color:#FF9900;font-weight:700">Aw</span>AWS</div>
+      <div class="tech-badge"><span class="tech-emoji" style="color:#0078D4;font-weight:700">Az</span>Azure</div>
+      <div class="tech-badge"><span class="tech-emoji" style="color:#4285F4;font-weight:700">Gc</span>GCP</div>
+      <div class="tech-badge"><span class="tech-emoji" style="color:#555;font-weight:700">iO</span>iOS</div>
+      <div class="tech-badge"><span class="tech-emoji" style="color:#3DDC84;font-weight:700">An</span>Android</div>
+      <div class="tech-badge"><span class="tech-emoji" style="color:#2496ED;font-weight:700">Do</span>Docker</div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── CONTACT ───── -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Contact Us</span>
+      <h2>Ready to Build Something Great?</h2>
+      <p>Tell us about your project and we'll get back to you within 24 hours.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Let's Talk</h2>
+        <p>Share your project details and our team will craft a tailored proposal for you.</p>
+        <div class="info-items">
+          <div class="info-item"><div class="info-icon"><i class="fas fa-calendar-check"></i></div><div><strong>18+ Years</strong><span>of Expertise</span></div></div>
+          <div class="info-item"><div class="info-icon"><i class="fas fa-smile"></i></div><div><strong>2500+</strong><span>Happy Clients</span></div></div>
+          <div class="info-item"><div class="info-icon"><i class="fas fa-chart-line"></i></div><div><strong>100%</strong><span>Business Operations Aligned</span></div></div>
+        </div>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="contact-form-card">
+        <h3>Get a Proposal</h3>
+        <p class="sub">Fill in the details and we'll respond within 24 hours</p>
+        <div id="contactFormWrap">
+          <div class="form-row">
+            <div class="form-group"><label>First Name *</label><input type="text" id="cf-fname" placeholder="John"></div>
+            <div class="form-group"><label>Last Name *</label><input type="text" id="cf-lname" placeholder="Doe"></div>
+          </div>
+          <div class="form-group"><label>Email Address *</label><input type="email" id="cf-email" placeholder="john@company.com"></div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <div class="phone-row">
+              <select id="cf-cc"><option value="+1">US +1</option><option value="+44">UK +44</option><option value="+91" selected>IN +91</option><option value="+61">AU +61</option><option value="+971">AE +971</option></select>
+              <input type="tel" id="cf-phone" placeholder="(555) 123-4567">
+            </div>
+          </div>
+          <div class="form-group"><label>Company Name</label><input type="text" id="cf-company" placeholder="Your Company Inc."></div>
+          <div class="form-group">
+            <label>Service Interested In</label>
+            <select id="cf-service"><option value="">Select a service…</option><option>AI Agent Development</option><option>AI Consulting</option><option>Mobile Development</option><option>Web Development</option><option>MVP Development</option><option>DevOps Consulting</option><option>Staff Augmentation</option></select>
+          </div>
+          <div class="form-group"><label>Tell Us About Your Project</label><textarea id="cf-message" rows="4" placeholder="Describe your needs…"></textarea></div>
+          <div class="consent-row"><input type="checkbox" id="cf-consent"><label for="cf-consent">I agree to be contacted regarding my project inquiry. *</label></div>
+          <button class="btn btn-primary btn-block" onclick="submitContact()"><i class="fas fa-paper-plane"></i> &nbsp;Send Message</button>
+          <p class="form-disclaimer"><i class="fas fa-lock"></i> Your information is secure and will never be shared.</p>
+        </div>
+        <div class="success-msg" id="cf-success">
+          <div class="si"><i class="fas fa-check"></i></div>
+          <h3>Message Sent!</h3>
+          <p>We'll be in touch within 24 hours. Thank you for reaching out!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── FOOTER ───── -->
+<div class="footer-trusted">
+  <div class="container">
+    <span class="ft-label">Trusted by Fortune-Grade Global Leaders</span>
+    <div class="ft-logos">
+      <span class="ft-logo">Mozilla Foundation</span>
+      <span class="ft-logo">qPress</span>
+      <span class="ft-logo">Emblazer</span>
+      <span class="ft-logo">Go2ANDAMAN</span>
+      <span class="ft-logo">Homeloft</span>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo"><span class="logo-bracket">{-}</span><span>Enlight Lab</span></a>
+        <p>Since 2007, we've been empowering startups and growing companies with impactful AI, web, mobile, and cloud applications.</p>
+        <a href="mailto:contact@enlightlab.com" class="footer-email"><i class="fas fa-envelope"></i> contact@enlightlab.com</a>
+        <div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a></div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">AI Agent Development</a></li>
+          <li><a href="#">AI Consulting Service</a></li>
+          <li><a href="#">CTO as a Service</a></li>
+          <li><a href="#">Data Engineering</a></li>
+          <li><a href="#">DevOps Consulting</a></li>
+          <li><a href="#">Mobile App Development</a></li>
+          <li><a href="#">MVP Development</a></li>
+          <li><a href="#">Staff Augmentation</a></li>
+          <li><a href="#">Web Development</a></li>
+          <li><a href="#">Claude Code Development</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Technologies</h4>
+        <ul>
+          <li><a href="#">Hire ReactJS Developers</a></li>
+          <li><a href="#">Hire AngularJS Developers</a></li>
+          <li><a href="#">Hire NextJS Developers</a></li>
+          <li><a href="#">Hire Node Developers</a></li>
+          <li><a href="#">Hire PHP Developers</a></li>
+          <li><a href="#">Hire Python Developers</a></li>
+          <li><a href="#">Hire WordPress Developers</a></li>
+          <li><a href="#">Hire GenAI Engineers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="#">Healthcare</a></li>
+          <li><a href="#">FinTech</a></li>
+          <li><a href="#">Technology &amp; Startup</a></li>
+          <li><a href="#">Education</a></li>
+          <li><a href="#">Real Estate</a></li>
+          <li><a href="#">Ecommerce</a></li>
+          <li><a href="#">Insurance</a></li>
+          <li><a href="#">Travel &amp; Hospitality</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Blogs</a></li>
+          <li><a href="#">Case Studies</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Copyright © 2026 EnlightLab, All Rights Reserved.</p>
+      <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of use</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ───── TOAST ───── -->
+<div class="toast" id="toast">
+  <span id="toastMsg">Message</span>
+  <button class="toast-close" onclick="hideToast()"><i class="fas fa-times"></i></button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     AI INTEGRATION
+     ─────────────────────────────────────────────────────
+     SETUP:
+     1. OUTBOUND: Set your agent ID
+        with your actual outbound agent ID.
+        Once you have a number, set OUTBOUND_NUMBER.
+     2. INBOUND: Buy a phone number, attach your 
+        inbound agent, then update the phone display in the HTML.
+     3. CHAT: Set your CHAT_AGENT_ID
+        chat agent ID. Uncomment the widget loader below.
+═══════════════════════════════════════════════════════ -->
+<script>
+// ═══════════════════════════════════════════════════════════════
+//  SYSTEM CONFIG
+// ═══════════════════════════════════════════════════════════════
+let systemConfig = null;
+(async function loadConfig() {
+  try {
+    const res = await fetch('/api/calls/config');
+    const data = await res.json();
+    if (data.success) {
+      systemConfig = data;
+      console.log('[CONFIG] Loaded:', data);
+      if (document.getElementById('panel-inbound').classList.contains('active')) {
+        renderInboundStatus();
+      }
+    }
+  } catch (e) {
+    console.warn('[CONFIG] Failed:', e);
+  }
+})();
+
+// ═══════════════════════════════════════════════════════════════
+//  NAVBAR
+// ═══════════════════════════════════════════════════════════════
+window.addEventListener('scroll', function() {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+});
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  SERVICE TABS
+// ═══════════════════════════════════════════════════════════════
+document.querySelectorAll('.tab-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+// ═══════════════════════════════════════════════════════════════
+//  FAQ
+// ═══════════════════════════════════════════════════════════════
+function toggleFaq(el) {
+  var item = el.closest('.faq-item');
+  var wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(i) { i.classList.remove('open'); });
+  if (!wasOpen) item.classList.add('open');
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  AGENT TABS
+// ═══════════════════════════════════════════════════════════════
+function switchAgent(id, btn) {
+  document.querySelectorAll('.agent-tab').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelectorAll('.agent-panel').forEach(function(p) { p.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById('panel-' + id).classList.add('active');
+  if (id === 'inbound') renderInboundStatus();
+  if (id === 'chat') initChatAgent();
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  TOAST
+// ═══════════════════════════════════════════════════════════════
+function showToast(msg, type) {
+  type = type || 'info';
+  var t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  t.className = 'toast show ' + type;
+  setTimeout(function() { t.classList.remove('show'); }, 4000);
+}
+function hideToast() {
+  document.getElementById('toast').classList.remove('show');
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  INBOUND STATUS
+// ═══════════════════════════════════════════════════════════════
+function renderInboundStatus() {
+  var badge = document.getElementById('inboundBadge');
+  var number = document.getElementById('inboundNumber');
+  var sub = document.getElementById('inboundSub');
+  var status = document.getElementById('inboundStatus');
+  if (!badge || !number || !sub || !status) return;
+  if (!systemConfig) {
+    setTimeout(renderInboundStatus, 300);
+    return;
+  }
+  if (systemConfig.inbound && systemConfig.inbound.configured) {
+    badge.style.display = 'none';
+    number.textContent = systemConfig.inbound.number;
+    sub.textContent = 'Call this number to speak with our AI agent 24/7. No hold times.';
+    status.innerHTML = '<div class="pd-dot" style="background:#4ADE80;animation:pulse 2s infinite"></div>Agent Online & Ready';
+  } else {
+    badge.style.display = 'inline-flex';
+    badge.innerHTML = '<div class="cs-dot"></div>Phone number coming soon';
+    number.textContent = 'Not yet available';
+    sub.textContent = "We're currently setting up our dedicated AI inbound line. In the meantime, chat with our AI agent or schedule an outbound call below.";
+    status.innerHTML = '<div class="pd-dot" style="background:#F4B942;animation:none"></div>Provisioning Line';
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  CHAT AGENT — Native backend-powered chat
+// ═══════════════════════════════════════════════════════════════
+var chatSessionId = 'sess-' + Math.random().toString(36).substr(2, 9);
+var chatInitialized = false;
+
+function initChatAgent() {
+  if (chatInitialized) return;
+  chatInitialized = true;
+  fetch('/api/chat/reset', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ sessionId: chatSessionId })
+  }).catch(function(e) { console.warn('[CHAT] Reset failed:', e); });
+}
+
+function addChatMessage(role, text) {
+  var messages = document.getElementById('chatMessages');
+  var typing = messages.querySelector('.typing-indicator');
+  if (typing) typing.remove();
+  var msg = document.createElement('div');
+  msg.className = 'msg ' + (role === 'user' ? 'user' : 'bot');
+  msg.textContent = text;
+  messages.appendChild(msg);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+function showTyping() {
+  var messages = document.getElementById('chatMessages');
+  var typing = document.createElement('div');
+  typing.className = 'typing-indicator';
+  typing.id = 'typing-indicator';
+  typing.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+  messages.appendChild(typing);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+function hideTyping() {
+  var typing = document.getElementById('typing-indicator');
+  if (typing) typing.remove();
+}
+
+async function sendChat() {
+  var input = document.getElementById('chatInput');
+  var text = input.value.trim();
+  if (!text) return;
+  addChatMessage('user', text);
+  input.value = '';
+  showTyping();
+  try {
+    var res = await fetch('/api/chat/message', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: text, sessionId: chatSessionId }),
+    });
+    var data = await res.json();
+    hideTyping();
+    if (data.success && data.reply) {
+      addChatMessage('bot', data.reply);
+    } else {
+      addChatMessage('bot', 'I apologize, but I am having trouble responding right now. Please try again or contact us directly.');
+    }
+  } catch (err) {
+    hideTyping();
+    console.error('[CHAT] Error:', err);
+    addChatMessage('bot', 'Connection error. Please check your internet and try again.');
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  OUTBOUND BOOKING
+// ═══════════════════════════════════════════════════════════════
+var obCurrentStep = 1;
+var obSelectedSlot = null;
+var obData = {};
+
+function generateSlots() {
+  var container = document.getElementById('ob-slots');
+  container.innerHTML = '';
+  var slots = [];
+  var d = new Date(), added = 0, offset = 1;
+  while (added < 3) {
+    var day = new Date(d);
+    day.setDate(d.getDate() + offset++);
+    if (day.getDay() === 0 || day.getDay() === 6) continue;
+    added++;
+    ['10:00 AM','12:00 PM','3:00 PM','5:00 PM'].forEach(function(time) {
+      var h = parseInt(time.split(':')[0]);
+      var m = parseInt(time.split(':')[1]);
+      var hour = h + (time.includes('PM') && h !== 12 ? 12 : 0);
+      var slotDate = new Date(day.getFullYear(), day.getMonth(), day.getDate(), hour, m, 0);
+      slots.push({ day: slotDate, time: time, label: day.toLocaleDateString('en',{weekday:'short',month:'short',day:'numeric'}), timestamp: slotDate.getTime() });
+    });
+  }
+  slots.forEach(function(s) {
+    var el = document.createElement('div');
+    el.className = 'time-slot';
+    el.innerHTML = '<span class="slot-day">' + s.label + '</span>' + s.time;
+    el.onclick = function() {
+      document.querySelectorAll('.time-slot').forEach(function(e) {
+        e.classList.remove('selected');
+        e.querySelector('.slot-day').className = 'slot-day';
+      });
+      el.classList.add('selected');
+      el.querySelector('.slot-day').className = 'slot-day slot-day-selected';
+      obSelectedSlot = s;
+      document.getElementById('ob-next2-btn').disabled = false;
+    };
+    container.appendChild(el);
+  });
+}
+
+function obSetStep(n) {
+  ['ob-form-1','ob-form-2','ob-form-3','ob-form-4'].forEach(function(id, i) {
+    document.getElementById(id).style.display = (i === n-1) ? 'block' : 'none';
+  });
+  ['sp1','sp2','sp3'].forEach(function(id, i) {
+    var el = document.getElementById(id);
+    el.classList.toggle('active', i === n-1);
+    el.classList.toggle('done', i < n-1);
+    el.querySelector('.sp-num').style.background = (i <= n-1) ? 'var(--blue)' : '';
+    el.querySelector('.sp-num').style.color = (i <= n-1) ? 'var(--white)' : '';
+  });
+  ['spline1','spline2'].forEach(function(id, i) {
+    document.getElementById(id).classList.toggle('done', i < n-1);
+  });
+  obCurrentStep = n;
+}
+
+function obNextStep(from) {
+  if (from === 1) {
+    var name = document.getElementById('ob-name').value.trim();
+    var email = document.getElementById('ob-email').value.trim();
+    var phone = document.getElementById('ob-phone').value.trim();
+    var industry = document.getElementById('ob-industry').value;
+    var consent = document.getElementById('ob-consent').checked;
+    if (!name) return showToast('Please enter your name', 'error');
+    if (!email || !email.includes('@')) return showToast('Please enter a valid email', 'error');
+    if (!phone) return showToast('Please enter your phone number', 'error');
+    if (!industry) return showToast('Please select your industry', 'error');
+    if (!consent) return showToast('Please accept the consent to proceed', 'error');
+    obData.name = name;
+    obData.email = email;
+    obData.phone = document.getElementById('ob-cc').value + phone;
+    obData.company = document.getElementById('ob-company').value.trim();
+    obData.industry = industry;
+    obData.message = document.getElementById('ob-message').value.trim();
+    generateSlots();
+    obSetStep(2);
+  } else if (from === 2) {
+    if (!obSelectedSlot) return showToast('Please select a time slot', 'error');
+    obData.slot = obSelectedSlot;
+    var reviewHtml = '<table style="width:100%;border-collapse:collapse">' +
+      '<tr><td style="padding:4px 0;color:var(--text-3);width:130px">Name</td><td style="font-weight:600;color:var(--text)">' + obData.name + '</td></tr>' +
+      '<tr><td style="padding:4px 0;color:var(--text-3)">Phone</td><td style="font-weight:600;color:var(--text)">' + obData.phone + '</td></tr>' +
+      '<tr><td style="padding:4px 0;color:var(--text-3)">Email</td><td style="font-weight:600;color:var(--text)">' + obData.email + '</td></tr>' +
+      '<tr><td style="padding:4px 0;color:var(--text-3)">Industry</td><td style="font-weight:600;color:var(--text)">' + obData.industry + '</td></tr>' +
+      '<tr><td style="padding:4px 0;color:var(--text-3)">Scheduled</td><td style="font-weight:600;color:var(--blue)">' + obData.slot.label + ' at ' + obData.slot.time + '</td></tr>' +
+      (obData.message ? '<tr><td style="padding:4px 0;color:var(--text-3)">Notes</td><td style="font-weight:600;color:var(--text)">' + obData.message + '</td></tr>' : '') +
+      '</table>';
+    document.getElementById('ob-review-box').innerHTML = reviewHtml;
+    obSetStep(3);
+  }
+}
+function obPrevStep(from) { obSetStep(from - 1); }
+
+async function obConfirm() {
+  var btn = document.getElementById('ob-confirm-btn');
+  btn.disabled = true;
+  btn.textContent = 'Scheduling...';
+  try {
+    var payload = {
+      name: obData.name, email: obData.email, phone: obData.phone,
+      company: obData.company || '', industry: obData.industry,
+      message: obData.message || '',
+      slotDate: new Date(obData.slot.day).toISOString().split('T')[0],
+      slotTime: obData.slot.time,
+      slotLabel: obData.slot.label,
+      slotTimestamp: obData.slot.timestamp,
+    };
+    var res = await fetch('/api/calls/schedule', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    var data = await res.json();
+    if (!res.ok || !data.success) throw new Error(data.message || 'Scheduling failed');
+    var ref = data.bookingId;
+    var isConfigured = data.aiConfigured;
+    document.getElementById('ob-success-msg').textContent = isConfigured
+      ? 'Your AI demo call is confirmed for ' + obData.slot.label + ' at ' + obData.slot.time + '. Our AI agent will call ' + obData.phone + '.'
+      : 'Your demo request is confirmed for ' + obData.slot.label + ' at ' + obData.slot.time + '. Our team will contact you at ' + obData.phone + ' shortly.';
+    document.getElementById('ob-ref').textContent = 'Ref: ' + ref;
+    obSetStep(4);
+    showToast(isConfigured ? 'Call scheduled successfully!' : 'Request received! Our team will be in touch.', 'success');
+  } catch (err) {
+    console.warn('[obConfirm] API error:', err.message);
+    var ref = 'EL-' + Math.random().toString(36).substr(2,6).toUpperCase();
+    document.getElementById('ob-success-msg').textContent =
+      'Your demo request is confirmed for ' + obData.slot.label + ' at ' + obData.slot.time + '. Our team will contact you at ' + obData.phone + ' shortly.';
+    document.getElementById('ob-ref').textContent = 'Ref: ' + ref;
+    obSetStep(4);
+    showToast('Request received! Our team will be in touch.', 'success');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Confirm & Schedule Call';
+  }
+}
+
+function obReset() {
+  obCurrentStep = 1;
+  obSelectedSlot = null;
+  ['ob-name','ob-email','ob-phone','ob-company','ob-message'].forEach(function(id) { document.getElementById(id).value = ''; });
+  document.getElementById('ob-consent').checked = false;
+  document.getElementById('ob-industry').value = '';
+  obSetStep(1);
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  CONTACT FORM
+// ═══════════════════════════════════════════════════════════════
+async function submitContact() {
+  var fname = document.getElementById('cf-fname').value.trim();
+  var lname = document.getElementById('cf-lname').value.trim();
+  var email = document.getElementById('cf-email').value.trim();
+  var phone = document.getElementById('cf-phone').value.trim();
+  var consent = document.getElementById('cf-consent').checked;
+  if (!fname) return showToast('Please enter your first name', 'error');
+  if (!lname) return showToast('Please enter your last name', 'error');
+  if (!email || !email.includes('@')) return showToast('Please enter a valid email', 'error');
+  if (!phone) return showToast('Please enter your phone number', 'error');
+  if (!consent) return showToast('Please accept the consent checkbox', 'error');
+
+  var countryCode = document.getElementById('cf-cc').value;
+  var rawPhone = phone.replace(/\D/g,'');
+  var fullPhone = rawPhone.startsWith('+') ? rawPhone : countryCode + rawPhone;
+
+  var payload = {
+    firstName: fname, lastName: lname, email: email,
+    countryCode: countryCode, phone: rawPhone, fullPhone: fullPhone,
+    company: document.getElementById('cf-company').value.trim(),
+    service: document.getElementById('cf-service').value,
+    message: document.getElementById('cf-message').value.trim(),
+  };
+
+  try {
+    var res = await fetch('/api/contact/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    var data = await res.json();
+    if (!res.ok || !data.success) throw new Error(data.message || 'Submission failed');
+  } catch (err) {
+    console.warn('[submitContact]', err.message);
+  }
+  document.getElementById('contactFormWrap').style.display = 'none';
+  document.getElementById('cf-success').style.display = 'block';
+  showToast('Message sent successfully!', 'success');
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  FLOATING CHAT WIDGET
+// ═══════════════════════════════════════════════════════════════
+var widgetSessionId = 'widget-' + Math.random().toString(36).substr(2, 9);
+var widgetOpen = false;
+
+function toggleChatWidget() {
+  var panel = document.getElementById('chatWidgetPanel');
+  var fab = document.getElementById('chatFab');
+  widgetOpen = !widgetOpen;
+  panel.classList.toggle('open', widgetOpen);
+  fab.classList.toggle('active', widgetOpen);
+  if (widgetOpen) {
+    setTimeout(function() { document.getElementById('widgetInput').focus(); }, 300);
+  }
+}
+
+function addWidgetMessage(role, text) {
+  var messages = document.getElementById('widgetMessages');
+  var typing = messages.querySelector('.typing-indicator');
+  if (typing) typing.remove();
+  var msg = document.createElement('div');
+  msg.className = 'msg ' + (role === 'user' ? 'user' : 'bot');
+  msg.textContent = text;
+  messages.appendChild(msg);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+function showWidgetTyping() {
+  var messages = document.getElementById('widgetMessages');
+  var typing = document.createElement('div');
+  typing.className = 'typing-indicator';
+  typing.id = 'widget-typing';
+  typing.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+  messages.appendChild(typing);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+function hideWidgetTyping() {
+  var typing = document.getElementById('widget-typing');
+  if (typing) typing.remove();
+}
+
+async function sendWidgetChat() {
+  var input = document.getElementById('widgetInput');
+  var text = input.value.trim();
+  if (!text) return;
+  addWidgetMessage('user', text);
+  input.value = '';
+  showWidgetTyping();
+  try {
+    var res = await fetch('/api/chat/message', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: text, sessionId: widgetSessionId }),
+    });
+    var data = await res.json();
+    hideWidgetTyping();
+    if (data.success && data.reply) {
+      addWidgetMessage('bot', data.reply);
+    } else {
+      addWidgetMessage('bot', 'I apologize, but I am having trouble responding right now. Please try again or contact us directly.');
+    }
+  } catch (err) {
+    hideWidgetTyping();
+    console.error('[WIDGET CHAT] Error:', err);
+    addWidgetMessage('bot', 'Connection error. Please check your internet and try again.');
+  }
+}
+</script>
+
+<!-- ═══ FLOATING CHAT WIDGET ═══ -->
+<div class="chat-widget-container">
+  <button class="chat-widget-fab" id="chatFab" onclick="toggleChatWidget()" aria-label="Open chat">
+    <span class="fab-open"><i class="fas fa-comment-dots"></i></span>
+    <span class="fab-close"><i class="fas fa-times"></i></span>
+  </button>
+
+  <div class="chat-widget-panel" id="chatWidgetPanel">
+    <div class="chat-widget-header">
+      <div class="header-logo">{-}</div>
+      <div class="header-info">
+        <strong>EnlightLab AI</strong>
+        <span>Online</span>
+      </div>
+      <button class="header-close" onclick="toggleChatWidget()" aria-label="Close chat"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="chat-widget-messages" id="widgetMessages">
+      <div class="msg bot">Hi! I'm the EnlightLab AI assistant. How can I help you today?</div>
+      <div class="msg bot">I can answer questions about our AI services, pricing, case studies, or help you book a consultation.</div>
+    </div>
+    <div class="chat-widget-input">
+      <input type="text" id="widgetInput" placeholder="Ask me anything..." onkeydown="if(event.key==='Enter')sendWidgetChat()">
+      <button onclick="sendWidgetChat()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
