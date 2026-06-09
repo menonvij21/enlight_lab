@@ -69,7 +69,7 @@ async function getCallStatus(callId) {
  * GET /list-agents
  */
 async function listAgents() {
-  const res = await fetch(`${RETELL_BASE}/list-agents`, {
+  const res = await fetch(`${RETELL_BASE}/v2/list-agents`, {
     headers: getHeaders(),
   });
   const data = await res.json();
@@ -82,7 +82,7 @@ async function listAgents() {
  * GET /get-agent/:agent_id
  */
 async function getAgent(agentId) {
-  const res = await fetch(`${RETELL_BASE}/get-agent/${agentId}`, {
+  const res = await fetch(`${RETELL_BASE}/v2/get-agent/${agentId}`, {
     headers: getHeaders(),
   });
   const data = await res.json();
@@ -95,7 +95,7 @@ async function getAgent(agentId) {
  * PATCH /update-agent/:agent_id
  */
 async function updateAgentPrompt(agentId, promptOverride) {
-  const res = await fetch(`${RETELL_BASE}/update-agent/${agentId}`, {
+  const res = await fetch(`${RETELL_BASE}/v2/update-agent/${agentId}`, {
     method: 'PATCH',
     headers: getHeaders(),
     body: JSON.stringify({ general_prompt: promptOverride }),
@@ -109,7 +109,7 @@ async function updateAgentPrompt(agentId, promptOverride) {
  * List all phone numbers on the account
  */
 async function listPhoneNumbers() {
-  const res = await fetch(`${RETELL_BASE}/list-phone-numbers`, {
+  const res = await fetch(`${RETELL_BASE}/v2/list-phone-numbers`, {
     headers: getHeaders(),
   });
   const data = await res.json();

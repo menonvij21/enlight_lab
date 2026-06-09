@@ -38,6 +38,7 @@ const callRoutes = require('./routes/calls');
 const contactRoutes = require('./routes/contact');
 const webhookRoutes = require('./routes/webhooks');
 const chatRoutes = require('./routes/chat');
+const { initRAG } = require('./services/rag');
 const { startScheduler } = require('./services/scheduler');
 
 const app = express();
