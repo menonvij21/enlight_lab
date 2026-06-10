@@ -7,6 +7,52 @@ const emailService = require('../services/email');
 const { bookingStore } = require('../services/store');
 
 /**
+ * POST /api/calls/web-call
+ * Creates a Retell web call session and returns the access_token
+ * The frontend uses this token with the Retell Web SDK to start a browser call
+ */
+router.post('/web-call', async (req, res) => {
+  try {
+    const agentId = process.env.RETELL_WEB_AGENT_ID || process.env.RETELL_INBOUND_AGENT_ID;
+    if (!agentId) {
+      return res.status(500).json({
+        success: false,
+        message: 'Web call agent not configured. Set RETELL_WEB_AGENT_ID in environment variables.',
+      });
+    }
+
+    const response = await fetch('https://api.retellai.com/v2/create-web-call', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.RETELL_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ agent_id: agentId }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.error('[WEB-CALL] Retell error:', data);
+      return res.status(response.status).json({
+        success: false,
+        message: data?.message || 'Failed to create web call',
+      });
+    }
+
+    return res.json({
+      success: true,
+      accessToken: data.access_token,
+      callId: data.call_id,
+    });
+
+  } catch (err) {
+    console.error('[WEB-CALL] Error:', err.message);
+    return res.status(500).json({ success: false, message: 'Failed to create web call session' });
+  }
+});
+
+/**
  * POST /api/calls/schedule
  * Schedule an outbound AI demo call via Retell
  */
@@ -18,7 +64,6 @@ router.post('/schedule', async (req, res) => {
       slotDate, slotTime, slotLabel, slotTimestamp,
     } = req.body;
 
-    // ── Validation ──────────────────────────────────────
     const errors = [];
     if (!name || name.trim().length < 2) errors.push('Name is required (min 2 chars)');
     if (!email || !validator.isEmail(email)) errors.push('Valid email is required');
@@ -31,7 +76,6 @@ router.post('/schedule', async (req, res) => {
       return res.status(400).json({ success: false, errors });
     }
 
-    // ── Build booking record ─────────────────────────────
     const bookingId = 'EL-' + uuidv4().substring(0, 6).toUpperCase();
     const booking = {
       id: bookingId,
@@ -52,10 +96,7 @@ router.post('/schedule', async (req, res) => {
 
     bookingStore.set(bookingId, booking);
 
-    // ── Send confirmation email to lead ─────────────────
     await emailService.sendBookingConfirmation(booking);
-
-    // ── Send internal notification ───────────────────────
     await emailService.sendInternalNotification(booking, 'outbound_call');
 
     const retellConfigured =
@@ -83,7 +124,6 @@ router.post('/schedule', async (req, res) => {
 
 /**
  * GET /api/calls/status/:bookingId
- * Check status of a scheduled call
  */
 router.get('/status/:bookingId', async (req, res) => {
   try {
@@ -117,7 +157,6 @@ router.get('/status/:bookingId', async (req, res) => {
 
 /**
  * GET /api/calls/slots
- * Returns available time slots for next 3 business days
  */
 router.get('/slots', (req, res) => {
   const slots = [];
@@ -130,14 +169,9 @@ router.get('/slots', (req, res) => {
     const d = new Date(now);
     d.setDate(d.getDate() + offset);
     offset++;
-
     if (d.getDay() === 0 || d.getDay() === 6) continue;
     daysAdded++;
-
-    const label = d.toLocaleDateString('en-US', {
-      weekday: 'short', month: 'short', day: 'numeric',
-    });
-
+    const label = d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
     times.forEach(time => {
       slots.push({
         id: `${d.toISOString().split('T')[0]}_${time.replace(/[: ]/g, '')}`,
@@ -154,8 +188,6 @@ router.get('/slots', (req, res) => {
 
 /**
  * GET /api/calls/config
- * Returns Retell configuration status for the frontend
- * so the UI knows what's real and what's "coming soon"
  */
 router.get('/config', (req, res) => {
   res.json({
@@ -173,6 +205,9 @@ router.get('/config', (req, res) => {
     chat: {
       configured: !!process.env.RETELL_CHAT_AGENT_ID,
       agentId: process.env.RETELL_CHAT_AGENT_ID || null,
+    },
+    webCall: {
+      configured: !!(process.env.RETELL_API_KEY && (process.env.RETELL_WEB_AGENT_ID || process.env.RETELL_INBOUND_AGENT_ID)),
     },
   });
 });
