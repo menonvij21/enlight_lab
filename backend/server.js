@@ -44,7 +44,7 @@ const { startScheduler } = require('./services/scheduler');
 const app = express();
 
 // Required for Vercel + express-rate-limit
-app.set('trust proxy', true);
+app.set('trust proxy', 1);
 
 const PORT = process.env.PORT || 3001;
 // ─── SECURITY MIDDLEWARE ───────────────────────────────────
