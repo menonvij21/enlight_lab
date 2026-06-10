@@ -36,6 +36,10 @@ router.post('/message', async (req, res) => {
 
     try {
       const agentConfig = await retellService.getAgent(agentId);
+      console.log('===================');
+console.log('AGENT CONFIG');
+console.log(JSON.stringify(agentConfig, null, 2));
+console.log('===================');
       if (agentConfig?.general_prompt) {
         basePrompt = agentConfig.general_prompt;
       }
@@ -72,9 +76,19 @@ router.post('/message', async (req, res) => {
     let reply = '';
 
     try {
+      console.log('\n===================');
+console.log('CHAT DEBUG');
+console.log('Agent ID:', agentId);
+console.log('LLM ID:', retellLlmId);
+console.log('RAG Used:', !!context);
+console.log('Prompt Length:', systemPrompt.length);
+console.log('===================\n');
       reply = await callRetellLLM(retellLlmId, messages);
     } catch (err) {
-      console.warn('[CHAT] Retell LLM call failed, using fallback:', err.message);
+      console.error('\n===================');
+console.error('RETELL FAILED');
+console.error(err);
+console.error('===================\n');
       reply = context
         ? generateRAGResponse(message.trim(), context, sources)
         : getFallbackResponse(message.trim());
@@ -117,6 +131,11 @@ async function callRetellLLM(llmId, messages) {
   const url = llmId
     ? `https://api.retellai.com/v2/retell-llm/${llmId}/chat`
     : 'https://api.retellai.com/v2/retell-llm/chat';
+  console.log('\n===================');
+console.log('RETELL REQUEST');
+console.log('URL:', url);
+console.log('Messages Count:', messages.length);
+console.log('===================\n');
 
   const response = await fetch(url, {
     method: 'POST',
@@ -133,10 +152,20 @@ async function callRetellLLM(llmId, messages) {
 
   if (!response.ok) {
     const errBody = await response.text();
-    throw new Error(`Retell LLM API error ${response.status}: ${errBody}`);
+    console.error('RETELL ERROR STATUS:', response.status);
+console.error('RETELL ERROR BODY:', errBody);
+
+throw new Error(
+  `Retell LLM API error ${response.status}: ${errBody}`
+);
   }
 
   const data = await response.json();
+
+console.log('\n===================');
+console.log('RETELL RESPONSE');
+console.log(JSON.stringify(data, null, 2));
+console.log('===================\n');
 
   // Retell LLM response mirrors OpenAI format:
   // { choices: [{ message: { content: '...' } }] }
