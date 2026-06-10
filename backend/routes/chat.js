@@ -2,17 +2,15 @@ const express = require('express');
 const router = express.Router();
 const ragService = require('../services/rag');
 
-// In-memory chat session store: sessionId -> retell chat_id
-// On Vercel (serverless), this resets between cold starts — acceptable for demos.
-// For production persistence, swap this Map for Redis or a DB.
+// In-memory map: sessionId → retell chat_id
+// Acceptable for demos; swap for Redis in production.
 const sessionToChatId = new Map();
 
 const RETELL_BASE = 'https://api.retellai.com';
 
-/**
- * Create a new Retell chat session for the given agent.
- * Returns the chat_id to be reused for all subsequent messages.
- */
+// ─────────────────────────────────────────────────────────────
+// Helper — create a new Retell chat session
+// ─────────────────────────────────────────────────────────────
 async function createRetellChat(agentId, apiKey) {
   const res = await fetch(`${RETELL_BASE}/create-chat`, {
     method: 'POST',
@@ -33,10 +31,9 @@ async function createRetellChat(agentId, apiKey) {
   return data.chat_id;
 }
 
-/**
- * Send a message to an existing Retell chat session.
- * Returns the agent's reply string.
- */
+// ─────────────────────────────────────────────────────────────
+// Helper — send a message to an existing Retell chat session
+// ─────────────────────────────────────────────────────────────
 async function sendRetellMessage(chatId, content, apiKey) {
   const res = await fetch(`${RETELL_BASE}/create-chat-completion`, {
     method: 'POST',
@@ -53,45 +50,45 @@ async function sendRetellMessage(chatId, content, apiKey) {
   }
 
   const data = await res.json();
-
-  // Response shape: { messages: [{ role: 'agent', content: '...' }, ...] }
-  // The last message from the agent is the reply.
   const messages = data?.messages || [];
   const agentMessages = messages.filter(m => m.role === 'agent');
   const reply = agentMessages[agentMessages.length - 1]?.content;
-
   if (!reply) throw new Error('Retell returned no agent message');
   return reply;
 }
 
-/**
- * POST /api/chat/message
- */
+// ─────────────────────────────────────────────────────────────
+// POST /api/chat/message
+// ─────────────────────────────────────────────────────────────
 router.post('/message', async (req, res) => {
   try {
     const { message, sessionId } = req.body;
-    const resolvedSessionId = sessionId || `session_${Date.now()}_${Math.random().toString(36).slice(2)}`;
 
     if (!message || !message.trim()) {
       return res.status(400).json({ success: false, error: 'Message is required' });
     }
 
+    const resolvedSessionId = sessionId || `session_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+
     const agentId = process.env.RETELL_CHAT_AGENT_ID;
-    const apiKey = process.env.RETELL_API_KEY;
+    const apiKey  = process.env.RETELL_API_KEY;
 
     if (!agentId || !apiKey) {
-      return res.status(500).json({ success: false, error: 'Chat agent not configured' });
+      return res.status(500).json({
+        success: false,
+        error: 'Chat agent not configured. Set RETELL_CHAT_AGENT_ID and RETELL_API_KEY.',
+      });
     }
 
-    // Get or create a Retell chat session for this browser session
+    // ── Get or create Retell chat session ─────────────────
     let chatId = sessionToChatId.get(resolvedSessionId);
     if (!chatId) {
       chatId = await createRetellChat(agentId, apiKey);
       sessionToChatId.set(resolvedSessionId, chatId);
-      console.log(`[CHAT] New Retell chat created: ${chatId} for session: ${resolvedSessionId}`);
+      console.log(`[CHAT] New session: ${chatId} (${resolvedSessionId})`);
     }
 
-    // Optional: enrich the message with RAG context
+    // ── Optionally enrich with RAG context ────────────────
     let enrichedMessage = message.trim();
     let usedRAG = false;
     let sources = [];
@@ -99,7 +96,7 @@ router.post('/message', async (req, res) => {
     try {
       const { context, sources: ragSources } = await ragService.retrieveContext(message.trim(), 3);
       if (context) {
-        enrichedMessage = `${message.trim()}\n\n[Context from knowledge base for your reference: ${context}]`;
+        enrichedMessage = `${message.trim()}\n\n[Context from knowledge base: ${context}]`;
         usedRAG = true;
         sources = ragSources;
       }
@@ -107,7 +104,7 @@ router.post('/message', async (req, res) => {
       console.warn('[CHAT] RAG unavailable:', ragErr.message);
     }
 
-    // Send message to Retell
+    // ── Send to Retell ────────────────────────────────────
     const reply = await sendRetellMessage(chatId, enrichedMessage, apiKey);
 
     return res.json({
@@ -128,10 +125,10 @@ router.post('/message', async (req, res) => {
   }
 });
 
-/**
- * POST /api/chat/reset
- * End the Retell chat session and clear local mapping.
- */
+// ─────────────────────────────────────────────────────────────
+// POST /api/chat/reset
+// Ends the Retell chat session and clears local mapping
+// ─────────────────────────────────────────────────────────────
 router.post('/reset', async (req, res) => {
   const { sessionId = 'default' } = req.body;
   const chatId = sessionToChatId.get(sessionId);
@@ -146,6 +143,7 @@ router.post('/reset', async (req, res) => {
         },
         body: JSON.stringify({ chat_id: chatId }),
       });
+      console.log(`[CHAT] Session ended: ${chatId}`);
     } catch (err) {
       console.warn('[CHAT] Could not end Retell chat:', err.message);
     }
