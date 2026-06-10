@@ -1,3 +1,4 @@
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -7,6 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/retell-client-js-sdk@latest/dist/index.umd.js"></script>
 <style>
+/* ─────────────────── RESET & VARIABLES ─────────────────── */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
 :root{
@@ -32,6 +34,8 @@ h2{font-size:clamp(1.6rem,3vw,2.4rem)}
 h3{font-size:1.15rem}
 .section-header{text-align:center;margin-bottom:52px}
 .section-header p{color:var(--text-3);max-width:620px;margin:.8rem auto 0;font-size:.97rem}
+
+/* ─────────────────── NAVBAR ─────────────────── */
 .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:68px;transition:var(--transition)}
 .navbar.scrolled{box-shadow:var(--shadow)}
 .navbar .container{display:flex;align-items:center;height:100%;gap:20px}
@@ -51,18 +55,26 @@ h3{font-size:1.15rem}
   .nav-links.open{display:flex}
   .hamburger{display:flex}
 }
+
+/* ─────────────────── HERO ─────────────────── */
 .hero{min-height:calc(100vh - 68px);margin-top:68px;background:var(--off-white);display:flex;align-items:center;padding:60px 0}
 .hero .container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 .hero-eyebrow{font-size:.92rem;color:var(--text-2);margin-bottom:16px;font-weight:400}
 .hero h1 .accent{color:var(--blue)}
 .hero-sub{color:var(--text-2);margin:18px 0 8px;max-width:480px;font-size:.97rem}
 .hero-tagline{font-weight:700;font-size:.97rem;color:var(--text);margin-bottom:28px}
-.hero-buttons{display:flex;gap:14px;flex-wrap:wrap}
+.hero-buttons{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:7px;font-weight:600;font-size:.9rem;cursor:pointer;transition:var(--transition);border:none;font-family:inherit}
 .btn-primary{background:var(--blue);color:var(--white)}
 .btn-primary:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 6px 24px rgba(30,63,255,.3)}
 .btn-outline{background:transparent;color:var(--blue);border:1.5px solid var(--blue)}
 .btn-outline:hover{background:var(--blue);color:var(--white)}
+
+/* Hero live call button */
+.btn-call-hero{display:inline-flex;align-items:center;gap:9px;padding:11px 22px;border-radius:7px;font-weight:600;font-size:.9rem;cursor:pointer;transition:var(--transition);border:2px solid var(--blue);background:transparent;color:var(--blue);font-family:inherit}
+.btn-call-hero:hover{background:var(--blue);color:var(--white)}
+.btn-call-hero .call-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:pulse 1.5s infinite}
+
 .hero-illustration{display:flex;align-items:center;justify-content:center}
 .hero-illustration img{max-width:460px;width:100%}
 .hero-illus-placeholder{width:100%;max-width:460px;aspect-ratio:1;background:linear-gradient(135deg,#e8eeff 0%,#dce4ff 100%);border-radius:var(--radius-xl);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
@@ -79,10 +91,14 @@ h3{font-size:1.15rem}
   .hero-illustration{order:-1}
   .hero-illus-placeholder{max-width:320px;margin:0 auto}
 }
+
+/* ─────────────────── BLUE STRIP / ABOUT BANNER ─────────────────── */
 .about-banner{background:var(--navy);padding:72px 0}
 .about-banner .container{text-align:center}
 .about-banner h2{color:var(--white);font-size:clamp(1.6rem,2.5vw,2rem);margin-bottom:20px}
 .about-banner p{color:rgba(255,255,255,.78);max-width:820px;margin:0 auto 12px;font-size:.97rem}
+
+/* ─────────────────── MISSION / ABOUT BODY ─────────────────── */
 .about-body{padding:80px 0}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 .mission-card{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:40px;height:100%}
@@ -90,6 +106,8 @@ h3{font-size:1.15rem}
 .mission-card p{color:var(--text-2);font-size:.93rem;line-height:1.7}
 .about-img{border-radius:var(--radius-lg);overflow:hidden;height:320px;background:linear-gradient(135deg,#1530CC,#3D5AFF);display:flex;align-items:center;justify-content:center;font-size:6rem}
 @media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+
+/* ─────────────────── WHY US ─────────────────── */
 .why-us{padding:80px 0;background:var(--off-white)}
 .why-main-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
 .why-side-img{grid-row:1/3;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600"><rect fill="%23e0e4f0" width="400" height="600"/><circle cx="200" cy="280" r="120" fill="%23c0c8e8" opacity=".5"/></svg>') center/cover;border-radius:var(--radius-lg);min-height:340px;filter:grayscale(1);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:5rem}
@@ -100,6 +118,8 @@ h3{font-size:1.15rem}
 .why-card p{color:var(--text-2);font-size:.88rem;line-height:1.65}
 @media(max-width:860px){.why-main-grid{grid-template-columns:1fr 1fr}.why-side-img{display:none}}
 @media(max-width:580px){.why-main-grid{grid-template-columns:1fr}}
+
+/* ─────────────────── SERVICES ─────────────────── */
 .services{padding:80px 0}
 .tabs-nav{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:44px;overflow-x:auto}
 .tab-btn{background:none;border:none;border-bottom:2px solid transparent;padding:12px 22px;font-family:inherit;font-size:.88rem;font-weight:600;color:var(--text-3);cursor:pointer;white-space:nowrap;margin-bottom:-2px;transition:var(--transition)}
@@ -113,6 +133,8 @@ h3{font-size:1.15rem}
 .stc-text p{color:var(--text-2);font-size:.9rem;line-height:1.65;margin-bottom:16px}
 .stc-illus{background:linear-gradient(135deg,#e8eeff,#dce4ff);border-radius:var(--radius-lg);height:160px;display:flex;align-items:center;justify-content:center;font-size:4rem}
 @media(max-width:640px){.service-tab-card{grid-template-columns:1fr}.stc-illus{display:none}}
+
+/* ─────────────────── ALLIANCES ─────────────────── */
 .alliances{background:var(--navy);padding:72px 0}
 .alliances .section-header h2{color:var(--white)}
 .alliances .section-tag{color:rgba(255,255,255,.6)}
@@ -125,6 +147,8 @@ h3{font-size:1.15rem}
 .alliances-logos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .alliance-logo{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);padding:16px 20px;color:rgba(255,255,255,.85);font-weight:700;font-size:.88rem;text-align:center}
 @media(max-width:860px){.alliances-text-cta{grid-template-columns:1fr}.alliances-logos{grid-template-columns:repeat(2,1fr)}}
+
+/* ─────────────────── METRICS ─────────────────── */
 .metrics{padding:80px 0;background:var(--off-white)}
 .metrics-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 .metrics-title h2{margin-bottom:14px}
@@ -138,6 +162,8 @@ h3{font-size:1.15rem}
 .metric-bar-bg{height:8px;background:var(--border);border-radius:40px;overflow:hidden}
 .metric-bar-fill{height:100%;background:var(--blue);border-radius:40px;transition:width 1.2s ease}
 @media(max-width:640px){.metrics-wrapper{grid-template-columns:1fr}}
+
+/* ─────────────────── EXECUTION FRAMEWORK ─────────────────── */
 .execution{padding:80px 0}
 .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .step-card{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;transition:var(--transition)}
@@ -147,6 +173,8 @@ h3{font-size:1.15rem}
 .step-card p{color:var(--text-2);font-size:.87rem;line-height:1.65}
 @media(max-width:860px){.steps-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:580px){.steps-grid{grid-template-columns:1fr}}
+
+/* ─────────────────── INDUSTRIES ─────────────────── */
 .industries{padding:80px 0;background:var(--off-white)}
 .industries-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .industry-card{border-radius:var(--radius-lg);overflow:hidden;position:relative;height:180px;background:linear-gradient(135deg,#1c2e6b,#2d4dcc);display:flex;align-items:flex-end;padding:20px;cursor:pointer;transition:var(--transition)}
@@ -155,6 +183,8 @@ h3{font-size:1.15rem}
 .industry-card .ind-emoji{position:absolute;top:20px;left:20px;font-size:2.2rem;opacity:.6}
 @media(max-width:860px){.industries-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.industries-grid{grid-template-columns:1fr}}
+
+/* ─────────────────── CASE STUDIES ─────────────────── */
 .cases{background:var(--navy);padding:80px 0}
 .cases .section-header h2{color:var(--white)}
 .cases .section-tag{color:rgba(255,255,255,.6)}
@@ -166,6 +196,8 @@ h3{font-size:1.15rem}
 .case-body p{color:rgba(255,255,255,.65);font-size:.9rem;line-height:1.65;max-width:620px;margin-bottom:18px}
 .case-link{color:var(--white);font-size:.88rem;font-weight:600;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px}
 @media(max-width:640px){.case-item{grid-template-columns:1fr}.case-img{display:none}}
+
+/* ─────────────────── TESTIMONIALS ─────────────────── */
 .testimonials{padding:80px 0}
 .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .testimonial-card{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;transition:var(--transition)}
@@ -178,6 +210,8 @@ h3{font-size:1.15rem}
 .tauthor strong{display:block;font-size:.88rem;color:var(--text)}
 .tauthor span{font-size:.8rem;color:var(--text-3)}
 @media(max-width:860px){.testimonials-grid{grid-template-columns:1fr}}
+
+/* ─────────────────── FAQ ─────────────────── */
 .faq{padding:80px 0;background:var(--off-white)}
 .faq-list{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
 .faq-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
@@ -186,6 +220,8 @@ h3{font-size:1.15rem}
 .faq-item.open .faq-q i{transform:rotate(180deg)}
 .faq-a{display:none;padding:0 24px 20px;color:var(--text-2);font-size:.9rem;line-height:1.7}
 .faq-item.open .faq-a{display:block}
+
+/* ─────────────────── AI AGENTS SECTION ─────────────────── */
 .ai-agents{padding:80px 0}
 .agents-intro{text-align:center;margin-bottom:52px}
 .agents-intro h2{margin-bottom:12px}
@@ -195,6 +231,8 @@ h3{font-size:1.15rem}
 .agent-tab.active{background:var(--blue);color:var(--white);border-color:var(--blue)}
 .agent-panel{display:none}
 .agent-panel.active{display:block}
+
+/* Outbound form */
 .outbound-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
 .outbound-form-card{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px}
 .outbound-form-card h3{margin-bottom:6px}
@@ -231,6 +269,8 @@ h3{font-size:1.15rem}
 .btn-row-spaced{display:flex;gap:12px}
 .btn-secondary{background:var(--off-white);color:var(--text);border:1.5px solid var(--border)}
 .btn-secondary:hover{border-color:var(--blue);color:var(--blue)}
+
+/* Inbound widget */
 .inbound-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
 .inbound-info h3{margin-bottom:12px}
 .inbound-info p{color:var(--text-2);font-size:.93rem;margin-bottom:24px;line-height:1.7}
@@ -240,6 +280,8 @@ h3{font-size:1.15rem}
 .pd-sub{font-size:.8rem;color:rgba(255,255,255,.5);margin-bottom:24px}
 .pd-status{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border-radius:40px;padding:8px 18px;font-size:.8rem}
 .pd-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:pulse 2s infinite}
+
+/* Voice call button styles */
 .voice-call-btn{display:flex;align-items:center;gap:10px;background:#4ADE80;color:#052e16;border:none;border-radius:40px;padding:14px 32px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;font-family:inherit;margin:0 auto}
 .voice-call-btn:hover{transform:scale(1.04);box-shadow:0 6px 24px rgba(74,222,128,.4)}
 .voice-call-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
@@ -248,6 +290,8 @@ h3{font-size:1.15rem}
 .voice-live-indicator{display:none;align-items:center;justify-content:center;gap:8px;background:rgba(255,255,255,.1);border-radius:40px;padding:8px 18px;font-size:.8rem;color:rgba(255,255,255,.85);margin-top:8px}
 .voice-live-indicator.visible{display:flex}
 .voice-status-text{font-size:.8rem;color:rgba(255,255,255,.55);min-height:20px;text-align:center;margin-top:8px}
+
+/* Chat widget */
 .chat-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:40px}
 .chat-info h3{margin-bottom:12px}
 .chat-info p{color:var(--text-2);font-size:.93rem;margin-bottom:24px}
@@ -272,11 +316,15 @@ h3{font-size:1.15rem}
 @media(max-width:860px){
   .outbound-grid,.inbound-wrapper,.chat-wrapper{grid-template-columns:1fr}
 }
+
+/* Success state */
 .booking-success{text-align:center;padding:40px 20px}
 .success-icon{width:64px;height:64px;border-radius:50%;background:var(--blue);color:var(--white);font-size:1.6rem;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
 .booking-success h3{margin-bottom:10px;font-size:1.3rem}
 .booking-success p{color:var(--text-2);font-size:.93rem;margin-bottom:24px}
 .ref-badge{display:inline-block;background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius);padding:8px 18px;font-size:.83rem;font-weight:700;color:var(--text);margin-bottom:20px}
+
+/* ─────────────────── CONTACT SECTION ─────────────────── */
 .contact{padding:80px 0;background:var(--off-white)}
 .contact-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:60px;align-items:start}
 .contact-info h2{margin-bottom:12px}
@@ -298,6 +346,8 @@ h3{font-size:1.15rem}
 .success-msg h3{margin-bottom:8px}
 .success-msg p{color:var(--text-2);font-size:.9rem}
 @media(max-width:860px){.contact-grid{grid-template-columns:1fr}}
+
+/* ─────────────────── FOOTER ─────────────────── */
 .footer-trusted{background:var(--navy);padding:24px 0;border-bottom:1px solid rgba(255,255,255,.1)}
 .footer-trusted .container{display:flex;align-items:center;gap:32px;overflow-x:auto}
 .ft-label{color:rgba(255,255,255,.5);font-size:.78rem;font-weight:600;white-space:nowrap;text-transform:uppercase;letter-spacing:.08em;flex-shrink:0}
@@ -317,25 +367,35 @@ footer{background:var(--white);padding:60px 0 0}
 .footer-bottom-links a:hover{color:var(--blue)}
 @media(max-width:960px){.footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:12px;text-align:center}}
+
+/* ─────────────────── MARQUEE ─────────────────── */
 .marquee-section{padding:28px 0;background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
 .marquee-track{display:flex;gap:48px;width:max-content;animation:marquee 24s linear infinite}
 .marquee-item{font-size:.88rem;font-weight:700;color:var(--text-3);white-space:nowrap;flex-shrink:0}
+
+/* ─────────────────── ANIMATIONS ─────────────────── */
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 @keyframes typing-bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .fade-in-up{animation:fadeUp .5s ease both}
+
+/* ─────────────────── TOAST ─────────────────── */
 .toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:var(--white);border-radius:var(--radius);padding:12px 20px;font-size:.88rem;display:flex;align-items:center;gap:10px;z-index:9999;transform:translateY(100px);opacity:0;transition:var(--transition);max-width:340px}
 .toast.show{transform:translateY(0);opacity:1}
 .toast.success{background:#166534}
 .toast.error{background:#991b1b}
 .toast-close{background:none;border:none;color:inherit;cursor:pointer;margin-left:auto;opacity:.7;font-size:.85rem}
+
+/* ─────────────────── MISC ─────────────────── */
 .tech-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
 .tech-badge{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius);padding:14px 12px;text-align:center;font-size:.8rem;font-weight:600;color:var(--text-2);transition:var(--transition)}
 .tech-badge:hover{border-color:var(--blue);color:var(--blue)}
 .tech-emoji{display:block;font-size:1.3rem;margin-bottom:6px}
 @media(max-width:640px){.tech-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* ═══ FLOATING CHAT WIDGET ═══ */
 .chat-widget-container{position:fixed;bottom:24px;right:24px;z-index:9999;font-family:'DM Sans',sans-serif}
 .chat-widget-fab{width:56px;height:56px;border-radius:50%;background:var(--blue);color:var(--white);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(30,63,255,.35);transition:all .3s cubic-bezier(.4,0,.2,1);font-size:1.2rem;position:relative;overflow:hidden}
 .chat-widget-fab:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(30,63,255,.45)}
@@ -361,11 +421,57 @@ footer{background:var(--white);padding:60px 0 0}
 .chat-widget-input button{width:36px;height:36px;border-radius:50%;background:var(--blue);color:var(--white);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;transition:var(--transition)}
 .chat-widget-input button:hover{background:var(--blue-dark)}
 @media(max-width:480px){.chat-widget-panel{width:100%;right:0;bottom:0;max-width:100vw;border-radius:var(--radius-lg) var(--radius-lg) 0 0;height:70vh}.chat-widget-fab{bottom:16px;right:16px}}
+
+/* ═══ LIVE CALL MODAL ═══ */
+.call-modal-overlay{position:fixed;inset:0;background:rgba(10,18,50,.75);backdrop-filter:blur(8px);z-index:10000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease;padding:24px}
+.call-modal-overlay.open{opacity:1;pointer-events:auto}
+.call-modal{background:var(--navy);border-radius:var(--radius-xl);padding:52px 44px;width:100%;max-width:440px;text-align:center;position:relative;transform:translateY(28px) scale(.96);transition:transform .35s cubic-bezier(.4,0,.2,1);border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 80px rgba(0,0,0,.4)}
+.call-modal-overlay.open .call-modal{transform:translateY(0) scale(1)}
+.call-modal-close{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.7);cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:var(--transition)}
+.call-modal-close:hover{background:rgba(255,255,255,.2);color:white}
+
+/* Animated ring icon */
+.call-modal-icon-wrap{position:relative;width:96px;height:96px;margin:0 auto 28px;display:flex;align-items:center;justify-content:center}
+.call-ring{position:absolute;border-radius:50%;border:2px solid rgba(74,222,128,0);width:100%;height:100%}
+.call-ring-1{animation:none}
+.call-ring-2{animation:none}
+.call-modal-icon{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-light));display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:white;position:relative;z-index:1;transition:background .4s}
+.call-modal-icon.live{background:linear-gradient(135deg,#16a34a,#22c55e)}
+.ringing .call-ring-1{animation:ring-expand 2s ease-out infinite}
+.ringing .call-ring-2{animation:ring-expand 2s ease-out .6s infinite}
+@keyframes ring-expand{0%{transform:scale(.85);border-color:rgba(74,222,128,.6);opacity:1}100%{transform:scale(1.6);border-color:rgba(74,222,128,0);opacity:0}}
+
+.call-modal h3{color:white;font-size:1.35rem;margin-bottom:10px;transition:all .3s}
+.call-modal-sub{color:rgba(255,255,255,.6);font-size:.88rem;margin-bottom:28px;line-height:1.65;max-width:320px;margin-left:auto;margin-right:auto;transition:all .3s}
+
+/* Live badge */
+.live-badge{display:none;align-items:center;justify-content:center;gap:8px;background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.3);border-radius:40px;padding:8px 20px;font-size:.82rem;color:#4ADE80;margin:0 auto 20px;width:fit-content}
+.live-badge.visible{display:flex}
+.live-badge-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:pulse 1.2s infinite;flex-shrink:0}
+
+.call-modal-status{font-size:.82rem;color:rgba(255,255,255,.45);min-height:20px;margin-bottom:18px}
+.call-modal-features{display:flex;flex-direction:column;gap:8px;margin-bottom:28px}
+.call-modal-feature{display:flex;align-items:center;gap:10px;font-size:.83rem;color:rgba(255,255,255,.6);text-align:left}
+.call-modal-feature i{color:rgba(74,222,128,.8);width:14px;flex-shrink:0}
+.call-modal-footer{font-size:.73rem;color:rgba(255,255,255,.25);margin-top:20px}
+
+/* Hero "Try Live Call" button */
+.btn-call-hero{display:inline-flex;align-items:center;gap:9px;padding:11px 22px;border-radius:7px;font-weight:600;font-size:.9rem;cursor:pointer;transition:var(--transition);border:2px solid var(--blue);background:transparent;color:var(--blue);font-family:inherit}
+.btn-call-hero:hover{background:var(--blue);color:var(--white)}
+.btn-call-hero .call-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:pulse 1.5s infinite}
+
+/* Sticky call pill */
+.sticky-call-pill{position:fixed;bottom:96px;right:24px;z-index:9990;background:linear-gradient(135deg,var(--blue),var(--blue-light));color:white;border:none;border-radius:40px;padding:13px 22px;font-size:.84rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:9px;box-shadow:0 4px 24px rgba(30,63,255,.4);transition:all .3s;font-family:'DM Sans',sans-serif;letter-spacing:-.01em}
+.sticky-call-pill:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(30,63,255,.55)}
+.sticky-call-pill .scp-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;flex-shrink:0;animation:pulse 1.4s infinite}
+.sticky-call-pill.hidden{opacity:0;pointer-events:none;transform:translateY(8px)}
+@media(max-width:480px){.sticky-call-pill{bottom:88px;right:16px;padding:11px 16px;font-size:.8rem}}
 </style>
 <base target="_blank">
 </head>
 <body>
 
+<!-- ───── NAVBAR ───── -->
 <nav class="navbar" id="navbar">
   <div class="container">
     <a href="#" class="logo">
@@ -386,6 +492,7 @@ footer{background:var(--white);padding:60px 0 0}
   </div>
 </nav>
 
+<!-- ───── HERO ───── -->
 <section class="hero">
   <div class="container">
     <div class="hero-content">
@@ -395,6 +502,9 @@ footer{background:var(--white);padding:60px 0 0}
       <p class="hero-tagline">Ship faster. Scale Smarter. Innovate Confidently.</p>
       <div class="hero-buttons">
         <a href="#ai-agents" class="btn btn-primary">Start with a Free Consultation</a>
+        <button class="btn-call-hero" onclick="openCallModal()">
+          <span class="call-dot"></span> Try Live AI Call
+        </button>
       </div>
     </div>
     <div class="hero-illustration">
@@ -406,7 +516,9 @@ footer{background:var(--white);padding:60px 0 0}
           <div class="illus-input-bar">
             <span>Type a message...</span>
             <div class="illus-icons">
-              <span style="font-size:1rem;color:var(--text-3)"><i class="far fa-smile"></i></span><span style="font-size:1rem;color:var(--text-3)"><i class="fas fa-paperclip"></i></span><span style="font-size:1rem;color:var(--text-3)"><i class="fas fa-microphone"></i></span>
+              <span style="font-size:1rem;color:var(--text-3)"><i class="far fa-smile"></i></span>
+              <span style="font-size:1rem;color:var(--text-3)"><i class="fas fa-paperclip"></i></span>
+              <span style="font-size:1rem;color:var(--text-3)"><i class="fas fa-microphone"></i></span>
             </div>
           </div>
         </div>
@@ -415,12 +527,14 @@ footer{background:var(--white);padding:60px 0 0}
   </div>
 </section>
 
+<!-- ───── MARQUEE ───── -->
 <div class="marquee-section">
   <div class="marquee-track">
     <span class="marquee-item">Mozilla Foundation</span><span class="marquee-item">qPress</span><span class="marquee-item">Emblazer</span><span class="marquee-item">Go2ANDAMAN</span><span class="marquee-item">Homeloft</span><span class="marquee-item">MAERSK</span><span class="marquee-item">HUMA</span><span class="marquee-item">Pasqal</span><span class="marquee-item">AccessTruth</span><span class="marquee-item">United Healthcare</span><span class="marquee-item">Mozilla Foundation</span><span class="marquee-item">qPress</span><span class="marquee-item">Emblazer</span><span class="marquee-item">Go2ANDAMAN</span><span class="marquee-item">Homeloft</span><span class="marquee-item">MAERSK</span><span class="marquee-item">HUMA</span><span class="marquee-item">Pasqal</span><span class="marquee-item">AccessTruth</span><span class="marquee-item">United Healthcare</span>
   </div>
 </div>
 
+<!-- ───── ABOUT BANNER ───── -->
 <section class="about-banner" id="about">
   <div class="container">
     <h2>About Us</h2>
@@ -429,6 +543,7 @@ footer{background:var(--white);padding:60px 0 0}
   </div>
 </section>
 
+<!-- ───── ABOUT BODY ───── -->
 <section class="about-body">
   <div class="container">
     <div class="about-grid">
@@ -441,6 +556,7 @@ footer{background:var(--white);padding:60px 0 0}
   </div>
 </section>
 
+<!-- ───── WHY US ───── -->
 <section class="why-us">
   <div class="container">
     <div class="section-header" style="text-align:left">
@@ -457,6 +573,7 @@ footer{background:var(--white);padding:60px 0 0}
   </div>
 </section>
 
+<!-- ───── SERVICES ───── -->
 <section class="services" id="services">
   <div class="container">
     <div class="section-header"><span class="section-tag">Our Services</span><h2>Prolific Technology Consulting Services</h2></div>
@@ -494,6 +611,7 @@ footer{background:var(--white);padding:60px 0 0}
   </div>
 </section>
 
+<!-- ───── ALLIANCES ───── -->
 <section class="alliances">
   <div class="container">
     <div class="alliances-text-cta">
@@ -514,6 +632,7 @@ footer{background:var(--white);padding:60px 0 0}
   </div>
 </section>
 
+<!-- ───── EXECUTION FRAMEWORK ───── -->
 <section class="execution">
   <div class="container">
     <div class="section-header"><span class="section-tag">Our Process</span><h2>Project Execution Framework from Strategy to Shipping</h2><p>From the first conversation to the final handover, our approach is designed to keep your project moving smoothly, confidently, and strategically.</p></div>
@@ -528,6 +647,7 @@ footer{background:var(--white);padding:60px 0 0}
   </div>
 </section>
 
+<!-- ───── METRICS ───── -->
 <section class="metrics">
   <div class="container">
     <div class="metrics-wrapper">
@@ -541,6 +661,7 @@ footer{background:var(--white);padding:60px 0 0}
   </div>
 </section>
 
+<!-- ───── INDUSTRIES ───── -->
 <section class="industries" id="industries">
   <div class="container">
     <div class="section-header"><span class="section-tag">Industries</span><h2>Industry We Serve</h2><p>Where innovation meets impact — transforming industries through strategic technology solutions.</p></div>
@@ -557,6 +678,7 @@ footer{background:var(--white);padding:60px 0 0}
   </div>
 </section>
 
+<!-- ───── CASE STUDIES ───── -->
 <section class="cases" id="cases">
   <div class="container">
     <div class="section-header"><span class="section-tag" style="color:rgba(255,255,255,.5)">Case Studies</span><h2>How We Help Clients Scale Fast</h2></div>
@@ -568,6 +690,7 @@ footer{background:var(--white);padding:60px 0 0}
   </div>
 </section>
 
+<!-- ───── TESTIMONIALS ───── -->
 <section class="testimonials">
   <div class="container">
     <div class="section-header"><span class="section-tag">Testimonials</span><h2>Our Testimonials</h2></div>
@@ -579,6 +702,7 @@ footer{background:var(--white);padding:60px 0 0}
   </div>
 </section>
 
+<!-- ───── FAQ ───── -->
 <section class="faq">
   <div class="container">
     <div class="section-header"><span class="section-tag">FAQ</span><h2>Frequently Asked Questions</h2></div>
@@ -592,6 +716,9 @@ footer{background:var(--white);padding:60px 0 0}
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════════════════
+     AI AGENTS SECTION
+═══════════════════════════════════════════════════════════ -->
 <section class="ai-agents" id="ai-agents">
   <div class="container">
     <div class="agents-intro">
@@ -605,6 +732,7 @@ footer{background:var(--white);padding:60px 0 0}
       <button class="agent-tab" onclick="switchAgent('chat', this)"><i class="fas fa-comments"></i> Chat Assistant</button>
     </div>
 
+    <!-- OUTBOUND PANEL -->
     <div class="agent-panel active" id="panel-outbound">
       <div class="outbound-grid">
         <div class="outbound-form-card">
@@ -678,6 +806,7 @@ footer{background:var(--white);padding:60px 0 0}
       </div>
     </div>
 
+    <!-- INBOUND / VOICE CALL PANEL -->
     <div class="agent-panel" id="panel-inbound">
       <div class="inbound-wrapper">
         <div class="inbound-info">
@@ -707,6 +836,7 @@ footer{background:var(--white);padding:60px 0 0}
       </div>
     </div>
 
+    <!-- CHAT PANEL -->
     <div class="agent-panel" id="panel-chat">
       <div class="chat-wrapper">
         <div class="chat-info">
@@ -737,6 +867,7 @@ footer{background:var(--white);padding:60px 0 0}
   </div>
 </section>
 
+<!-- ───── TECHNOLOGY ───── -->
 <section style="padding:80px 0;background:var(--off-white)">
   <div class="container">
     <div class="section-header"><span class="section-tag">Technology</span><h2>Engineered with World-Class Technology</h2></div>
@@ -757,6 +888,7 @@ footer{background:var(--white);padding:60px 0 0}
   </div>
 </section>
 
+<!-- ───── CONTACT ───── -->
 <section class="contact" id="contact">
   <div class="container">
     <div class="section-header"><span class="section-tag">Contact Us</span><h2>Ready to Build Something Great?</h2><p>Tell us about your project and we'll get back to you within 24 hours.</p></div>
@@ -807,6 +939,7 @@ footer{background:var(--white);padding:60px 0 0}
   </div>
 </section>
 
+<!-- ───── FOOTER ───── -->
 <div class="footer-trusted">
   <div class="container">
     <span class="ft-label">Trusted by Fortune-Grade Global Leaders</span>
@@ -836,12 +969,88 @@ footer{background:var(--white);padding:60px 0 0}
   </div>
 </footer>
 
+<!-- ───── TOAST ───── -->
 <div class="toast" id="toast">
   <span id="toastMsg">Message</span>
   <button class="toast-close" onclick="hideToast()"><i class="fas fa-times"></i></button>
 </div>
 
+<!-- ═══ LIVE CALL MODAL ═══ -->
+<div class="call-modal-overlay" id="callModalOverlay" onclick="handleCallModalBackdrop(event)">
+  <div class="call-modal">
+    <button class="call-modal-close" onclick="closeCallModal()" aria-label="Close"><i class="fas fa-times"></i></button>
+
+    <!-- Animated ring icon -->
+    <div class="call-modal-icon-wrap" id="callRingWrap">
+      <div class="call-ring call-ring-1"></div>
+      <div class="call-ring call-ring-2"></div>
+      <div class="call-modal-icon" id="callModalIcon">
+        <i class="fas fa-phone" id="callModalIconGlyph"></i>
+      </div>
+    </div>
+
+    <h3 id="callModalTitle">Talk to Our AI Agent</h3>
+    <p class="call-modal-sub" id="callModalSub">Start a live voice conversation right in your browser. No downloads, no hold times — just speak naturally.</p>
+
+    <!-- Live badge (shown during active call) -->
+    <div class="live-badge" id="callLiveBadge">
+      <div class="live-badge-dot"></div>
+      Live — AI is listening
+    </div>
+
+    <!-- Status text -->
+    <div class="call-modal-status" id="callModalStatus"></div>
+
+    <!-- Feature list (hidden during call) -->
+    <div class="call-modal-features" id="callModalFeatures">
+      <div class="call-modal-feature"><i class="fas fa-check-circle"></i> Ask anything about services, pricing &amp; timelines</div>
+      <div class="call-modal-feature"><i class="fas fa-check-circle"></i> Available 24/7 — zero hold times</div>
+      <div class="call-modal-feature"><i class="fas fa-check-circle"></i> Hands off to human team when needed</div>
+    </div>
+
+    <!-- Call button -->
+    <button id="callModalBtn" class="voice-call-btn" style="margin:0 auto" onclick="toggleModalVoiceCall()">
+      <i class="fas fa-phone" id="callModalBtnIcon"></i>
+      <span id="callModalBtnLabel">Start Call</span>
+    </button>
+
+    <p class="call-modal-footer">Microphone access required &nbsp;·&nbsp; End the call at any time</p>
+  </div>
+</div>
+
+<!-- ═══ STICKY CALL PILL ═══ -->
+<button class="sticky-call-pill" id="stickyCallPill" onclick="openCallModal()">
+  <div class="scp-dot"></div>
+  Try Live AI Call
+</button>
+
+<!-- ═══ FLOATING CHAT WIDGET ═══ -->
+<div class="chat-widget-container">
+  <button class="chat-widget-fab" id="chatFab" onclick="toggleChatWidget()" aria-label="Open chat">
+    <span class="fab-open"><i class="fas fa-comment-dots"></i></span>
+    <span class="fab-close"><i class="fas fa-times"></i></span>
+  </button>
+  <div class="chat-widget-panel" id="chatWidgetPanel">
+    <div class="chat-widget-header">
+      <div class="header-logo">{-}</div>
+      <div class="header-info"><strong>EnlightLab AI</strong><span>Online</span></div>
+      <button class="header-close" onclick="toggleChatWidget()" aria-label="Close chat"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="chat-widget-messages" id="widgetMessages">
+      <div class="msg bot">Hi! I'm the EnlightLab AI assistant. How can I help you today?</div>
+      <div class="msg bot">I can answer questions about our AI services, pricing, case studies, or help you book a consultation.</div>
+    </div>
+    <div class="chat-widget-input">
+      <input type="text" id="widgetInput" placeholder="Ask me anything..." onkeydown="if(event.key==='Enter')sendWidgetChat()">
+      <button onclick="sendWidgetChat()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div>
+
 <script>
+// ═══════════════════════════════════════════════════════════════
+//  SYSTEM CONFIG
+// ═══════════════════════════════════════════════════════════════
 var systemConfig = null;
 (async function loadConfig() {
   try {
@@ -851,6 +1060,9 @@ var systemConfig = null;
   } catch (e) { console.warn('[CONFIG] Failed:', e); }
 })();
 
+// ═══════════════════════════════════════════════════════════════
+//  NAVBAR
+// ═══════════════════════════════════════════════════════════════
 window.addEventListener('scroll', function() {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
 });
@@ -858,6 +1070,9 @@ function toggleMenu() {
   document.getElementById('navLinks').classList.toggle('open');
 }
 
+// ═══════════════════════════════════════════════════════════════
+//  SERVICE TABS
+// ═══════════════════════════════════════════════════════════════
 document.querySelectorAll('.tab-btn').forEach(function(btn) {
   btn.addEventListener('click', function() {
     document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
@@ -867,6 +1082,9 @@ document.querySelectorAll('.tab-btn').forEach(function(btn) {
   });
 });
 
+// ═══════════════════════════════════════════════════════════════
+//  FAQ
+// ═══════════════════════════════════════════════════════════════
 function toggleFaq(el) {
   var item = el.closest('.faq-item');
   var wasOpen = item.classList.contains('open');
@@ -874,6 +1092,9 @@ function toggleFaq(el) {
   if (!wasOpen) item.classList.add('open');
 }
 
+// ═══════════════════════════════════════════════════════════════
+//  AGENT TABS
+// ═══════════════════════════════════════════════════════════════
 function switchAgent(id, btn) {
   document.querySelectorAll('.agent-tab').forEach(function(t) { t.classList.remove('active'); });
   document.querySelectorAll('.agent-panel').forEach(function(p) { p.classList.remove('active'); });
@@ -882,6 +1103,9 @@ function switchAgent(id, btn) {
   if (id === 'chat') initChatAgent();
 }
 
+// ═══════════════════════════════════════════════════════════════
+//  TOAST
+// ═══════════════════════════════════════════════════════════════
 function showToast(msg, type) {
   type = type || 'info';
   var t = document.getElementById('toast');
@@ -893,15 +1117,14 @@ function hideToast() {
   document.getElementById('toast').classList.remove('show');
 }
 
+// ═══════════════════════════════════════════════════════════════
+//  RETELL WEB VOICE CALL (Inbound panel)
+// ═══════════════════════════════════════════════════════════════
 var retellClient = null;
 var voiceCallActive = false;
 
 async function toggleVoiceCall() {
-  if (voiceCallActive) {
-    endVoiceCall();
-  } else {
-    await startVoiceCall();
-  }
+  if (voiceCallActive) { endVoiceCall(); } else { await startVoiceCall(); }
 }
 
 async function startVoiceCall() {
@@ -909,24 +1132,14 @@ async function startVoiceCall() {
   var label = document.getElementById('voiceCallLabel');
   var icon = document.getElementById('voiceCallIcon');
   var status = document.getElementById('voiceCallStatus');
-
   btn.disabled = true;
   label.textContent = 'Connecting...';
   status.textContent = 'Setting up your call...';
-
   try {
-    var res = await fetch('/api/calls/web-call', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-    });
+    var res = await fetch('/api/calls/web-call', { method: 'POST', headers: { 'Content-Type': 'application/json' } });
     var data = await res.json();
-
-    if (!data.success || !data.accessToken) {
-      throw new Error(data.message || 'Failed to get call token');
-    }
-
+    if (!data.success || !data.accessToken) throw new Error(data.message || 'Failed to get call token');
     retellClient = new RetellWebClient();
-
     retellClient.on('call_started', function() {
       voiceCallActive = true;
       btn.disabled = false;
@@ -936,39 +1149,26 @@ async function startVoiceCall() {
       status.textContent = '';
       document.getElementById('voiceLiveIndicator').classList.add('visible');
     });
-
     retellClient.on('call_ended', function() {
       resetVoiceCallUI();
       showToast('Call ended. Thanks for talking with our AI!', 'success');
     });
-
     retellClient.on('error', function(err) {
       console.error('[VOICE] Error:', err);
       status.textContent = 'Call error. Please try again.';
       resetVoiceCallUI();
     });
-
-    await retellClient.startCall({
-      accessToken: data.accessToken,
-      sampleRate: 24000,
-      captureDeviceId: 'default',
-      playbackDeviceId: 'default',
-    });
-
+    await retellClient.startCall({ accessToken: data.accessToken, sampleRate: 24000, captureDeviceId: 'default', playbackDeviceId: 'default' });
   } catch (err) {
     console.error('[VOICE] Start error:', err);
-    var status = document.getElementById('voiceCallStatus');
-    status.textContent = err.message || 'Could not start call. Check microphone permissions.';
+    document.getElementById('voiceCallStatus').textContent = err.message || 'Could not start call. Check microphone permissions.';
     resetVoiceCallUI();
     document.getElementById('voiceCallBtn').disabled = false;
   }
 }
 
 function endVoiceCall() {
-  if (retellClient) {
-    retellClient.stopCall();
-    retellClient = null;
-  }
+  if (retellClient) { retellClient.stopCall(); retellClient = null; }
   resetVoiceCallUI();
 }
 
@@ -980,10 +1180,127 @@ function resetVoiceCallUI() {
   if (btn) { btn.disabled = false; btn.classList.remove('active'); }
   if (icon) icon.className = 'fas fa-phone';
   if (label) label.textContent = 'Start Voice Call';
-  var liveIndicator = document.getElementById('voiceLiveIndicator');
-  if (liveIndicator) liveIndicator.classList.remove('visible');
+  var li = document.getElementById('voiceLiveIndicator');
+  if (li) li.classList.remove('visible');
 }
 
+// ═══════════════════════════════════════════════════════════════
+//  LIVE CALL MODAL
+// ═══════════════════════════════════════════════════════════════
+var modalCallActive = false;
+var modalRetellClient = null;
+
+function openCallModal() {
+  document.getElementById('callModalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // hide sticky pill while modal is open
+  document.getElementById('stickyCallPill').classList.add('hidden');
+}
+
+function closeCallModal() {
+  if (modalCallActive) endModalCall();
+  document.getElementById('callModalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  document.getElementById('stickyCallPill').classList.remove('hidden');
+}
+
+function handleCallModalBackdrop(e) {
+  if (e.target === document.getElementById('callModalOverlay')) closeCallModal();
+}
+
+async function toggleModalVoiceCall() {
+  if (modalCallActive) { endModalCall(); return; }
+  await startModalCall();
+}
+
+async function startModalCall() {
+  var btn = document.getElementById('callModalBtn');
+  var label = document.getElementById('callModalBtnLabel');
+  var icon = document.getElementById('callModalBtnIcon');
+  var status = document.getElementById('callModalStatus');
+
+  btn.disabled = true;
+  label.textContent = 'Connecting…';
+  status.textContent = 'Setting up your call…';
+
+  try {
+    var res = await fetch('/api/calls/web-call', { method: 'POST', headers: { 'Content-Type': 'application/json' } });
+    var data = await res.json();
+    if (!data.success || !data.accessToken) throw new Error(data.message || 'Failed to get call token');
+
+    modalRetellClient = new RetellWebClient();
+
+    modalRetellClient.on('call_started', function() {
+      modalCallActive = true;
+      btn.disabled = false;
+      btn.classList.add('active');
+      icon.className = 'fas fa-phone-slash';
+      label.textContent = 'End Call';
+      status.textContent = '';
+      // Switch icon to green, start ring animation
+      document.getElementById('callModalIcon').classList.add('live');
+      document.getElementById('callRingWrap').classList.add('ringing');
+      document.getElementById('callModalIconGlyph').className = 'fas fa-microphone';
+      document.getElementById('callLiveBadge').classList.add('visible');
+      document.getElementById('callModalFeatures').style.display = 'none';
+      document.getElementById('callModalTitle').textContent = 'AI Agent is Live';
+      document.getElementById('callModalSub').textContent = 'Speak naturally — ask anything. Interrupt, redirect, or end the call at any time.';
+    });
+
+    modalRetellClient.on('call_ended', function() {
+      resetModalCallUI();
+      closeCallModal();
+      showToast('Call ended. Thanks for trying our AI agent!', 'success');
+    });
+
+    modalRetellClient.on('error', function(err) {
+      console.error('[MODAL VOICE]', err);
+      status.textContent = 'Call error. Please try again.';
+      resetModalCallUI();
+    });
+
+    await modalRetellClient.startCall({
+      accessToken: data.accessToken,
+      sampleRate: 24000,
+      captureDeviceId: 'default',
+      playbackDeviceId: 'default',
+    });
+
+  } catch (err) {
+    console.error('[MODAL VOICE]', err);
+    status.textContent = err.message || 'Could not start. Check mic permissions.';
+    btn.disabled = false;
+    label.textContent = 'Start Call';
+    icon.className = 'fas fa-phone';
+  }
+}
+
+function endModalCall() {
+  if (modalRetellClient) { modalRetellClient.stopCall(); modalRetellClient = null; }
+  resetModalCallUI();
+}
+
+function resetModalCallUI() {
+  modalCallActive = false;
+  var btn = document.getElementById('callModalBtn');
+  var label = document.getElementById('callModalBtnLabel');
+  var icon = document.getElementById('callModalBtnIcon');
+  if (btn) { btn.disabled = false; btn.classList.remove('active'); }
+  if (label) label.textContent = 'Start Call';
+  if (icon) icon.className = 'fas fa-phone';
+  document.getElementById('callLiveBadge').classList.remove('visible');
+  document.getElementById('callModalIcon').classList.remove('live');
+  document.getElementById('callRingWrap').classList.remove('ringing');
+  document.getElementById('callModalIconGlyph').className = 'fas fa-phone';
+  document.getElementById('callModalStatus').textContent = '';
+  document.getElementById('callModalFeatures').style.display = 'flex';
+  document.getElementById('callModalTitle').textContent = 'Talk to Our AI Agent';
+  document.getElementById('callModalSub').textContent = 'Start a live voice conversation right in your browser. No downloads, no hold times — just speak naturally.';
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  CHAT AGENT
+// ═══════════════════════════════════════════════════════════════
 var chatSessionId = 'sess-' + Math.random().toString(36).substr(2, 9);
 var chatInitialized = false;
 
@@ -1045,6 +1362,9 @@ async function sendChat() {
   }
 }
 
+// ═══════════════════════════════════════════════════════════════
+//  OUTBOUND BOOKING
+// ═══════════════════════════════════════════════════════════════
 var obCurrentStep = 1;
 var obSelectedSlot = null;
 var obData = {};
@@ -1184,6 +1504,9 @@ function obReset() {
   obSetStep(1);
 }
 
+// ═══════════════════════════════════════════════════════════════
+//  CONTACT FORM
+// ═══════════════════════════════════════════════════════════════
 async function submitContact() {
   var fname = document.getElementById('cf-fname').value.trim();
   var lname = document.getElementById('cf-lname').value.trim();
@@ -1280,28 +1603,5 @@ async function sendWidgetChat() {
   }
 }
 </script>
-
-<!-- ═══ FLOATING CHAT WIDGET ═══ -->
-<div class="chat-widget-container">
-  <button class="chat-widget-fab" id="chatFab" onclick="toggleChatWidget()" aria-label="Open chat">
-    <span class="fab-open"><i class="fas fa-comment-dots"></i></span>
-    <span class="fab-close"><i class="fas fa-times"></i></span>
-  </button>
-  <div class="chat-widget-panel" id="chatWidgetPanel">
-    <div class="chat-widget-header">
-      <div class="header-logo">{-}</div>
-      <div class="header-info"><strong>EnlightLab AI</strong><span>Online</span></div>
-      <button class="header-close" onclick="toggleChatWidget()" aria-label="Close chat"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="chat-widget-messages" id="widgetMessages">
-      <div class="msg bot">Hi! I'm the EnlightLab AI assistant. How can I help you today?</div>
-      <div class="msg bot">I can answer questions about our AI services, pricing, case studies, or help you book a consultation.</div>
-    </div>
-    <div class="chat-widget-input">
-      <input type="text" id="widgetInput" placeholder="Ask me anything..." onkeydown="if(event.key==='Enter')sendWidgetChat()">
-      <button onclick="sendWidgetChat()"><i class="fas fa-paper-plane"></i></button>
-    </div>
-  </div>
-</div>
 </body>
 </html>
