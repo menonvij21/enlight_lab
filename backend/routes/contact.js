@@ -5,50 +5,47 @@ const emailService = require('../services/email');
 const { contactStore } = require('../services/store');
 const { v4: uuidv4 } = require('uuid');
 
-/**
- * POST /api/contact/submit
- * Handle the "Get a Proposal" contact form
- */
+// ─────────────────────────────────────────────────────────────
+// POST /api/contact/submit
+// ─────────────────────────────────────────────────────────────
 router.post('/submit', async (req, res) => {
   try {
     const { firstName, lastName, email, phone, company, service, message, countryCode } = req.body;
 
-    // ── Validation ──────────────────────────────────────
+    // ── Validation ───────────────────────────────────────
     const errors = [];
     if (!firstName || firstName.trim().length < 2) errors.push('First name is required');
-    if (!lastName || lastName.trim().length < 2) errors.push('Last name is required');
-    if (!email || !validator.isEmail(email)) errors.push('Valid email is required');
-    if (!phone) errors.push('Phone number is required');
+    if (!lastName  || lastName.trim().length  < 2) errors.push('Last name is required');
+    if (!email     || !validator.isEmail(email))   errors.push('Valid email is required');
+    if (!phone)                                    errors.push('Phone number is required');
     if (errors.length) return res.status(400).json({ success: false, errors });
+
+    // ── Normalise phone ──────────────────────────────────
+    // Frontend sends fullPhone (already combined) OR countryCode + phone separately.
+    const rawPhone = req.body.fullPhone || phone.trim();
+    const fullPhone = rawPhone.startsWith('+') ? rawPhone : `${countryCode || ''}${rawPhone}`;
 
     const leadId = 'CF-' + uuidv4().substring(0, 6).toUpperCase();
 
-    // FIX: The frontend sends `fullPhone` (already has countryCode prepended) AND
-    // also sends `countryCode` + `phone` separately. Use `fullPhone` if provided,
-    // otherwise combine countryCode + phone — but never double-prepend.
-    const rawPhone = req.body.fullPhone || phone.trim();
-    const fullPhone = rawPhone.startsWith('+')
-      ? rawPhone
-      : `${countryCode || ''}${rawPhone}`;
-
     const lead = {
-      id: leadId,
+      id:        leadId,
       firstName: firstName.trim(),
-      lastName: lastName.trim(),
-      fullName: `${firstName.trim()} ${lastName.trim()}`,
-      email: email.trim().toLowerCase(),
-      phone: fullPhone,
-      company: company?.trim() || '',
-      service: service || 'Not specified',
-      message: message?.trim() || '',
-      source: 'contact_form',
+      lastName:  lastName.trim(),
+      fullName:  `${firstName.trim()} ${lastName.trim()}`,
+      email:     email.trim().toLowerCase(),
+      phone:     fullPhone,
+      company:   company?.trim() || '',
+      service:   service || 'Not specified',
+      message:   message?.trim() || '',
+      source:    'contact_form',
       createdAt: new Date().toISOString(),
-      ip: req.ip,
+      ip:        req.ip,
     };
 
     contactStore.set(leadId, lead);
+    console.log(`[CONTACT] New lead: ${leadId} — ${lead.fullName} (${lead.service})`);
 
-    // Non-blocking — email failure won't break the API response
+    // Non-blocking emails
     Promise.all([
       emailService.sendContactConfirmation(lead),
       emailService.sendInternalNotification(lead, 'contact_form'),
