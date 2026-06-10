@@ -14,7 +14,7 @@ const RETELL_BASE = 'https://api.retellai.com';
  * Returns the chat_id to be reused for all subsequent messages.
  */
 async function createRetellChat(agentId, apiKey) {
-  const res = await fetch(`${RETELL_BASE}/v2/create-chat`, {
+  const res = await fetch(`${RETELL_BASE}/create-chat`, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${apiKey}`,
@@ -38,7 +38,7 @@ async function createRetellChat(agentId, apiKey) {
  * Returns the agent's reply string.
  */
 async function sendRetellMessage(chatId, content, apiKey) {
-  const res = await fetch(`${RETELL_BASE}/v2/create-chat-completion`, {
+  const res = await fetch(`${RETELL_BASE}/create-chat-completion`, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${apiKey}`,
@@ -138,7 +138,7 @@ router.post('/reset', async (req, res) => {
 
   if (chatId) {
     try {
-      await fetch(`${RETELL_BASE}/v2/end-chat`, {
+      await fetch(`${RETELL_BASE}/end-chat`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${process.env.RETELL_API_KEY}`,
