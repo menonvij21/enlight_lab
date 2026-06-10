@@ -1,85 +1,92 @@
-const cron = require('node-cron');
-const retellService = require('./retell');
-const { bookingStore } = require('./store');
-const emailService = require('./email');
+/**
+ * scheduler.js
+ * Runs every minute, finds bookings whose slot time has arrived,
+ * and fires the Retell outbound call via the shared helper in routes/calls.js
+ */
 
+const cron = require('node-cron');
+const { bookingStore } = require('./store');
+
+// Lazy-require to avoid circular dependency issues at startup
+function getFireFn() {
+  return require('../routes/calls').fireOutboundCall;
+}
+
+// ─────────────────────────────────────────────────────────────
+// Parse a booking's slot into a Date object
+// Uses slotTimestamp (ms epoch) if available; falls back to
+// slotDate + slotTime string parsing.
+// ─────────────────────────────────────────────────────────────
 function parseSlotTime(booking) {
-  if (booking.slotTimestamp) return new Date(booking.slotTimestamp);
+  if (booking.slotTimestamp) return new Date(Number(booking.slotTimestamp));
+
   if (booking.slotDate && booking.slotTime) {
-    const timeMatch = booking.slotTime.match(/(\d+):(\d+)\s*(AM|PM)/i);
-    if (timeMatch) {
-      let hours = parseInt(timeMatch[1]);
-      const minutes = parseInt(timeMatch[2]);
-      const meridian = timeMatch[3].toUpperCase();
-      if (meridian === 'PM' && hours !== 12) hours += 12;
-      if (meridian === 'AM' && hours === 12) hours = 0;
+    const match = booking.slotTime.match(/(\d+):(\d+)\s*(AM|PM)/i);
+    if (match) {
+      let hours   = parseInt(match[1]);
+      const mins  = parseInt(match[2]);
+      const ampm  = match[3].toUpperCase();
+      if (ampm === 'PM' && hours !== 12) hours += 12;
+      if (ampm === 'AM' && hours === 12) hours  =  0;
       const d = new Date(booking.slotDate);
-      d.setHours(hours, minutes, 0, 0);
+      d.setHours(hours, mins, 0, 0);
       return d;
     }
   }
   return null;
 }
 
+// ─────────────────────────────────────────────────────────────
+// Start the cron job — checks every minute
+// ─────────────────────────────────────────────────────────────
 function startScheduler() {
+  const retellConfigured =
+    process.env.RETELL_OUTBOUND_NUMBER &&
+    process.env.RETELL_OUTBOUND_AGENT_ID &&
+    process.env.RETELL_API_KEY;
+
+  if (!retellConfigured) {
+    console.warn('[SCHEDULER] Outbound not fully configured — scheduler will save bookings but skip auto-calls');
+    console.warn('[SCHEDULER] Missing:', [
+      !process.env.RETELL_API_KEY          && 'RETELL_API_KEY',
+      !process.env.RETELL_OUTBOUND_NUMBER  && 'RETELL_OUTBOUND_NUMBER',
+      !process.env.RETELL_OUTBOUND_AGENT_ID && 'RETELL_OUTBOUND_AGENT_ID',
+    ].filter(Boolean).join(', '));
+  }
+
   cron.schedule('* * * * *', async () => {
-    const now = new Date();
-    const bookings = Array.from(bookingStore.values()).filter(
-      b => b.status === 'scheduled'
-    );
+    const now = Date.now();
 
-    for (const booking of bookings) {
-      const slotTime = parseSlotTime(booking);
-      if (!slotTime || slotTime > now) continue;
+    const due = Array.from(bookingStore.values()).filter(b => {
+      if (b.status !== 'scheduled') return false;
+      const slot = parseSlotTime(b);
+      if (!slot) return false;
+      // Fire if the slot is within the past 2 minutes (handles missed ticks)
+      const diffMs = now - slot.getTime();
+      return diffMs >= 0 && diffMs < 2 * 60 * 1000;
+    });
 
-      console.log(`[SCHEDULER] Booking ${booking.id} slot reached. Triggering outbound call…`);
+    if (due.length === 0) return;
 
-      const retellConfigured =
-        process.env.RETELL_OUTBOUND_NUMBER &&
-        process.env.RETELL_OUTBOUND_AGENT_ID &&
-        process.env.RETELL_API_KEY;
+    console.log(`[SCHEDULER] ${due.length} booking(s) due`);
 
+    for (const booking of due) {
       if (!retellConfigured) {
-        console.log(`[SCHEDULER] Retell outbound not fully configured (missing number or agent ID). Skipping automatic call for ${booking.id}.`);
+        console.log(`[SCHEDULER] Skipping call for ${booking.id} — outbound not configured`);
         booking.status = 'awaiting_number';
         bookingStore.set(booking.id, booking);
         continue;
       }
 
       try {
-        const callResult = await retellService.scheduleOutboundCall({
-          toNumber: booking.phone,
-          fromNumber: process.env.RETELL_OUTBOUND_NUMBER,
-          agentId: process.env.RETELL_OUTBOUND_AGENT_ID,
-          metadata: {
-            booking_id: booking.id,
-            caller_name: booking.name,
-            caller_company: booking.company,
-            caller_industry: booking.industry,
-            caller_notes: booking.message,
-            scheduled_slot: `${booking.slotLabel} at ${booking.slotTime}`,
-          },
-          dynamicVariables: {
-            name: booking.name,
-            company: booking.company || 'your company',
-            industry: booking.industry,
-            discussion_topic: booking.message || 'EnlightLab AI services',
-          },
-        });
-
-        booking.retellCallId = callResult?.call_id;
-        booking.status = 'call_initiated';
-        bookingStore.set(booking.id, booking);
-        console.log(`[SCHEDULER] Call initiated: ${callResult?.call_id}`);
+        await getFireFn()(booking);
       } catch (err) {
-        console.error(`[SCHEDULER] Failed to trigger call for ${booking.id}:`, err.message);
-        booking.status = 'failed';
-        bookingStore.set(booking.id, booking);
+        console.error(`[SCHEDULER] Failed for ${booking.id}:`, err.message);
       }
     }
   });
 
-  console.log('[SCHEDULER] Outbound call scheduler started (checks every minute)');
+  console.log('[SCHEDULER] Started — checks every minute for due outbound calls');
 }
 
 module.exports = { startScheduler };
