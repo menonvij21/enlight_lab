@@ -42,8 +42,11 @@ const { initRAG } = require('./services/rag');
 const { startScheduler } = require('./services/scheduler');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
 
+// Required for Vercel + express-rate-limit
+app.set('trust proxy', true);
+
+const PORT = process.env.PORT || 3001;
 // ─── SECURITY MIDDLEWARE ───────────────────────────────────
 app.use(helmet({ contentSecurityPolicy: false }));
 
@@ -64,9 +67,15 @@ app.use(cors({
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
-  message: { success: false, message: 'Too many requests. Please try again later.' },
   standardHeaders: true,
   legacyHeaders: false,
+  message: {
+    success: false,
+    message: 'Too many requests. Please try again later.'
+  },
+  validate: {
+    xForwardedForHeader: false
+  }
 });
 
 const callLimiter = rateLimit({
