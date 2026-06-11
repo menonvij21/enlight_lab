@@ -1,4 +1,3 @@
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,7 +5,6 @@
 <title>Enlight Lab — Next-Gen AI-Powered Solutions</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<script src="https://cdn.jsdelivr.net/npm/retell-client-js-sdk@latest/dist/index.umd.js"></script>
 <style>
 /* ─────────────────── RESET & VARIABLES ─────────────────── */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -252,8 +250,7 @@ h3{font-size:1.15rem}
 .expect-dot{width:8px;height:8px;border-radius:50%;background:var(--blue-light);flex-shrink:0;margin-top:4px}
 .step-progress{display:flex;align-items:center;gap:0;margin-bottom:28px}
 .sp-item{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--text-3);font-weight:500}
-.sp-item.active .sp-num{background:var(--blue);color:var(--white)}
-.sp-item.done .sp-num{background:var(--blue);color:var(--white)}
+.sp-item.active .sp-num,.sp-item.done .sp-num{background:var(--blue);color:var(--white)}
 .sp-num{width:26px;height:26px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;transition:var(--transition)}
 .sp-line{flex:1;height:2px;background:var(--border);margin:0 8px}
 .sp-line.done{background:var(--blue)}
@@ -455,19 +452,14 @@ footer{background:var(--white);padding:60px 0 0}
 .call-modal-feature i{color:rgba(74,222,128,.8);width:14px;flex-shrink:0}
 .call-modal-footer{font-size:.73rem;color:rgba(255,255,255,.25);margin-top:20px}
 
-/* Hero "Try Live Call" button */
-.btn-call-hero{display:inline-flex;align-items:center;gap:9px;padding:11px 22px;border-radius:7px;font-weight:600;font-size:.9rem;cursor:pointer;transition:var(--transition);border:2px solid var(--blue);background:transparent;color:var(--blue);font-family:inherit}
-.btn-call-hero:hover{background:var(--blue);color:var(--white)}
-.btn-call-hero .call-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:pulse 1.5s infinite}
-
 /* Sticky call pill */
-.sticky-call-pill{position:fixed;bottom:96px;right:24px;z-index:9990;background:linear-gradient(135deg,var(--blue),var(--blue-light));color:white;border:none;border-radius:40px;padding:13px 22px;font-size:.84rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:9px;box-shadow:0 4px 24px rgba(30,63,255,.4);transition:all .3s;font-family:'DM Sans',sans-serif;letter-spacing:-.01em}
+.sticky-call-pill{position:fixed;bottom:96px;right:24px;z-index:9990;background:linear-gradient(135deg,var(--blue),var(--blue-light));color:white;border:none;border-radius:40px;padding:13px 22px;font-size:.84rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:9px;box-shadow:0 4px 24px rgba(30,63,255,.4);transition:all .3s;font-family:'DM Sans',sans-serif;letter-spacing:-.01em;opacity:0;pointer-events:none;transform:translateY(8px)}
+.sticky-call-pill.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
+.sticky-call-pill.hidden{opacity:0;pointer-events:none;transform:translateY(8px)}
 .sticky-call-pill:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(30,63,255,.55)}
 .sticky-call-pill .scp-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;flex-shrink:0;animation:pulse 1.4s infinite}
-.sticky-call-pill.hidden{opacity:0;pointer-events:none;transform:translateY(8px)}
 @media(max-width:480px){.sticky-call-pill{bottom:88px;right:16px;padding:11px 16px;font-size:.8rem}}
 </style>
-<base target="_blank">
 </head>
 <body>
 
@@ -979,8 +971,6 @@ footer{background:var(--white);padding:60px 0 0}
 <div class="call-modal-overlay" id="callModalOverlay" onclick="handleCallModalBackdrop(event)">
   <div class="call-modal">
     <button class="call-modal-close" onclick="closeCallModal()" aria-label="Close"><i class="fas fa-times"></i></button>
-
-    <!-- Animated ring icon -->
     <div class="call-modal-icon-wrap" id="callRingWrap">
       <div class="call-ring call-ring-1"></div>
       <div class="call-ring call-ring-2"></div>
@@ -988,32 +978,22 @@ footer{background:var(--white);padding:60px 0 0}
         <i class="fas fa-phone" id="callModalIconGlyph"></i>
       </div>
     </div>
-
     <h3 id="callModalTitle">Talk to Our AI Agent</h3>
     <p class="call-modal-sub" id="callModalSub">Start a live voice conversation right in your browser. No downloads, no hold times — just speak naturally.</p>
-
-    <!-- Live badge (shown during active call) -->
     <div class="live-badge" id="callLiveBadge">
       <div class="live-badge-dot"></div>
       Live — AI is listening
     </div>
-
-    <!-- Status text -->
     <div class="call-modal-status" id="callModalStatus"></div>
-
-    <!-- Feature list (hidden during call) -->
     <div class="call-modal-features" id="callModalFeatures">
       <div class="call-modal-feature"><i class="fas fa-check-circle"></i> Ask anything about services, pricing &amp; timelines</div>
       <div class="call-modal-feature"><i class="fas fa-check-circle"></i> Available 24/7 — zero hold times</div>
       <div class="call-modal-feature"><i class="fas fa-check-circle"></i> Hands off to human team when needed</div>
     </div>
-
-    <!-- Call button -->
     <button id="callModalBtn" class="voice-call-btn" style="margin:0 auto" onclick="toggleModalVoiceCall()">
       <i class="fas fa-phone" id="callModalBtnIcon"></i>
       <span id="callModalBtnLabel">Start Call</span>
     </button>
-
     <p class="call-modal-footer">Microphone access required &nbsp;·&nbsp; End the call at any time</p>
   </div>
 </div>
@@ -1047,6 +1027,9 @@ footer{background:var(--white);padding:60px 0 0}
   </div>
 </div>
 
+<!-- FIX 1: Retell SDK script loaded BEFORE the main script block -->
+<script src="https://cdn.jsdelivr.net/npm/retell-client-js-sdk@latest/dist/index.umd.js"></script>
+
 <script>
 // ═══════════════════════════════════════════════════════════════
 //  SYSTEM CONFIG
@@ -1065,7 +1048,17 @@ var systemConfig = null;
 // ═══════════════════════════════════════════════════════════════
 window.addEventListener('scroll', function() {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+  // FIX 4: Show sticky pill only after scrolling past the hero
+  var pill = document.getElementById('stickyCallPill');
+  if (window.scrollY > window.innerHeight * 0.7) {
+    pill.classList.add('visible');
+    pill.classList.remove('hidden');
+  } else {
+    pill.classList.remove('visible');
+    pill.classList.add('hidden');
+  }
 });
+
 function toggleMenu() {
   document.getElementById('navLinks').classList.toggle('open');
 }
@@ -1193,15 +1186,19 @@ var modalRetellClient = null;
 function openCallModal() {
   document.getElementById('callModalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
-  // hide sticky pill while modal is open
   document.getElementById('stickyCallPill').classList.add('hidden');
+  document.getElementById('stickyCallPill').classList.remove('visible');
 }
 
 function closeCallModal() {
   if (modalCallActive) endModalCall();
   document.getElementById('callModalOverlay').classList.remove('open');
   document.body.style.overflow = '';
-  document.getElementById('stickyCallPill').classList.remove('hidden');
+  // Restore pill visibility based on scroll position
+  if (window.scrollY > window.innerHeight * 0.7) {
+    document.getElementById('stickyCallPill').classList.add('visible');
+    document.getElementById('stickyCallPill').classList.remove('hidden');
+  }
 }
 
 function handleCallModalBackdrop(e) {
@@ -1237,7 +1234,6 @@ async function startModalCall() {
       icon.className = 'fas fa-phone-slash';
       label.textContent = 'End Call';
       status.textContent = '';
-      // Switch icon to green, start ring animation
       document.getElementById('callModalIcon').classList.add('live');
       document.getElementById('callRingWrap').classList.add('ringing');
       document.getElementById('callModalIconGlyph').className = 'fas fa-microphone';
@@ -1402,19 +1398,28 @@ function generateSlots() {
   }
 }
 
+// FIX 5: Corrected step indicator — active step gets blue color too
 function obSetStep(n) {
   ['ob-form-1','ob-form-2','ob-form-3','ob-form-4'].forEach(function(id, i) {
-    document.getElementById(id).style.display = (i === n-1) ? 'block' : 'none';
+    document.getElementById(id).style.display = (i === n - 1) ? 'block' : 'none';
   });
   ['sp1','sp2','sp3'].forEach(function(id, i) {
     var el = document.getElementById(id);
-    el.classList.toggle('active', i === n-1);
-    el.classList.toggle('done', i < n-1);
-    el.querySelector('.sp-num').style.background = (i <= n-1) ? 'var(--blue)' : '';
-    el.querySelector('.sp-num').style.color = (i <= n-1) ? 'var(--white)' : '';
+    var isActive = (i === n - 1);
+    var isDone = (i < n - 1);
+    el.classList.toggle('active', isActive);
+    el.classList.toggle('done', isDone);
+    var numEl = el.querySelector('.sp-num');
+    if (isActive || isDone) {
+      numEl.style.background = 'var(--blue)';
+      numEl.style.color = 'var(--white)';
+    } else {
+      numEl.style.background = '';
+      numEl.style.color = '';
+    }
   });
   ['spline1','spline2'].forEach(function(id, i) {
-    document.getElementById(id).classList.toggle('done', i < n-1);
+    document.getElementById(id).classList.toggle('done', i < n - 1);
   });
   obCurrentStep = n;
 }
