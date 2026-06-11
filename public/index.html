@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,6 +6,7 @@
 <title>Enlight Lab — Next-Gen AI-Powered Solutions</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/retell-client-js-sdk@latest/dist/index.umd.js"></script>
 <style>
 /* ─────────────────── RESET & VARIABLES ─────────────────── */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -62,12 +63,18 @@ h3{font-size:1.15rem}
 .hero h1 .accent{color:var(--blue)}
 .hero-sub{color:var(--text-2);margin:18px 0 8px;max-width:480px;font-size:.97rem}
 .hero-tagline{font-weight:700;font-size:.97rem;color:var(--text);margin-bottom:28px}
-.hero-buttons{display:flex;gap:14px;flex-wrap:wrap}
+.hero-buttons{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:7px;font-weight:600;font-size:.9rem;cursor:pointer;transition:var(--transition);border:none;font-family:inherit}
 .btn-primary{background:var(--blue);color:var(--white)}
 .btn-primary:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 6px 24px rgba(30,63,255,.3)}
 .btn-outline{background:transparent;color:var(--blue);border:1.5px solid var(--blue)}
 .btn-outline:hover{background:var(--blue);color:var(--white)}
+
+/* Hero live call button */
+.btn-call-hero{display:inline-flex;align-items:center;gap:9px;padding:11px 22px;border-radius:7px;font-weight:600;font-size:.9rem;cursor:pointer;transition:var(--transition);border:2px solid var(--blue);background:transparent;color:var(--blue);font-family:inherit}
+.btn-call-hero:hover{background:var(--blue);color:var(--white)}
+.btn-call-hero .call-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:pulse 1.5s infinite}
+
 .hero-illustration{display:flex;align-items:center;justify-content:center}
 .hero-illustration img{max-width:460px;width:100%}
 .hero-illus-placeholder{width:100%;max-width:460px;aspect-ratio:1;background:linear-gradient(135deg,#e8eeff 0%,#dce4ff 100%);border-radius:var(--radius-xl);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
@@ -127,7 +134,7 @@ h3{font-size:1.15rem}
 .stc-illus{background:linear-gradient(135deg,#e8eeff,#dce4ff);border-radius:var(--radius-lg);height:160px;display:flex;align-items:center;justify-content:center;font-size:4rem}
 @media(max-width:640px){.service-tab-card{grid-template-columns:1fr}.stc-illus{display:none}}
 
-/* ─────────────────── ALLIANCES (blue section) ─────────────────── */
+/* ─────────────────── ALLIANCES ─────────────────── */
 .alliances{background:var(--navy);padding:72px 0}
 .alliances .section-header h2{color:var(--white)}
 .alliances .section-tag{color:rgba(255,255,255,.6)}
@@ -177,7 +184,7 @@ h3{font-size:1.15rem}
 @media(max-width:860px){.industries-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.industries-grid{grid-template-columns:1fr}}
 
-/* ─────────────────── CASE STUDIES (blue bg) ─────────────────── */
+/* ─────────────────── CASE STUDIES ─────────────────── */
 .cases{background:var(--navy);padding:80px 0}
 .cases .section-header h2{color:var(--white)}
 .cases .section-tag{color:rgba(255,255,255,.6)}
@@ -273,8 +280,16 @@ h3{font-size:1.15rem}
 .pd-sub{font-size:.8rem;color:rgba(255,255,255,.5);margin-bottom:24px}
 .pd-status{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border-radius:40px;padding:8px 18px;font-size:.8rem}
 .pd-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:pulse 2s infinite}
-.coming-soon-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border-radius:40px;padding:10px 20px;font-size:.85rem;color:rgba(255,255,255,.75);margin-bottom:20px}
-.coming-soon-badge .cs-dot{width:8px;height:8px;border-radius:50%;background:#F4B942;animation:pulse 2s infinite}
+
+/* Voice call button styles */
+.voice-call-btn{display:flex;align-items:center;gap:10px;background:#4ADE80;color:#052e16;border:none;border-radius:40px;padding:14px 32px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;font-family:inherit;margin:0 auto}
+.voice-call-btn:hover{transform:scale(1.04);box-shadow:0 6px 24px rgba(74,222,128,.4)}
+.voice-call-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.voice-call-btn.active{background:#EF4444;color:white}
+.voice-call-btn.active:hover{box-shadow:0 6px 24px rgba(239,68,68,.4)}
+.voice-live-indicator{display:none;align-items:center;justify-content:center;gap:8px;background:rgba(255,255,255,.1);border-radius:40px;padding:8px 18px;font-size:.8rem;color:rgba(255,255,255,.85);margin-top:8px}
+.voice-live-indicator.visible{display:flex}
+.voice-status-text{font-size:.8rem;color:rgba(255,255,255,.55);min-height:20px;text-align:center;margin-top:8px}
 
 /* Chat widget */
 .chat-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:40px}
@@ -298,8 +313,6 @@ h3{font-size:1.15rem}
 .chat-input-area input:focus{border-color:var(--blue)}
 .chat-send-btn{width:36px;height:36px;border-radius:50%;background:var(--blue);color:var(--white);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;transition:var(--transition)}
 .chat-send-btn:hover{background:var(--blue-dark)}
-
-
 @media(max-width:860px){
   .outbound-grid,.inbound-wrapper,.chat-wrapper{grid-template-columns:1fr}
 }
@@ -359,6 +372,8 @@ footer{background:var(--white);padding:60px 0 0}
 .marquee-section{padding:28px 0;background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
 .marquee-track{display:flex;gap:48px;width:max-content;animation:marquee 24s linear infinite}
 .marquee-item{font-size:.88rem;font-weight:700;color:var(--text-3);white-space:nowrap;flex-shrink:0}
+
+/* ─────────────────── ANIMATIONS ─────────────────── */
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 @keyframes typing-bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
@@ -405,8 +420,52 @@ footer{background:var(--white);padding:60px 0 0}
 .chat-widget-input input:focus{border-color:var(--blue);background:var(--white)}
 .chat-widget-input button{width:36px;height:36px;border-radius:50%;background:var(--blue);color:var(--white);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;transition:var(--transition)}
 .chat-widget-input button:hover{background:var(--blue-dark)}
-.chat-widget-unread{position:absolute;top:-2px;right:-2px;width:18px;height:18px;border-radius:50%;background:#EF4444;color:white;font-size:.65rem;font-weight:700;display:flex;align-items:center;justify-content:center;animation:pulse 2s infinite}
 @media(max-width:480px){.chat-widget-panel{width:100%;right:0;bottom:0;max-width:100vw;border-radius:var(--radius-lg) var(--radius-lg) 0 0;height:70vh}.chat-widget-fab{bottom:16px;right:16px}}
+
+/* ═══ LIVE CALL MODAL ═══ */
+.call-modal-overlay{position:fixed;inset:0;background:rgba(10,18,50,.75);backdrop-filter:blur(8px);z-index:10000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease;padding:24px}
+.call-modal-overlay.open{opacity:1;pointer-events:auto}
+.call-modal{background:var(--navy);border-radius:var(--radius-xl);padding:52px 44px;width:100%;max-width:440px;text-align:center;position:relative;transform:translateY(28px) scale(.96);transition:transform .35s cubic-bezier(.4,0,.2,1);border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 80px rgba(0,0,0,.4)}
+.call-modal-overlay.open .call-modal{transform:translateY(0) scale(1)}
+.call-modal-close{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.7);cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:var(--transition)}
+.call-modal-close:hover{background:rgba(255,255,255,.2);color:white}
+
+/* Animated ring icon */
+.call-modal-icon-wrap{position:relative;width:96px;height:96px;margin:0 auto 28px;display:flex;align-items:center;justify-content:center}
+.call-ring{position:absolute;border-radius:50%;border:2px solid rgba(74,222,128,0);width:100%;height:100%}
+.call-ring-1{animation:none}
+.call-ring-2{animation:none}
+.call-modal-icon{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-light));display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:white;position:relative;z-index:1;transition:background .4s}
+.call-modal-icon.live{background:linear-gradient(135deg,#16a34a,#22c55e)}
+.ringing .call-ring-1{animation:ring-expand 2s ease-out infinite}
+.ringing .call-ring-2{animation:ring-expand 2s ease-out .6s infinite}
+@keyframes ring-expand{0%{transform:scale(.85);border-color:rgba(74,222,128,.6);opacity:1}100%{transform:scale(1.6);border-color:rgba(74,222,128,0);opacity:0}}
+
+.call-modal h3{color:white;font-size:1.35rem;margin-bottom:10px;transition:all .3s}
+.call-modal-sub{color:rgba(255,255,255,.6);font-size:.88rem;margin-bottom:28px;line-height:1.65;max-width:320px;margin-left:auto;margin-right:auto;transition:all .3s}
+
+/* Live badge */
+.live-badge{display:none;align-items:center;justify-content:center;gap:8px;background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.3);border-radius:40px;padding:8px 20px;font-size:.82rem;color:#4ADE80;margin:0 auto 20px;width:fit-content}
+.live-badge.visible{display:flex}
+.live-badge-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:pulse 1.2s infinite;flex-shrink:0}
+
+.call-modal-status{font-size:.82rem;color:rgba(255,255,255,.45);min-height:20px;margin-bottom:18px}
+.call-modal-features{display:flex;flex-direction:column;gap:8px;margin-bottom:28px}
+.call-modal-feature{display:flex;align-items:center;gap:10px;font-size:.83rem;color:rgba(255,255,255,.6);text-align:left}
+.call-modal-feature i{color:rgba(74,222,128,.8);width:14px;flex-shrink:0}
+.call-modal-footer{font-size:.73rem;color:rgba(255,255,255,.25);margin-top:20px}
+
+/* Hero "Try Live Call" button */
+.btn-call-hero{display:inline-flex;align-items:center;gap:9px;padding:11px 22px;border-radius:7px;font-weight:600;font-size:.9rem;cursor:pointer;transition:var(--transition);border:2px solid var(--blue);background:transparent;color:var(--blue);font-family:inherit}
+.btn-call-hero:hover{background:var(--blue);color:var(--white)}
+.btn-call-hero .call-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:pulse 1.5s infinite}
+
+/* Sticky call pill */
+.sticky-call-pill{position:fixed;bottom:96px;right:24px;z-index:9990;background:linear-gradient(135deg,var(--blue),var(--blue-light));color:white;border:none;border-radius:40px;padding:13px 22px;font-size:.84rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:9px;box-shadow:0 4px 24px rgba(30,63,255,.4);transition:all .3s;font-family:'DM Sans',sans-serif;letter-spacing:-.01em}
+.sticky-call-pill:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(30,63,255,.55)}
+.sticky-call-pill .scp-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;flex-shrink:0;animation:pulse 1.4s infinite}
+.sticky-call-pill.hidden{opacity:0;pointer-events:none;transform:translateY(8px)}
+@media(max-width:480px){.sticky-call-pill{bottom:88px;right:16px;padding:11px 16px;font-size:.8rem}}
 </style>
 <base target="_blank">
 </head>
@@ -443,6 +502,9 @@ footer{background:var(--white);padding:60px 0 0}
       <p class="hero-tagline">Ship faster. Scale Smarter. Innovate Confidently.</p>
       <div class="hero-buttons">
         <a href="#ai-agents" class="btn btn-primary">Start with a Free Consultation</a>
+        <button class="btn-call-hero" onclick="openCallModal()">
+          <span class="call-dot"></span> Try Live AI Call
+        </button>
       </div>
     </div>
     <div class="hero-illustration">
@@ -454,7 +516,9 @@ footer{background:var(--white);padding:60px 0 0}
           <div class="illus-input-bar">
             <span>Type a message...</span>
             <div class="illus-icons">
-              <span style="font-size:1rem;color:var(--text-3)"><i class="far fa-smile"></i></span><span style="font-size:1rem;color:var(--text-3)"><i class="fas fa-paperclip"></i></span><span style="font-size:1rem;color:var(--text-3)"><i class="fas fa-microphone"></i></span>
+              <span style="font-size:1rem;color:var(--text-3)"><i class="far fa-smile"></i></span>
+              <span style="font-size:1rem;color:var(--text-3)"><i class="fas fa-paperclip"></i></span>
+              <span style="font-size:1rem;color:var(--text-3)"><i class="fas fa-microphone"></i></span>
             </div>
           </div>
         </div>
@@ -466,26 +530,7 @@ footer{background:var(--white);padding:60px 0 0}
 <!-- ───── MARQUEE ───── -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-item">Mozilla Foundation</span>
-    <span class="marquee-item">qPress</span>
-    <span class="marquee-item">Emblazer</span>
-    <span class="marquee-item">Go2ANDAMAN</span>
-    <span class="marquee-item">Homeloft</span>
-    <span class="marquee-item">MAERSK</span>
-    <span class="marquee-item">HUMA</span>
-    <span class="marquee-item">Pasqal</span>
-    <span class="marquee-item">AccessTruth</span>
-    <span class="marquee-item">United Healthcare</span>
-    <span class="marquee-item">Mozilla Foundation</span>
-    <span class="marquee-item">qPress</span>
-    <span class="marquee-item">Emblazer</span>
-    <span class="marquee-item">Go2ANDAMAN</span>
-    <span class="marquee-item">Homeloft</span>
-    <span class="marquee-item">MAERSK</span>
-    <span class="marquee-item">HUMA</span>
-    <span class="marquee-item">Pasqal</span>
-    <span class="marquee-item">AccessTruth</span>
-    <span class="marquee-item">United Healthcare</span>
+    <span class="marquee-item">Mozilla Foundation</span><span class="marquee-item">qPress</span><span class="marquee-item">Emblazer</span><span class="marquee-item">Go2ANDAMAN</span><span class="marquee-item">Homeloft</span><span class="marquee-item">MAERSK</span><span class="marquee-item">HUMA</span><span class="marquee-item">Pasqal</span><span class="marquee-item">AccessTruth</span><span class="marquee-item">United Healthcare</span><span class="marquee-item">Mozilla Foundation</span><span class="marquee-item">qPress</span><span class="marquee-item">Emblazer</span><span class="marquee-item">Go2ANDAMAN</span><span class="marquee-item">Homeloft</span><span class="marquee-item">MAERSK</span><span class="marquee-item">HUMA</span><span class="marquee-item">Pasqal</span><span class="marquee-item">AccessTruth</span><span class="marquee-item">United Healthcare</span>
   </div>
 </div>
 
@@ -519,27 +564,11 @@ footer{background:var(--white);padding:60px 0 0}
       <p style="margin-left:0;text-align:left">At Enlight Lab, our core values define how we deliver measurable value, execute with excellence, and honor our commitment to every engagement.</p>
     </div>
     <div class="why-main-grid">
-      <div class="why-card">
-        <div class="why-card-icon"><i class="fas fa-lightbulb"></i></div>
-        <h3>Value-Driven Outcomes</h3>
-        <p>Our primary focus is to create meaningful value for our clients — helping them drive revenue growth, strengthen their technology foundations, and achieve sustainable business progress.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-card-icon"><i class="fas fa-code"></i></div>
-        <h3>Commitment to Delivery</h3>
-        <p>We are deeply committed to delivering every project within agreed timelines, without compromising on quality. Reliability and accountability guide our approach to every client engagement.</p>
-      </div>
+      <div class="why-card"><div class="why-card-icon"><i class="fas fa-lightbulb"></i></div><h3>Value-Driven Outcomes</h3><p>Our primary focus is to create meaningful value for our clients — helping them drive revenue growth, strengthen their technology foundations, and achieve sustainable business progress.</p></div>
+      <div class="why-card"><div class="why-card-icon"><i class="fas fa-code"></i></div><h3>Commitment to Delivery</h3><p>We are deeply committed to delivering every project within agreed timelines, without compromising on quality. Reliability and accountability guide our approach to every client engagement.</p></div>
       <div class="why-side-img"><svg width="140" height="140" viewBox="0 0 140 140" fill="none"><circle cx="70" cy="50" r="22" fill="white" opacity=".15"/><circle cx="70" cy="50" r="14" fill="white" opacity=".25"/><rect x="40" y="80" width="60" height="36" rx="8" fill="white" opacity=".12"/><rect x="48" y="88" width="20" height="20" rx="4" fill="white" opacity=".2"/><rect x="74" y="88" width="20" height="8" rx="2" fill="white" opacity=".2"/><rect x="74" y="100" width="14" height="4" rx="2" fill="white" opacity=".15"/><path d="M55 45 L65 55 L80 38" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/></svg></div>
-      <div class="why-card">
-        <div class="why-card-icon"><i class="fas fa-chart-bar"></i></div>
-        <h3>Execution Excellence</h3>
-        <p>Our high-performance delivery mindset enables us to execute efficiently, adapt quickly, and consistently deliver dependable results across complex engineering challenges.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-card-icon"><i class="fas fa-search"></i></div>
-        <h3>Collaboration &amp; Ownership</h3>
-        <p>Leadership, to us, means inspiring progress and delivering results. We believe great results come from strong collaboration and shared ownership of every goal.</p>
-      </div>
+      <div class="why-card"><div class="why-card-icon"><i class="fas fa-chart-bar"></i></div><h3>Execution Excellence</h3><p>Our high-performance delivery mindset enables us to execute efficiently, adapt quickly, and consistently deliver dependable results across complex engineering challenges.</p></div>
+      <div class="why-card"><div class="why-card-icon"><i class="fas fa-search"></i></div><h3>Collaboration &amp; Ownership</h3><p>Leadership, to us, means inspiring progress and delivering results. We believe great results come from strong collaboration and shared ownership of every goal.</p></div>
     </div>
   </div>
 </section>
@@ -547,10 +576,7 @@ footer{background:var(--white);padding:60px 0 0}
 <!-- ───── SERVICES ───── -->
 <section class="services" id="services">
   <div class="container">
-    <div class="section-header">
-      <span class="section-tag">Our Services</span>
-      <h2>Prolific Technology Consulting Services</h2>
-    </div>
+    <div class="section-header"><span class="section-tag">Our Services</span><h2>Prolific Technology Consulting Services</h2></div>
     <div class="tabs-nav">
       <button class="tab-btn active" data-tab="ai">Artificial Intelligence</button>
       <button class="tab-btn" data-tab="de">Digital Engineering</button>
@@ -559,48 +585,27 @@ footer{background:var(--white);padding:60px 0 0}
     </div>
     <div class="tab-content active" id="tab-ai">
       <div class="services-tab-grid">
-        <div class="service-tab-card">
-          <div class="stc-text">
-            <h3>AI Agent Development</h3>
-            <p>We design and deploy task-specific AI agents that automate operations, enhance support, and boost productivity by working like your best teammates alongside existing systems.</p>
-            <a href="#ai-agents" class="btn btn-primary">To know more</a>
-          </div>
-          <div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><rect x="18" y="20" width="36" height="28" rx="8" fill="#1E3FFF" opacity=".15"/><rect x="26" y="28" width="8" height="8" rx="4" fill="#1E3FFF" opacity=".7"/><rect x="42" y="28" width="8" height="8" rx="4" fill="#1E3FFF" opacity=".7"/><rect x="30" y="42" width="12" height="3" rx="1.5" fill="#1E3FFF" opacity=".4"/><rect x="33" y="12" width="6" height="10" rx="3" fill="#1E3FFF" opacity=".5"/><rect x="8" y="30" width="8" height="12" rx="4" fill="#1E3FFF" opacity=".3"/><rect x="56" y="30" width="8" height="12" rx="4" fill="#1E3FFF" opacity=".3"/></svg></div>
-        </div>
-        <div class="service-tab-card">
-          <div class="stc-text">
-            <h3>AI Consulting</h3>
-            <p>From use-case discovery to workflow automation and model selection, we help you integrate AI safely that accelerates efficiency, drives growth, and delivers measurable business impact.</p>
-            <a href="#contact" class="btn btn-primary">To know more</a>
-          </div>
-          <div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="20" stroke="#1E3FFF" stroke-width="2" opacity=".3"/><circle cx="36" cy="36" r="12" stroke="#1E3FFF" stroke-width="2" opacity=".5"/><circle cx="36" cy="36" r="5" fill="#1E3FFF" opacity=".8"/><line x1="36" y1="10" x2="36" y2="20" stroke="#1E3FFF" stroke-width="2" opacity=".5"/><line x1="36" y1="52" x2="36" y2="62" stroke="#1E3FFF" stroke-width="2" opacity=".5"/><line x1="10" y1="36" x2="20" y2="36" stroke="#1E3FFF" stroke-width="2" opacity=".5"/><line x1="52" y1="36" x2="62" y2="36" stroke="#1E3FFF" stroke-width="2" opacity=".5"/></svg></div>
-        </div>
-        <div class="service-tab-card">
-          <div class="stc-text">
-            <h3>Claude AI Development Services</h3>
-            <p>Delivering enterprise-grade Claude AI solutions that transform how organizations build, debug, and maintain software at scale.</p>
-            <a href="#contact" class="btn btn-primary">To know more</a>
-          </div>
-          <div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><path d="M20 52L36 16L52 52" stroke="#1E3FFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/><path d="M26 40H46" stroke="#1E3FFF" stroke-width="3" stroke-linecap="round" opacity=".4"/></svg></div>
-        </div>
+        <div class="service-tab-card"><div class="stc-text"><h3>AI Agent Development</h3><p>We design and deploy task-specific AI agents that automate operations, enhance support, and boost productivity by working like your best teammates alongside existing systems.</p><a href="#ai-agents" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><rect x="18" y="20" width="36" height="28" rx="8" fill="#1E3FFF" opacity=".15"/><rect x="26" y="28" width="8" height="8" rx="4" fill="#1E3FFF" opacity=".7"/><rect x="42" y="28" width="8" height="8" rx="4" fill="#1E3FFF" opacity=".7"/><rect x="30" y="42" width="12" height="3" rx="1.5" fill="#1E3FFF" opacity=".4"/><rect x="33" y="12" width="6" height="10" rx="3" fill="#1E3FFF" opacity=".5"/><rect x="8" y="30" width="8" height="12" rx="4" fill="#1E3FFF" opacity=".3"/><rect x="56" y="30" width="8" height="12" rx="4" fill="#1E3FFF" opacity=".3"/></svg></div></div>
+        <div class="service-tab-card"><div class="stc-text"><h3>AI Consulting</h3><p>From use-case discovery to workflow automation and model selection, we help you integrate AI safely that accelerates efficiency, drives growth, and delivers measurable business impact.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="20" stroke="#1E3FFF" stroke-width="2" opacity=".3"/><circle cx="36" cy="36" r="12" stroke="#1E3FFF" stroke-width="2" opacity=".5"/><circle cx="36" cy="36" r="5" fill="#1E3FFF" opacity=".8"/><line x1="36" y1="10" x2="36" y2="20" stroke="#1E3FFF" stroke-width="2" opacity=".5"/><line x1="36" y1="52" x2="36" y2="62" stroke="#1E3FFF" stroke-width="2" opacity=".5"/><line x1="10" y1="36" x2="20" y2="36" stroke="#1E3FFF" stroke-width="2" opacity=".5"/><line x1="52" y1="36" x2="62" y2="36" stroke="#1E3FFF" stroke-width="2" opacity=".5"/></svg></div></div>
+        <div class="service-tab-card"><div class="stc-text"><h3>Claude AI Development Services</h3><p>Delivering enterprise-grade Claude AI solutions that transform how organizations build, debug, and maintain software at scale.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><path d="M20 52L36 16L52 52" stroke="#1E3FFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/><path d="M26 40H46" stroke="#1E3FFF" stroke-width="3" stroke-linecap="round" opacity=".4"/></svg></div></div>
       </div>
     </div>
     <div class="tab-content" id="tab-de">
       <div class="services-tab-grid">
         <div class="service-tab-card"><div class="stc-text"><h3>Mobile App Development</h3><p>Native or cross-platform mobile apps built for performance, usability, and scale.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="60" height="72" viewBox="0 0 60 72" fill="none"><rect x="8" y="4" width="44" height="64" rx="8" fill="#1E3FFF" opacity=".15"/><rect x="14" y="12" width="32" height="44" rx="3" fill="#1E3FFF" opacity=".2"/><circle cx="30" cy="62" r="3" fill="#1E3FFF" opacity=".5"/></svg></div></div>
         <div class="service-tab-card"><div class="stc-text"><h3>Web Development</h3><p>Modern, high-performance web applications built with cutting-edge frameworks and technologies.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="60" viewBox="0 0 72 60" fill="none"><rect x="4" y="4" width="64" height="44" rx="6" fill="#1E3FFF" opacity=".15"/><rect x="4" y="4" width="64" height="10" rx="6" fill="#1E3FFF" opacity=".2"/><circle cx="14" cy="9" r="2.5" fill="#1E3FFF" opacity=".5"/><circle cx="22" cy="9" r="2.5" fill="#1E3FFF" opacity=".3"/><circle cx="30" cy="9" r="2.5" fill="#1E3FFF" opacity=".2"/><rect x="12" y="22" width="20" height="3" rx="1.5" fill="#1E3FFF" opacity=".4"/><rect x="12" y="30" width="32" height="3" rx="1.5" fill="#1E3FFF" opacity=".25"/><rect x="24" y="52" width="24" height="4" rx="2" fill="#1E3FFF" opacity=".3"/></svg></div></div>
-        <div class="service-tab-card"><div class="stc-text"><h3>MVP Development</h3><p>Build fast, validate smarter. Launch your minimum viable product with speed and confidence in 8 weeks.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><path d="M36 8L44 28H64L48 40L54 60L36 48L18 60L24 40L8 28H28L36 8Z" fill="#1E3FFF" opacity=".2" stroke="#1E3FFF" stroke-width="2" stroke-linejoin="round" opacity=".5"/></svg></div></div>
+        <div class="service-tab-card"><div class="stc-text"><h3>MVP Development</h3><p>Build fast, validate smarter. Launch your minimum viable product with speed and confidence in 8 weeks.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><path d="M36 8L44 28H64L48 40L54 60L36 48L18 60L24 40L8 28H28L36 8Z" fill="#1E3FFF" opacity=".2" stroke="#1E3FFF" stroke-width="2" stroke-linejoin="round"/></svg></div></div>
       </div>
     </div>
     <div class="tab-content" id="tab-cd">
       <div class="services-tab-grid">
         <div class="service-tab-card"><div class="stc-text"><h3>CTO as a Service</h3><p>Elite fractional CTO leadership to guide your technology strategy, architecture, and team execution.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="26" r="14" fill="#1E3FFF" opacity=".2" stroke="#1E3FFF" stroke-width="2" opacity=".4"/><path d="M16 58c0-11 9-18 20-18s20 7 20 18" stroke="#1E3FFF" stroke-width="2.5" stroke-linecap="round" opacity=".5"/></svg></div></div>
-        <div class="service-tab-card"><div class="stc-text"><h3>DevOps &amp; Infra Consulting</h3><p>Automate CI/CD pipelines, optimize cloud infrastructure, and ensure reliable deployments at scale.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><path d="M20 44a16 16 0 1 1 32 0" stroke="#1E3FFF" stroke-width="2.5" stroke-linecap="round" opacity=".5"/><ellipse cx="36" cy="50" rx="20" ry="8" fill="#1E3FFF" opacity=".15" stroke="#1E3FFF" stroke-width="1.5" opacity=".3"/><line x1="36" y1="28" x2="36" y2="42" stroke="#1E3FFF" stroke-width="2" stroke-linecap="round" opacity=".6"/></svg></div></div>
+        <div class="service-tab-card"><div class="stc-text"><h3>DevOps &amp; Infra Consulting</h3><p>Automate CI/CD pipelines, optimize cloud infrastructure, and ensure reliable deployments at scale.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><path d="M20 44a16 16 0 1 1 32 0" stroke="#1E3FFF" stroke-width="2.5" stroke-linecap="round" opacity=".5"/><ellipse cx="36" cy="50" rx="20" ry="8" fill="#1E3FFF" opacity=".15" stroke="#1E3FFF" stroke-width="1.5"/><line x1="36" y1="28" x2="36" y2="42" stroke="#1E3FFF" stroke-width="2" stroke-linecap="round" opacity=".6"/></svg></div></div>
       </div>
     </div>
     <div class="tab-content" id="tab-cm">
       <div class="services-tab-grid">
-        <div class="service-tab-card"><div class="stc-text"><h3>Staff Augmentation</h3><p>Plug in top-tier engineers on-demand. Scale your team with vetted developers who integrate seamlessly.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="24" cy="26" r="10" fill="#1E3FFF" opacity=".2" stroke="#1E3FFF" stroke-width="1.5" opacity=".4"/><circle cx="48" cy="26" r="10" fill="#1E3FFF" opacity=".2" stroke="#1E3FFF" stroke-width="1.5" opacity=".4"/><path d="M8 56c0-8.8 7.2-14 16-14s16 5.2 16 14" stroke="#1E3FFF" stroke-width="2" stroke-linecap="round" opacity=".4"/><path d="M32 56c0-8.8 7.2-14 16-14s16 5.2 16 14" stroke="#1E3FFF" stroke-width="2" stroke-linecap="round" opacity=".6"/></svg></div></div>
+        <div class="service-tab-card"><div class="stc-text"><h3>Staff Augmentation</h3><p>Plug in top-tier engineers on-demand. Scale your team with vetted developers who integrate seamlessly.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="24" cy="26" r="10" fill="#1E3FFF" opacity=".2" stroke="#1E3FFF" stroke-width="1.5"/><circle cx="48" cy="26" r="10" fill="#1E3FFF" opacity=".2" stroke="#1E3FFF" stroke-width="1.5"/><path d="M8 56c0-8.8 7.2-14 16-14s16 5.2 16 14" stroke="#1E3FFF" stroke-width="2" stroke-linecap="round" opacity=".4"/><path d="M32 56c0-8.8 7.2-14 16-14s16 5.2 16 14" stroke="#1E3FFF" stroke-width="2" stroke-linecap="round" opacity=".6"/></svg></div></div>
       </div>
     </div>
   </div>
@@ -617,15 +622,7 @@ footer{background:var(--white);padding:60px 0 0}
         <a href="#contact" class="btn btn-white">Get Started &nbsp;→</a>
       </div>
       <div class="alliances-logos">
-        <div class="alliance-logo">qPress</div>
-        <div class="alliance-logo">MAERSK</div>
-        <div class="alliance-logo">AccessTruth</div>
-        <div class="alliance-logo">Emblazer</div>
-        <div class="alliance-logo">HUMA</div>
-        <div class="alliance-logo">United Healthcare</div>
-        <div class="alliance-logo">Go2ANDAMAN</div>
-        <div class="alliance-logo">Mozilla Foundation</div>
-        <div class="alliance-logo">Homeloft</div>
+        <div class="alliance-logo">qPress</div><div class="alliance-logo">MAERSK</div><div class="alliance-logo">AccessTruth</div><div class="alliance-logo">Emblazer</div><div class="alliance-logo">HUMA</div><div class="alliance-logo">United Healthcare</div><div class="alliance-logo">Go2ANDAMAN</div><div class="alliance-logo">Mozilla Foundation</div><div class="alliance-logo">Homeloft</div>
       </div>
     </div>
     <div class="section-header" style="text-align:left;margin-top:52px;margin-bottom:0">
@@ -638,11 +635,7 @@ footer{background:var(--white);padding:60px 0 0}
 <!-- ───── EXECUTION FRAMEWORK ───── -->
 <section class="execution">
   <div class="container">
-    <div class="section-header">
-      <span class="section-tag">Our Process</span>
-      <h2>Project Execution Framework from Strategy to Shipping</h2>
-      <p>From the first conversation to the final handover, our approach is designed to keep your project moving smoothly, confidently, and strategically.</p>
-    </div>
+    <div class="section-header"><span class="section-tag">Our Process</span><h2>Project Execution Framework from Strategy to Shipping</h2><p>From the first conversation to the final handover, our approach is designed to keep your project moving smoothly, confidently, and strategically.</p></div>
     <div class="steps-grid">
       <div class="step-card"><div class="step-icon"><i class="fas fa-clipboard-list"></i></div><h3>Assessment</h3><p>We begin by getting aligned — your goals, your constraints, and real-world conditions to build a clear project foundation.</p></div>
       <div class="step-card"><div class="step-icon"><i class="fas fa-lightbulb"></i></div><h3>Solution Design</h3><p>Here's where vision turns into a structured plan. We outline the architecture, delivery roadmap, KPIs, and potential risks.</p></div>
@@ -655,25 +648,14 @@ footer{background:var(--white);padding:60px 0 0}
 </section>
 
 <!-- ───── METRICS ───── -->
-<section class="metrics" style="padding:80px 0;background:var(--off-white)">
+<section class="metrics">
   <div class="container">
     <div class="metrics-wrapper">
-      <div class="metrics-title">
-        <h2>What You Gain with Enlight Lab in Numbers</h2>
-      </div>
+      <div class="metrics-title"><h2>What You Gain with Enlight Lab in Numbers</h2></div>
       <div class="metrics-bars">
-        <div class="metric-row">
-          <div class="metric-row-top"><div><div class="metric-label">Faster Resolution</div><div class="metric-sub-label">After deploying a Custom AI Agent.</div></div><div class="metric-value">38%</div></div>
-          <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:38%"></div></div>
-        </div>
-        <div class="metric-row">
-          <div class="metric-row-top"><div><div class="metric-label">Reduction</div><div class="metric-sub-label">In cloud and infrastructure costs</div></div><div class="metric-value">28%</div></div>
-          <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:28%"></div></div>
-        </div>
-        <div class="metric-row">
-          <div class="metric-row-top"><div><div class="metric-label">Weeks</div><div class="metric-sub-label">From concept to a fully working MVP.</div></div><div class="metric-value">8 Weeks</div></div>
-          <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:12%"></div></div>
-        </div>
+        <div class="metric-row"><div class="metric-row-top"><div><div class="metric-label">Faster Resolution</div><div class="metric-sub-label">After deploying a Custom AI Agent.</div></div><div class="metric-value">38%</div></div><div class="metric-bar-bg"><div class="metric-bar-fill" style="width:38%"></div></div></div>
+        <div class="metric-row"><div class="metric-row-top"><div><div class="metric-label">Reduction</div><div class="metric-sub-label">In cloud and infrastructure costs</div></div><div class="metric-value">28%</div></div><div class="metric-bar-bg"><div class="metric-bar-fill" style="width:28%"></div></div></div>
+        <div class="metric-row"><div class="metric-row-top"><div><div class="metric-label">Weeks</div><div class="metric-sub-label">From concept to a fully working MVP.</div></div><div class="metric-value">8 Weeks</div></div><div class="metric-bar-bg"><div class="metric-bar-fill" style="width:12%"></div></div></div>
       </div>
     </div>
   </div>
@@ -682,11 +664,7 @@ footer{background:var(--white);padding:60px 0 0}
 <!-- ───── INDUSTRIES ───── -->
 <section class="industries" id="industries">
   <div class="container">
-    <div class="section-header">
-      <span class="section-tag">Industries</span>
-      <h2>Industry We Serve</h2>
-      <p>Where innovation meets impact — transforming industries through strategic technology solutions.</p>
-    </div>
+    <div class="section-header"><span class="section-tag">Industries</span><h2>Industry We Serve</h2><p>Where innovation meets impact — transforming industries through strategic technology solutions.</p></div>
     <div class="industries-grid">
       <div class="industry-card"><i class="fas fa-hospital" style="font-size:2rem;opacity:.7"></i><h3>Healthcare</h3></div>
       <div class="industry-card"><i class="fas fa-credit-card" style="font-size:2rem;opacity:.7"></i><h3>FinTech</h3></div>
@@ -705,30 +683,9 @@ footer{background:var(--white);padding:60px 0 0}
   <div class="container">
     <div class="section-header"><span class="section-tag" style="color:rgba(255,255,255,.5)">Case Studies</span><h2>How We Help Clients Scale Fast</h2></div>
     <div class="cases-list">
-      <div class="case-item">
-        <div class="case-img"><i class="fas fa-bolt" style="font-size:2rem;color:white;opacity:.7"></i></div>
-        <div class="case-body">
-          <h3>Emblazer.ai</h3>
-          <p>The platform is designed to interactively understand user preferences before delivering results. The client approached our team with a vision of building a comprehensive AI agent development platform from scratch.</p>
-          <a href="#" class="case-link">Read Case Study</a>
-        </div>
-      </div>
-      <div class="case-item">
-        <div class="case-img"><i class="fas fa-hospital" style="font-size:2rem;color:white;opacity:.7"></i></div>
-        <div class="case-body">
-          <h3>Huma: A Remote Patient Monitoring Platform</h3>
-          <p>As a fast-growing leader in modern healthcare, Huma approached our team with a vision to build a digital health application — helping doctors monitor patient records remotely, run virtual hospital wards, and support medical research.</p>
-          <a href="#" class="case-link">Read Case Study</a>
-        </div>
-      </div>
-      <div class="case-item">
-        <div class="case-img"><svg width="64" height="64" viewBox="0 0 64 64" fill="none"><path d="M32 8L40 28H56L44 38L48 58L32 48L16 58L20 38L8 28H24L32 8Z" fill="white" opacity=".15" stroke="white" stroke-width="1.5"/></svg></div>
-        <div class="case-body">
-          <h3>Mozilla Foundation</h3>
-          <p>The client partnered with us to create a simple, secure website that encourages more people to support their mission and communicate their impact more clearly — inspiring greater support for open-source innovation and trustworthy AI.</p>
-          <a href="#" class="case-link">Read Case Study</a>
-        </div>
-      </div>
+      <div class="case-item"><div class="case-img"><i class="fas fa-bolt" style="font-size:2rem;color:white;opacity:.7"></i></div><div class="case-body"><h3>Emblazer.ai</h3><p>The platform is designed to interactively understand user preferences before delivering results. The client approached our team with a vision of building a comprehensive AI agent development platform from scratch.</p><a href="#" class="case-link">Read Case Study</a></div></div>
+      <div class="case-item"><div class="case-img"><i class="fas fa-hospital" style="font-size:2rem;color:white;opacity:.7"></i></div><div class="case-body"><h3>Huma: A Remote Patient Monitoring Platform</h3><p>As a fast-growing leader in modern healthcare, Huma approached our team with a vision to build a digital health application — helping doctors monitor patient records remotely, run virtual hospital wards, and support medical research.</p><a href="#" class="case-link">Read Case Study</a></div></div>
+      <div class="case-item"><div class="case-img"><svg width="64" height="64" viewBox="0 0 64 64" fill="none"><path d="M32 8L40 28H56L44 38L48 58L32 48L16 58L20 38L8 28H24L32 8Z" fill="white" opacity=".15" stroke="white" stroke-width="1.5"/></svg></div><div class="case-body"><h3>Mozilla Foundation</h3><p>The client partnered with us to create a simple, secure website that encourages more people to support their mission and communicate their impact more clearly — inspiring greater support for open-source innovation and trustworthy AI.</p><a href="#" class="case-link">Read Case Study</a></div></div>
     </div>
   </div>
 </section>
@@ -736,26 +693,11 @@ footer{background:var(--white);padding:60px 0 0}
 <!-- ───── TESTIMONIALS ───── -->
 <section class="testimonials">
   <div class="container">
-    <div class="section-header">
-      <span class="section-tag">Testimonials</span>
-      <h2>Our Testimonials</h2>
-    </div>
+    <div class="section-header"><span class="section-tag">Testimonials</span><h2>Our Testimonials</h2></div>
     <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p>Enlight Lab proved to be a highly reliable partner by consistently delivering timely, accurate updates throughout the entire engagement.</p>
-        <div class="tauthor"><div class="tauthor-av">JD</div><div><strong>John Doe</strong><span>Director</span></div></div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p>Along with solid technical expertise, Enlight Lab showed a clear understanding of business needs and delivered solutions that truly moved the needle.</p>
-        <div class="tauthor"><div class="tauthor-av">BS</div><div><strong>Bill Sequeira</strong><span>CEO at Alida Inc</span></div></div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p>Enlight Lab brings hands-on involvement in addressing platform complexities. A truly productive collaboration and one I'd recommend to any growth-stage company.</p>
-        <div class="tauthor"><div class="tauthor-av">BC</div><div><strong>Ben Christine</strong><span>Product Designer</span></div></div>
-      </div>
+      <div class="testimonial-card"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>Enlight Lab proved to be a highly reliable partner by consistently delivering timely, accurate updates throughout the entire engagement.</p><div class="tauthor"><div class="tauthor-av">JD</div><div><strong>John Doe</strong><span>Director</span></div></div></div>
+      <div class="testimonial-card"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>Along with solid technical expertise, Enlight Lab showed a clear understanding of business needs and delivered solutions that truly moved the needle.</p><div class="tauthor"><div class="tauthor-av">BS</div><div><strong>Bill Sequeira</strong><span>CEO at Alida Inc</span></div></div></div>
+      <div class="testimonial-card"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>Enlight Lab brings hands-on involvement in addressing platform complexities. A truly productive collaboration and one I'd recommend to any growth-stage company.</p><div class="tauthor"><div class="tauthor-av">BC</div><div><strong>Ben Christine</strong><span>Product Designer</span></div></div></div>
     </div>
   </div>
 </section>
@@ -763,10 +705,7 @@ footer{background:var(--white);padding:60px 0 0}
 <!-- ───── FAQ ───── -->
 <section class="faq">
   <div class="container">
-    <div class="section-header">
-      <span class="section-tag">FAQ</span>
-      <h2>Frequently Asked Questions</h2>
-    </div>
+    <div class="section-header"><span class="section-tag">FAQ</span><h2>Frequently Asked Questions</h2></div>
     <div class="faq-list">
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Why choose Enlight Lab for outsourcing? <i class="fas fa-chevron-down"></i></div><div class="faq-a">We combine top-tier engineering talent with a product-first mindset to build future-ready software that genuinely moves your business forward.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is your pricing model? <i class="fas fa-chevron-down"></i></div><div class="faq-a">We follow a transparent pricing model based on project scope, team composition, and engagement type — whether fixed-price, T&amp;M, or retainer.</div></div>
@@ -777,126 +716,122 @@ footer{background:var(--white);padding:60px 0 0}
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
+<!-- ═══════════════════════════════════════════════════════════
      AI AGENTS SECTION
-═══════════════════════════════════════════════════════ -->
+═══════════════════════════════════════════════════════════ -->
 <section class="ai-agents" id="ai-agents">
   <div class="container">
     <div class="agents-intro">
       <span class="section-tag">AI Voice &amp; Chat Agents</span>
       <h2>Experience Our AI Agents Live</h2>
-      <p>We've integrated three AI agents — an outbound caller that schedules calls with you, an inbound line that answers your questions, and a chat assistant available right here.</p>
+      <p>We've integrated three AI agents — an outbound caller that schedules calls with you, an inbound voice agent you can talk to right now, and a chat assistant available right here.</p>
     </div>
     <div class="agents-tabs">
       <button class="agent-tab active" onclick="switchAgent('outbound', this)"><i class="fas fa-phone-alt"></i> Outbound Call Demo</button>
-      <button class="agent-tab" onclick="switchAgent('inbound', this)"><i class="fas fa-headset"></i> Inbound Call Line</button>
+      <button class="agent-tab" onclick="switchAgent('inbound', this)"><i class="fas fa-headset"></i> Talk to AI Agent</button>
       <button class="agent-tab" onclick="switchAgent('chat', this)"><i class="fas fa-comments"></i> Chat Assistant</button>
     </div>
 
     <!-- OUTBOUND PANEL -->
     <div class="agent-panel active" id="panel-outbound">
-      <div id="outbound-step1">
-        <div class="outbound-grid">
-          <div class="outbound-form-card">
-            <h3>Schedule an AI Demo Call</h3>
-            <p class="sub">Fill in your details and our AI agent will call you at your chosen time.</p>
-            <div class="step-progress">
-              <div class="sp-item active" id="sp1"><div class="sp-num">1</div><span>Details</span></div>
-              <div class="sp-line" id="spline1"></div>
-              <div class="sp-item" id="sp2"><div class="sp-num">2</div><span>Time Slot</span></div>
-              <div class="sp-line" id="spline2"></div>
-              <div class="sp-item" id="sp3"><div class="sp-num">3</div><span>Confirm</span></div>
+      <div class="outbound-grid">
+        <div class="outbound-form-card">
+          <h3>Schedule an AI Demo Call</h3>
+          <p class="sub">Fill in your details and our AI agent will call you at your chosen time.</p>
+          <div class="step-progress">
+            <div class="sp-item active" id="sp1"><div class="sp-num">1</div><span>Details</span></div>
+            <div class="sp-line" id="spline1"></div>
+            <div class="sp-item" id="sp2"><div class="sp-num">2</div><span>Time Slot</span></div>
+            <div class="sp-line" id="spline2"></div>
+            <div class="sp-item" id="sp3"><div class="sp-num">3</div><span>Confirm</span></div>
+          </div>
+          <div id="ob-form-1">
+            <div class="form-row">
+              <div class="form-group"><label>Full Name *</label><input type="text" id="ob-name" placeholder="Your full name"></div>
+              <div class="form-group"><label>Company</label><input type="text" id="ob-company" placeholder="Company name"></div>
             </div>
-            <!-- Step 1: Details -->
-            <div id="ob-form-1">
-              <div class="form-row">
-                <div class="form-group"><label>Full Name *</label><input type="text" id="ob-name" placeholder="Your full name"></div>
-                <div class="form-group"><label>Company</label><input type="text" id="ob-company" placeholder="Company name"></div>
-              </div>
-              <div class="form-group"><label>Email Address *</label><input type="email" id="ob-email" placeholder="you@company.com"></div>
-              <div class="form-group">
-                <label>Phone Number * <small style="color:var(--text-3)">(The AI will call this number)</small></label>
-                <div class="phone-row">
-                  <select id="ob-cc"><option value="+1">US +1</option><option value="+44">UK +44</option><option value="+91" selected>IN +91</option><option value="+61">AU +61</option><option value="+49">DE +49</option><option value="+33">FR +33</option><option value="+81">JP +81</option><option value="+65">SG +65</option><option value="+971">AE +971</option></select>
-                  <input type="tel" id="ob-phone" placeholder="98765 43210">
-                </div>
-              </div>
-              <div class="form-group">
-                <label>Industry *</label>
-                <select id="ob-industry"><option value="">Select industry…</option><option>E-Commerce</option><option>EdTech</option><option>HealthTech</option><option>BFSI / FinTech</option><option>Hospitality</option><option>Real Estate</option><option>SaaS / Startup</option><option>Other</option></select>
-              </div>
-              <div class="form-group"><label>What would you like to discuss? <small style="color:var(--text-3)">(optional)</small></label><textarea id="ob-message" placeholder="e.g. AI agent development for customer support automation…"></textarea></div>
-              <div class="consent-row"><input type="checkbox" id="ob-consent"><label for="ob-consent">I agree to receive an automated AI voice call. I can end the call at any time.</label></div>
-              <button class="btn btn-primary btn-block" onclick="obNextStep(1)">Choose a Time Slot →</button>
-            </div>
-            <!-- Step 2: Slots -->
-            <div id="ob-form-2" style="display:none">
-              <p style="font-size:.85rem;color:var(--text-3);margin-bottom:16px">Select your preferred time slot (your local timezone)</p>
-              <div class="time-slots-grid" id="ob-slots"></div>
-              <div class="btn-row-spaced" style="margin-top:20px">
-                <button class="btn btn-secondary" onclick="obPrevStep(2)">← Back</button>
-                <button class="btn btn-primary" id="ob-next2-btn" onclick="obNextStep(2)" disabled>Review Booking →</button>
+            <div class="form-group"><label>Email Address *</label><input type="email" id="ob-email" placeholder="you@company.com"></div>
+            <div class="form-group">
+              <label>Phone Number * <small style="color:var(--text-3)">(The AI will call this number)</small></label>
+              <div class="phone-row">
+                <select id="ob-cc"><option value="+1">US +1</option><option value="+44">UK +44</option><option value="+91" selected>IN +91</option><option value="+61">AU +61</option><option value="+49">DE +49</option><option value="+33">FR +33</option><option value="+81">JP +81</option><option value="+65">SG +65</option><option value="+971">AE +971</option></select>
+                <input type="tel" id="ob-phone" placeholder="98765 43210">
               </div>
             </div>
-            <!-- Step 3: Review -->
-            <div id="ob-form-3" style="display:none">
-              <div id="ob-review-box" style="background:var(--light);border-radius:var(--radius);padding:20px;font-size:.88rem;color:var(--text-2);margin-bottom:20px;line-height:1.8"></div>
-              <div style="background:#EFF6FF;border:1px solid #BFDBFE;border-radius:var(--radius);padding:16px;font-size:.83rem;color:#1e40af;margin-bottom:20px">
-                <strong style="display:block;margin-bottom:4px">How this works</strong>
-                Our AI voice agent will call your number at the scheduled time. The conversation is fully natural — ask anything, interrupt anytime. Average duration: 5–10 minutes.
-              </div>
-              <div class="btn-row-spaced">
-                <button class="btn btn-secondary" onclick="obPrevStep(3)">← Back</button>
-                <button class="btn btn-primary" id="ob-confirm-btn" onclick="obConfirm()">Confirm &amp; Schedule Call</button>
-              </div>
-            </div>
-            <!-- Step 4: Success -->
-            <div id="ob-form-4" style="display:none">
-              <div class="booking-success">
-                <div class="success-icon"><i class="fas fa-check"></i></div>
-                <h3>Call Scheduled!</h3>
-                <p id="ob-success-msg">Your AI demo call has been confirmed.</p>
-                <div class="ref-badge" id="ob-ref"></div>
-                <button class="btn btn-secondary" onclick="obReset()" style="margin-top:16px">Book Another Call</button>
-              </div>
+            <div class="form-group"><label>Industry *</label><select id="ob-industry"><option value="">Select industry…</option><option>E-Commerce</option><option>EdTech</option><option>HealthTech</option><option>BFSI / FinTech</option><option>Hospitality</option><option>Real Estate</option><option>SaaS / Startup</option><option>Other</option></select></div>
+            <div class="form-group"><label>What would you like to discuss? <small style="color:var(--text-3)">(optional)</small></label><textarea id="ob-message" placeholder="e.g. AI agent development for customer support automation…"></textarea></div>
+            <div class="consent-row"><input type="checkbox" id="ob-consent"><label for="ob-consent">I agree to receive an automated AI voice call. I can end the call at any time.</label></div>
+            <button class="btn btn-primary btn-block" onclick="obNextStep(1)">Choose a Time Slot →</button>
+          </div>
+          <div id="ob-form-2" style="display:none">
+            <p style="font-size:.85rem;color:var(--text-3);margin-bottom:16px">Select your preferred time slot (your local timezone)</p>
+            <div class="time-slots-grid" id="ob-slots"></div>
+            <div class="btn-row-spaced" style="margin-top:20px">
+              <button class="btn btn-secondary" onclick="obPrevStep(2)">← Back</button>
+              <button class="btn btn-primary" id="ob-next2-btn" onclick="obNextStep(2)" disabled>Review Booking →</button>
             </div>
           </div>
-          <div class="agent-info-card">
-            <h3>Experience AI Voice Technology</h3>
-            <p>Our outbound AI calling agent is powered by Enlight Lab AI. Schedule a live demo and hear first-hand how conversational AI can transform your business — from sales outreach to appointment booking and customer support.</p>
-            <div class="expect-list">
-              <div class="expect-item"><div class="expect-dot"></div>AI calls your number at the scheduled time</div>
-              <div class="expect-item"><div class="expect-dot"></div>Fully conversational — interrupt, ask, redirect anytime</div>
-              <div class="expect-item"><div class="expect-dot"></div>Agent is pre-briefed on your industry and notes</div>
-              <div class="expect-item"><div class="expect-dot"></div>Average call duration: 5–10 minutes</div>
-              <div class="expect-item"><div class="expect-dot"></div>Missed call? We'll send a follow-up email automatically</div>
+          <div id="ob-form-3" style="display:none">
+            <div id="ob-review-box" style="background:var(--light);border-radius:var(--radius);padding:20px;font-size:.88rem;color:var(--text-2);margin-bottom:20px;line-height:1.8"></div>
+            <div style="background:#EFF6FF;border:1px solid #BFDBFE;border-radius:var(--radius);padding:16px;font-size:.83rem;color:#1e40af;margin-bottom:20px">
+              <strong style="display:block;margin-bottom:4px">How this works</strong>
+              Our AI voice agent will call your number at the scheduled time. The conversation is fully natural — ask anything, interrupt anytime. Average duration: 5–10 minutes.
             </div>
-            
+            <div class="btn-row-spaced">
+              <button class="btn btn-secondary" onclick="obPrevStep(3)">← Back</button>
+              <button class="btn btn-primary" id="ob-confirm-btn" onclick="obConfirm()">Confirm &amp; Schedule Call</button>
+            </div>
+          </div>
+          <div id="ob-form-4" style="display:none">
+            <div class="booking-success">
+              <div class="success-icon"><i class="fas fa-check"></i></div>
+              <h3>Call Scheduled!</h3>
+              <p id="ob-success-msg">Your AI demo call has been confirmed.</p>
+              <div class="ref-badge" id="ob-ref"></div>
+              <button class="btn btn-secondary" onclick="obReset()" style="margin-top:16px">Book Another Call</button>
+            </div>
+          </div>
+        </div>
+        <div class="agent-info-card">
+          <h3>Experience AI Voice Technology</h3>
+          <p>Our outbound AI calling agent is powered by Enlight Lab AI. Schedule a live demo and hear first-hand how conversational AI can transform your business — from sales outreach to appointment booking and customer support.</p>
+          <div class="expect-list">
+            <div class="expect-item"><div class="expect-dot"></div>AI calls your number at the scheduled time</div>
+            <div class="expect-item"><div class="expect-dot"></div>Fully conversational — interrupt, ask, redirect anytime</div>
+            <div class="expect-item"><div class="expect-dot"></div>Agent is pre-briefed on your industry and notes</div>
+            <div class="expect-item"><div class="expect-dot"></div>Average call duration: 5–10 minutes</div>
+            <div class="expect-item"><div class="expect-dot"></div>Missed call? We'll send a follow-up email automatically</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- INBOUND PANEL -->
+    <!-- INBOUND / VOICE CALL PANEL -->
     <div class="agent-panel" id="panel-inbound">
       <div class="inbound-wrapper">
         <div class="inbound-info">
-          <h3>AI Inbound Call Line</h3>
-          <p>Our inbound AI voice agent answers questions about Enlight Lab's services, pricing, and capabilities — 24/7, in natural conversational language. Call our dedicated AI line anytime.</p>
-          <div class="expect-list" style="--dot-color:var(--blue)">
-            <div class="expect-item" style="color:var(--text-2)"><div class="expect-dot" style="background:var(--blue)"></div>Available 24/7, no hold times</div>
-            <div class="expect-item" style="color:var(--text-2)"><div class="expect-dot" style="background:var(--blue)"></div>Answers questions about services, pricing &amp; timelines</div>
-            <div class="expect-item" style="color:var(--text-2)"><div class="expect-dot" style="background:var(--blue)"></div>Can schedule a consultation callback</div>
+          <h3>Talk to Our AI Voice Agent</h3>
+          <p>Click the button to start a live voice conversation with our AI agent — directly in your browser. No phone needed, no downloads, no hold times.</p>
+          <div class="expect-list">
+            <div class="expect-item" style="color:var(--text-2)"><div class="expect-dot" style="background:var(--blue)"></div>Live voice conversation right in your browser</div>
+            <div class="expect-item" style="color:var(--text-2)"><div class="expect-dot" style="background:var(--blue)"></div>Ask anything about our services, pricing &amp; timelines</div>
+            <div class="expect-item" style="color:var(--text-2)"><div class="expect-dot" style="background:var(--blue)"></div>Available 24/7 — zero hold times</div>
             <div class="expect-item" style="color:var(--text-2)"><div class="expect-dot" style="background:var(--blue)"></div>Seamlessly hands off to human team when needed</div>
           </div>
         </div>
-        <div class="phone-display">
-          <div class="coming-soon-badge" id="inboundBadge"><div class="cs-dot"></div>Phone number coming soon</div>
-          <div class="pd-label">Inbound AI Agent Line</div>
-          <div class="pd-number" id="inboundNumber">+1 (___) ___-____</div>
-          <div class="pd-sub" id="inboundSub">An AI-powered number will be assigned here soon</div>
-          <div class="pd-status" id="inboundStatus"><div class="pd-dot"></div>Agent Online &amp; Ready</div>
-          
+        <div class="phone-display" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;min-height:280px">
+          <div style="font-size:3.5rem">🎙️</div>
+          <div style="font-size:1.15rem;font-weight:700;color:white">AI Voice Agent</div>
+          <div style="font-size:.85rem;color:rgba(255,255,255,.6);text-align:center;max-width:260px">Click to start a live conversation.<br>Allow microphone access when prompted.</div>
+          <button id="voiceCallBtn" class="voice-call-btn" onclick="toggleVoiceCall()">
+            <i class="fas fa-phone" id="voiceCallIcon"></i>
+            <span id="voiceCallLabel">Start Voice Call</span>
+          </button>
+          <div id="voiceCallStatus" class="voice-status-text"></div>
+          <div id="voiceLiveIndicator" class="voice-live-indicator">
+            <div style="width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:pulse 1s infinite;flex-shrink:0"></div>
+            Live — AI is listening
+          </div>
         </div>
       </div>
     </div>
@@ -912,11 +847,10 @@ footer{background:var(--white);padding:60px 0 0}
             <div class="expect-item" style="color:var(--text-2)"><div class="expect-dot" style="background:var(--blue)"></div>Collects your details for follow-up</div>
             <div class="expect-item" style="color:var(--text-2)"><div class="expect-dot" style="background:var(--blue)"></div>Escalates to human team when complex</div>
           </div>
-          
         </div>
         <div class="chat-demo">
           <div class="chat-header">
-            <div <div <div class="chat-header-av" style="font-family:DM Sans,sans-serif;font-weight:700;font-size:1.1rem;color:#1E3FFF;display:flex;align-items:center;gap:4px"><span style="font-size:1.2rem">{-}</span></div>
+            <div class="chat-header-av" style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:1.1rem;color:#1E3FFF;display:flex;align-items:center;gap:4px"><span style="font-size:1.2rem">{-}</span></div>
             <div class="chat-header-info"><strong>EnlightLab AI Assistant</strong><span style="display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;border-radius:50%;background:#4ADE80;display:inline-block"></span> Online</span></div>
           </div>
           <div class="chat-messages" id="chatMessages">
@@ -936,10 +870,7 @@ footer{background:var(--white);padding:60px 0 0}
 <!-- ───── TECHNOLOGY ───── -->
 <section style="padding:80px 0;background:var(--off-white)">
   <div class="container">
-    <div class="section-header">
-      <span class="section-tag">Technology</span>
-      <h2>Engineered with World-Class Technology</h2>
-    </div>
+    <div class="section-header"><span class="section-tag">Technology</span><h2>Engineered with World-Class Technology</h2></div>
     <div class="tech-grid">
       <div class="tech-badge"><span class="tech-emoji" style="color:#61DAFB;font-weight:700">Rx</span>ReactJS</div>
       <div class="tech-badge"><span class="tech-emoji" style="color:#000;font-weight:700">Nx</span>NextJS</div>
@@ -960,11 +891,7 @@ footer{background:var(--white);padding:60px 0 0}
 <!-- ───── CONTACT ───── -->
 <section class="contact" id="contact">
   <div class="container">
-    <div class="section-header">
-      <span class="section-tag">Contact Us</span>
-      <h2>Ready to Build Something Great?</h2>
-      <p>Tell us about your project and we'll get back to you within 24 hours.</p>
-    </div>
+    <div class="section-header"><span class="section-tag">Contact Us</span><h2>Ready to Build Something Great?</h2><p>Tell us about your project and we'll get back to you within 24 hours.</p></div>
     <div class="contact-grid">
       <div class="contact-info">
         <h2>Let's Talk</h2>
@@ -996,10 +923,7 @@ footer{background:var(--white);padding:60px 0 0}
             </div>
           </div>
           <div class="form-group"><label>Company Name</label><input type="text" id="cf-company" placeholder="Your Company Inc."></div>
-          <div class="form-group">
-            <label>Service Interested In</label>
-            <select id="cf-service"><option value="">Select a service…</option><option>AI Agent Development</option><option>AI Consulting</option><option>Mobile Development</option><option>Web Development</option><option>MVP Development</option><option>DevOps Consulting</option><option>Staff Augmentation</option></select>
-          </div>
+          <div class="form-group"><label>Service Interested In</label><select id="cf-service"><option value="">Select a service…</option><option>AI Agent Development</option><option>AI Consulting</option><option>Mobile Development</option><option>Web Development</option><option>MVP Development</option><option>DevOps Consulting</option><option>Staff Augmentation</option></select></div>
           <div class="form-group"><label>Tell Us About Your Project</label><textarea id="cf-message" rows="4" placeholder="Describe your needs…"></textarea></div>
           <div class="consent-row"><input type="checkbox" id="cf-consent"><label for="cf-consent">I agree to be contacted regarding my project inquiry. *</label></div>
           <button class="btn btn-primary btn-block" onclick="submitContact()"><i class="fas fa-paper-plane"></i> &nbsp;Send Message</button>
@@ -1020,11 +944,7 @@ footer{background:var(--white);padding:60px 0 0}
   <div class="container">
     <span class="ft-label">Trusted by Fortune-Grade Global Leaders</span>
     <div class="ft-logos">
-      <span class="ft-logo">Mozilla Foundation</span>
-      <span class="ft-logo">qPress</span>
-      <span class="ft-logo">Emblazer</span>
-      <span class="ft-logo">Go2ANDAMAN</span>
-      <span class="ft-logo">Homeloft</span>
+      <span class="ft-logo">Mozilla Foundation</span><span class="ft-logo">qPress</span><span class="ft-logo">Emblazer</span><span class="ft-logo">Go2ANDAMAN</span><span class="ft-logo">Homeloft</span>
     </div>
   </div>
 </div>
@@ -1037,55 +957,10 @@ footer{background:var(--white);padding:60px 0 0}
         <a href="mailto:contact@enlightlab.com" class="footer-email"><i class="fas fa-envelope"></i> contact@enlightlab.com</a>
         <div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a></div>
       </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="#">AI Agent Development</a></li>
-          <li><a href="#">AI Consulting Service</a></li>
-          <li><a href="#">CTO as a Service</a></li>
-          <li><a href="#">Data Engineering</a></li>
-          <li><a href="#">DevOps Consulting</a></li>
-          <li><a href="#">Mobile App Development</a></li>
-          <li><a href="#">MVP Development</a></li>
-          <li><a href="#">Staff Augmentation</a></li>
-          <li><a href="#">Web Development</a></li>
-          <li><a href="#">Claude Code Development</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Technologies</h4>
-        <ul>
-          <li><a href="#">Hire ReactJS Developers</a></li>
-          <li><a href="#">Hire AngularJS Developers</a></li>
-          <li><a href="#">Hire NextJS Developers</a></li>
-          <li><a href="#">Hire Node Developers</a></li>
-          <li><a href="#">Hire PHP Developers</a></li>
-          <li><a href="#">Hire Python Developers</a></li>
-          <li><a href="#">Hire WordPress Developers</a></li>
-          <li><a href="#">Hire GenAI Engineers</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Industries</h4>
-        <ul>
-          <li><a href="#">Healthcare</a></li>
-          <li><a href="#">FinTech</a></li>
-          <li><a href="#">Technology &amp; Startup</a></li>
-          <li><a href="#">Education</a></li>
-          <li><a href="#">Real Estate</a></li>
-          <li><a href="#">Ecommerce</a></li>
-          <li><a href="#">Insurance</a></li>
-          <li><a href="#">Travel &amp; Hospitality</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Blogs</a></li>
-          <li><a href="#">Case Studies</a></li>
-        </ul>
-      </div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="#">AI Agent Development</a></li><li><a href="#">AI Consulting Service</a></li><li><a href="#">CTO as a Service</a></li><li><a href="#">Data Engineering</a></li><li><a href="#">DevOps Consulting</a></li><li><a href="#">Mobile App Development</a></li><li><a href="#">MVP Development</a></li><li><a href="#">Staff Augmentation</a></li><li><a href="#">Web Development</a></li><li><a href="#">Claude Code Development</a></li></ul></div>
+      <div class="footer-col"><h4>Technologies</h4><ul><li><a href="#">Hire ReactJS Developers</a></li><li><a href="#">Hire AngularJS Developers</a></li><li><a href="#">Hire NextJS Developers</a></li><li><a href="#">Hire Node Developers</a></li><li><a href="#">Hire PHP Developers</a></li><li><a href="#">Hire Python Developers</a></li><li><a href="#">Hire WordPress Developers</a></li><li><a href="#">Hire GenAI Engineers</a></li></ul></div>
+      <div class="footer-col"><h4>Industries</h4><ul><li><a href="#">Healthcare</a></li><li><a href="#">FinTech</a></li><li><a href="#">Technology &amp; Startup</a></li><li><a href="#">Education</a></li><li><a href="#">Real Estate</a></li><li><a href="#">Ecommerce</a></li><li><a href="#">Insurance</a></li><li><a href="#">Travel &amp; Hospitality</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Blogs</a></li><li><a href="#">Case Studies</a></li></ul></div>
     </div>
     <div class="footer-bottom">
       <p>Copyright © 2026 EnlightLab, All Rights Reserved.</p>
@@ -1100,37 +975,89 @@ footer{background:var(--white);padding:60px 0 0}
   <button class="toast-close" onclick="hideToast()"><i class="fas fa-times"></i></button>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════
-     AI INTEGRATION
-     ─────────────────────────────────────────────────────
-     SETUP:
-     1. OUTBOUND: Set your agent ID
-        with your actual outbound agent ID.
-        Once you have a number, set OUTBOUND_NUMBER.
-     2. INBOUND: Buy a phone number, attach your 
-        inbound agent, then update the phone display in the HTML.
-     3. CHAT: Set your CHAT_AGENT_ID
-        chat agent ID. Uncomment the widget loader below.
-═══════════════════════════════════════════════════════ -->
+<!-- ═══ LIVE CALL MODAL ═══ -->
+<div class="call-modal-overlay" id="callModalOverlay" onclick="handleCallModalBackdrop(event)">
+  <div class="call-modal">
+    <button class="call-modal-close" onclick="closeCallModal()" aria-label="Close"><i class="fas fa-times"></i></button>
+
+    <!-- Animated ring icon -->
+    <div class="call-modal-icon-wrap" id="callRingWrap">
+      <div class="call-ring call-ring-1"></div>
+      <div class="call-ring call-ring-2"></div>
+      <div class="call-modal-icon" id="callModalIcon">
+        <i class="fas fa-phone" id="callModalIconGlyph"></i>
+      </div>
+    </div>
+
+    <h3 id="callModalTitle">Talk to Our AI Agent</h3>
+    <p class="call-modal-sub" id="callModalSub">Start a live voice conversation right in your browser. No downloads, no hold times — just speak naturally.</p>
+
+    <!-- Live badge (shown during active call) -->
+    <div class="live-badge" id="callLiveBadge">
+      <div class="live-badge-dot"></div>
+      Live — AI is listening
+    </div>
+
+    <!-- Status text -->
+    <div class="call-modal-status" id="callModalStatus"></div>
+
+    <!-- Feature list (hidden during call) -->
+    <div class="call-modal-features" id="callModalFeatures">
+      <div class="call-modal-feature"><i class="fas fa-check-circle"></i> Ask anything about services, pricing &amp; timelines</div>
+      <div class="call-modal-feature"><i class="fas fa-check-circle"></i> Available 24/7 — zero hold times</div>
+      <div class="call-modal-feature"><i class="fas fa-check-circle"></i> Hands off to human team when needed</div>
+    </div>
+
+    <!-- Call button -->
+    <button id="callModalBtn" class="voice-call-btn" style="margin:0 auto" onclick="toggleModalVoiceCall()">
+      <i class="fas fa-phone" id="callModalBtnIcon"></i>
+      <span id="callModalBtnLabel">Start Call</span>
+    </button>
+
+    <p class="call-modal-footer">Microphone access required &nbsp;·&nbsp; End the call at any time</p>
+  </div>
+</div>
+
+<!-- ═══ STICKY CALL PILL ═══ -->
+<button class="sticky-call-pill" id="stickyCallPill" onclick="openCallModal()">
+  <div class="scp-dot"></div>
+  Try Live AI Call
+</button>
+
+<!-- ═══ FLOATING CHAT WIDGET ═══ -->
+<div class="chat-widget-container">
+  <button class="chat-widget-fab" id="chatFab" onclick="toggleChatWidget()" aria-label="Open chat">
+    <span class="fab-open"><i class="fas fa-comment-dots"></i></span>
+    <span class="fab-close"><i class="fas fa-times"></i></span>
+  </button>
+  <div class="chat-widget-panel" id="chatWidgetPanel">
+    <div class="chat-widget-header">
+      <div class="header-logo">{-}</div>
+      <div class="header-info"><strong>EnlightLab AI</strong><span>Online</span></div>
+      <button class="header-close" onclick="toggleChatWidget()" aria-label="Close chat"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="chat-widget-messages" id="widgetMessages">
+      <div class="msg bot">Hi! I'm the EnlightLab AI assistant. How can I help you today?</div>
+      <div class="msg bot">I can answer questions about our AI services, pricing, case studies, or help you book a consultation.</div>
+    </div>
+    <div class="chat-widget-input">
+      <input type="text" id="widgetInput" placeholder="Ask me anything..." onkeydown="if(event.key==='Enter')sendWidgetChat()">
+      <button onclick="sendWidgetChat()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div>
+
 <script>
 // ═══════════════════════════════════════════════════════════════
 //  SYSTEM CONFIG
 // ═══════════════════════════════════════════════════════════════
-let systemConfig = null;
+var systemConfig = null;
 (async function loadConfig() {
   try {
-    const res = await fetch('/api/calls/config');
-    const data = await res.json();
-    if (data.success) {
-      systemConfig = data;
-      console.log('[CONFIG] Loaded:', data);
-      if (document.getElementById('panel-inbound').classList.contains('active')) {
-        renderInboundStatus();
-      }
-    }
-  } catch (e) {
-    console.warn('[CONFIG] Failed:', e);
-  }
+    var res = await fetch('/api/calls/config');
+    var data = await res.json();
+    if (data.success) { systemConfig = data; }
+  } catch (e) { console.warn('[CONFIG] Failed:', e); }
 })();
 
 // ═══════════════════════════════════════════════════════════════
@@ -1173,7 +1100,6 @@ function switchAgent(id, btn) {
   document.querySelectorAll('.agent-panel').forEach(function(p) { p.classList.remove('active'); });
   btn.classList.add('active');
   document.getElementById('panel-' + id).classList.add('active');
-  if (id === 'inbound') renderInboundStatus();
   if (id === 'chat') initChatAgent();
 }
 
@@ -1192,34 +1118,188 @@ function hideToast() {
 }
 
 // ═══════════════════════════════════════════════════════════════
-//  INBOUND STATUS
+//  RETELL WEB VOICE CALL (Inbound panel)
 // ═══════════════════════════════════════════════════════════════
-function renderInboundStatus() {
-  var badge = document.getElementById('inboundBadge');
-  var number = document.getElementById('inboundNumber');
-  var sub = document.getElementById('inboundSub');
-  var status = document.getElementById('inboundStatus');
-  if (!badge || !number || !sub || !status) return;
-  if (!systemConfig) {
-    setTimeout(renderInboundStatus, 300);
-    return;
-  }
-  if (systemConfig.inbound && systemConfig.inbound.configured) {
-    badge.style.display = 'none';
-    number.textContent = systemConfig.inbound.number;
-    sub.textContent = 'Call this number to speak with our AI agent 24/7. No hold times.';
-    status.innerHTML = '<div class="pd-dot" style="background:#4ADE80;animation:pulse 2s infinite"></div>Agent Online & Ready';
-  } else {
-    badge.style.display = 'inline-flex';
-    badge.innerHTML = '<div class="cs-dot"></div>Phone number coming soon';
-    number.textContent = 'Not yet available';
-    sub.textContent = "We're currently setting up our dedicated AI inbound line. In the meantime, chat with our AI agent or schedule an outbound call below.";
-    status.innerHTML = '<div class="pd-dot" style="background:#F4B942;animation:none"></div>Provisioning Line';
+var retellClient = null;
+var voiceCallActive = false;
+
+async function toggleVoiceCall() {
+  if (voiceCallActive) { endVoiceCall(); } else { await startVoiceCall(); }
+}
+
+async function startVoiceCall() {
+  var btn = document.getElementById('voiceCallBtn');
+  var label = document.getElementById('voiceCallLabel');
+  var icon = document.getElementById('voiceCallIcon');
+  var status = document.getElementById('voiceCallStatus');
+  btn.disabled = true;
+  label.textContent = 'Connecting...';
+  status.textContent = 'Setting up your call...';
+  try {
+    var res = await fetch('/api/calls/web-call', { method: 'POST', headers: { 'Content-Type': 'application/json' } });
+    var data = await res.json();
+    if (!data.success || !data.accessToken) throw new Error(data.message || 'Failed to get call token');
+    retellClient = new RetellWebClient();
+    retellClient.on('call_started', function() {
+      voiceCallActive = true;
+      btn.disabled = false;
+      btn.classList.add('active');
+      icon.className = 'fas fa-phone-slash';
+      label.textContent = 'End Call';
+      status.textContent = '';
+      document.getElementById('voiceLiveIndicator').classList.add('visible');
+    });
+    retellClient.on('call_ended', function() {
+      resetVoiceCallUI();
+      showToast('Call ended. Thanks for talking with our AI!', 'success');
+    });
+    retellClient.on('error', function(err) {
+      console.error('[VOICE] Error:', err);
+      status.textContent = 'Call error. Please try again.';
+      resetVoiceCallUI();
+    });
+    await retellClient.startCall({ accessToken: data.accessToken, sampleRate: 24000, captureDeviceId: 'default', playbackDeviceId: 'default' });
+  } catch (err) {
+    console.error('[VOICE] Start error:', err);
+    document.getElementById('voiceCallStatus').textContent = err.message || 'Could not start call. Check microphone permissions.';
+    resetVoiceCallUI();
+    document.getElementById('voiceCallBtn').disabled = false;
   }
 }
 
+function endVoiceCall() {
+  if (retellClient) { retellClient.stopCall(); retellClient = null; }
+  resetVoiceCallUI();
+}
+
+function resetVoiceCallUI() {
+  voiceCallActive = false;
+  var btn = document.getElementById('voiceCallBtn');
+  var label = document.getElementById('voiceCallLabel');
+  var icon = document.getElementById('voiceCallIcon');
+  if (btn) { btn.disabled = false; btn.classList.remove('active'); }
+  if (icon) icon.className = 'fas fa-phone';
+  if (label) label.textContent = 'Start Voice Call';
+  var li = document.getElementById('voiceLiveIndicator');
+  if (li) li.classList.remove('visible');
+}
+
 // ═══════════════════════════════════════════════════════════════
-//  CHAT AGENT — Native backend-powered chat
+//  LIVE CALL MODAL
+// ═══════════════════════════════════════════════════════════════
+var modalCallActive = false;
+var modalRetellClient = null;
+
+function openCallModal() {
+  document.getElementById('callModalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // hide sticky pill while modal is open
+  document.getElementById('stickyCallPill').classList.add('hidden');
+}
+
+function closeCallModal() {
+  if (modalCallActive) endModalCall();
+  document.getElementById('callModalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  document.getElementById('stickyCallPill').classList.remove('hidden');
+}
+
+function handleCallModalBackdrop(e) {
+  if (e.target === document.getElementById('callModalOverlay')) closeCallModal();
+}
+
+async function toggleModalVoiceCall() {
+  if (modalCallActive) { endModalCall(); return; }
+  await startModalCall();
+}
+
+async function startModalCall() {
+  var btn = document.getElementById('callModalBtn');
+  var label = document.getElementById('callModalBtnLabel');
+  var icon = document.getElementById('callModalBtnIcon');
+  var status = document.getElementById('callModalStatus');
+
+  btn.disabled = true;
+  label.textContent = 'Connecting…';
+  status.textContent = 'Setting up your call…';
+
+  try {
+    var res = await fetch('/api/calls/web-call', { method: 'POST', headers: { 'Content-Type': 'application/json' } });
+    var data = await res.json();
+    if (!data.success || !data.accessToken) throw new Error(data.message || 'Failed to get call token');
+
+    modalRetellClient = new RetellWebClient();
+
+    modalRetellClient.on('call_started', function() {
+      modalCallActive = true;
+      btn.disabled = false;
+      btn.classList.add('active');
+      icon.className = 'fas fa-phone-slash';
+      label.textContent = 'End Call';
+      status.textContent = '';
+      // Switch icon to green, start ring animation
+      document.getElementById('callModalIcon').classList.add('live');
+      document.getElementById('callRingWrap').classList.add('ringing');
+      document.getElementById('callModalIconGlyph').className = 'fas fa-microphone';
+      document.getElementById('callLiveBadge').classList.add('visible');
+      document.getElementById('callModalFeatures').style.display = 'none';
+      document.getElementById('callModalTitle').textContent = 'AI Agent is Live';
+      document.getElementById('callModalSub').textContent = 'Speak naturally — ask anything. Interrupt, redirect, or end the call at any time.';
+    });
+
+    modalRetellClient.on('call_ended', function() {
+      resetModalCallUI();
+      closeCallModal();
+      showToast('Call ended. Thanks for trying our AI agent!', 'success');
+    });
+
+    modalRetellClient.on('error', function(err) {
+      console.error('[MODAL VOICE]', err);
+      status.textContent = 'Call error. Please try again.';
+      resetModalCallUI();
+    });
+
+    await modalRetellClient.startCall({
+      accessToken: data.accessToken,
+      sampleRate: 24000,
+      captureDeviceId: 'default',
+      playbackDeviceId: 'default',
+    });
+
+  } catch (err) {
+    console.error('[MODAL VOICE]', err);
+    status.textContent = err.message || 'Could not start. Check mic permissions.';
+    btn.disabled = false;
+    label.textContent = 'Start Call';
+    icon.className = 'fas fa-phone';
+  }
+}
+
+function endModalCall() {
+  if (modalRetellClient) { modalRetellClient.stopCall(); modalRetellClient = null; }
+  resetModalCallUI();
+}
+
+function resetModalCallUI() {
+  modalCallActive = false;
+  var btn = document.getElementById('callModalBtn');
+  var label = document.getElementById('callModalBtnLabel');
+  var icon = document.getElementById('callModalBtnIcon');
+  if (btn) { btn.disabled = false; btn.classList.remove('active'); }
+  if (label) label.textContent = 'Start Call';
+  if (icon) icon.className = 'fas fa-phone';
+  document.getElementById('callLiveBadge').classList.remove('visible');
+  document.getElementById('callModalIcon').classList.remove('live');
+  document.getElementById('callRingWrap').classList.remove('ringing');
+  document.getElementById('callModalIconGlyph').className = 'fas fa-phone';
+  document.getElementById('callModalStatus').textContent = '';
+  document.getElementById('callModalFeatures').style.display = 'flex';
+  document.getElementById('callModalTitle').textContent = 'Talk to Our AI Agent';
+  document.getElementById('callModalSub').textContent = 'Start a live voice conversation right in your browser. No downloads, no hold times — just speak naturally.';
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  CHAT AGENT
 // ═══════════════════════════════════════════════════════════════
 var chatSessionId = 'sess-' + Math.random().toString(36).substr(2, 9);
 var chatInitialized = false;
@@ -1256,8 +1336,8 @@ function showTyping() {
 }
 
 function hideTyping() {
-  var typing = document.getElementById('typing-indicator');
-  if (typing) typing.remove();
+  var t = document.getElementById('typing-indicator');
+  if (t) t.remove();
 }
 
 async function sendChat() {
@@ -1275,14 +1355,9 @@ async function sendChat() {
     });
     var data = await res.json();
     hideTyping();
-    if (data.success && data.reply) {
-      addChatMessage('bot', data.reply);
-    } else {
-      addChatMessage('bot', 'I apologize, but I am having trouble responding right now. Please try again or contact us directly.');
-    }
+    addChatMessage('bot', (data.success && data.reply) ? data.reply : 'I apologize, but I am having trouble responding right now. Please try again or contact us directly.');
   } catch (err) {
     hideTyping();
-    console.error('[CHAT] Error:', err);
     addChatMessage('bot', 'Connection error. Please check your internet and try again.');
   }
 }
@@ -1297,7 +1372,6 @@ var obData = {};
 function generateSlots() {
   var container = document.getElementById('ob-slots');
   container.innerHTML = '';
-  var slots = [];
   var d = new Date(), added = 0, offset = 1;
   while (added < 3) {
     var day = new Date(d);
@@ -1306,28 +1380,26 @@ function generateSlots() {
     added++;
     ['10:00 AM','12:00 PM','3:00 PM','5:00 PM'].forEach(function(time) {
       var h = parseInt(time.split(':')[0]);
-      var m = parseInt(time.split(':')[1]);
-      var hour = h + (time.includes('PM') && h !== 12 ? 12 : 0);
-      var slotDate = new Date(day.getFullYear(), day.getMonth(), day.getDate(), hour, m, 0);
-      slots.push({ day: slotDate, time: time, label: day.toLocaleDateString('en',{weekday:'short',month:'short',day:'numeric'}), timestamp: slotDate.getTime() });
+      var ampm = time.split(' ')[1];
+      var hour = h + (ampm === 'PM' && h !== 12 ? 12 : 0);
+      var slotDate = new Date(day.getFullYear(), day.getMonth(), day.getDate(), hour, 0, 0);
+      var label = day.toLocaleDateString('en',{weekday:'short',month:'short',day:'numeric'});
+      var el = document.createElement('div');
+      el.className = 'time-slot';
+      el.innerHTML = '<span class="slot-day">' + label + '</span>' + time;
+      el.onclick = function() {
+        document.querySelectorAll('.time-slot').forEach(function(e) {
+          e.classList.remove('selected');
+          e.querySelector('.slot-day').className = 'slot-day';
+        });
+        el.classList.add('selected');
+        el.querySelector('.slot-day').className = 'slot-day slot-day-selected';
+        obSelectedSlot = { day: slotDate, time: time, label: label, timestamp: slotDate.getTime() };
+        document.getElementById('ob-next2-btn').disabled = false;
+      };
+      container.appendChild(el);
     });
   }
-  slots.forEach(function(s) {
-    var el = document.createElement('div');
-    el.className = 'time-slot';
-    el.innerHTML = '<span class="slot-day">' + s.label + '</span>' + s.time;
-    el.onclick = function() {
-      document.querySelectorAll('.time-slot').forEach(function(e) {
-        e.classList.remove('selected');
-        e.querySelector('.slot-day').className = 'slot-day';
-      });
-      el.classList.add('selected');
-      el.querySelector('.slot-day').className = 'slot-day slot-day-selected';
-      obSelectedSlot = s;
-      document.getElementById('ob-next2-btn').disabled = false;
-    };
-    container.appendChild(el);
-  });
 }
 
 function obSetStep(n) {
@@ -1382,6 +1454,7 @@ function obNextStep(from) {
     obSetStep(3);
   }
 }
+
 function obPrevStep(from) { obSetStep(from - 1); }
 
 async function obConfirm() {
@@ -1405,22 +1478,18 @@ async function obConfirm() {
     });
     var data = await res.json();
     if (!res.ok || !data.success) throw new Error(data.message || 'Scheduling failed');
-    var ref = data.bookingId;
-    var isConfigured = data.aiConfigured;
-    document.getElementById('ob-success-msg').textContent = isConfigured
+    document.getElementById('ob-success-msg').textContent = data.retellConfigured
       ? 'Your AI demo call is confirmed for ' + obData.slot.label + ' at ' + obData.slot.time + '. Our AI agent will call ' + obData.phone + '.'
       : 'Your demo request is confirmed for ' + obData.slot.label + ' at ' + obData.slot.time + '. Our team will contact you at ' + obData.phone + ' shortly.';
-    document.getElementById('ob-ref').textContent = 'Ref: ' + ref;
+    document.getElementById('ob-ref').textContent = 'Ref: ' + data.bookingId;
     obSetStep(4);
-    showToast(isConfigured ? 'Call scheduled successfully!' : 'Request received! Our team will be in touch.', 'success');
+    showToast('Call scheduled successfully!', 'success');
   } catch (err) {
-    console.warn('[obConfirm] API error:', err.message);
     var ref = 'EL-' + Math.random().toString(36).substr(2,6).toUpperCase();
-    document.getElementById('ob-success-msg').textContent =
-      'Your demo request is confirmed for ' + obData.slot.label + ' at ' + obData.slot.time + '. Our team will contact you at ' + obData.phone + ' shortly.';
+    document.getElementById('ob-success-msg').textContent = 'Your demo request is confirmed for ' + obData.slot.label + ' at ' + obData.slot.time + '. Our team will contact you shortly.';
     document.getElementById('ob-ref').textContent = 'Ref: ' + ref;
     obSetStep(4);
-    showToast('Request received! Our team will be in touch.', 'success');
+    showToast('Request received!', 'success');
   } finally {
     btn.disabled = false;
     btn.textContent = 'Confirm & Schedule Call';
@@ -1428,8 +1497,7 @@ async function obConfirm() {
 }
 
 function obReset() {
-  obCurrentStep = 1;
-  obSelectedSlot = null;
+  obCurrentStep = 1; obSelectedSlot = null;
   ['ob-name','ob-email','ob-phone','ob-company','ob-message'].forEach(function(id) { document.getElementById(id).value = ''; });
   document.getElementById('ob-consent').checked = false;
   document.getElementById('ob-industry').value = '';
@@ -1450,11 +1518,9 @@ async function submitContact() {
   if (!email || !email.includes('@')) return showToast('Please enter a valid email', 'error');
   if (!phone) return showToast('Please enter your phone number', 'error');
   if (!consent) return showToast('Please accept the consent checkbox', 'error');
-
   var countryCode = document.getElementById('cf-cc').value;
   var rawPhone = phone.replace(/\D/g,'');
   var fullPhone = rawPhone.startsWith('+') ? rawPhone : countryCode + rawPhone;
-
   var payload = {
     firstName: fname, lastName: lname, email: email,
     countryCode: countryCode, phone: rawPhone, fullPhone: fullPhone,
@@ -1462,18 +1528,13 @@ async function submitContact() {
     service: document.getElementById('cf-service').value,
     message: document.getElementById('cf-message').value.trim(),
   };
-
   try {
-    var res = await fetch('/api/contact/submit', {
+    await fetch('/api/contact/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
-    var data = await res.json();
-    if (!res.ok || !data.success) throw new Error(data.message || 'Submission failed');
-  } catch (err) {
-    console.warn('[submitContact]', err.message);
-  }
+  } catch (err) { console.warn('[submitContact]', err.message); }
   document.getElementById('contactFormWrap').style.display = 'none';
   document.getElementById('cf-success').style.display = 'block';
   showToast('Message sent successfully!', 'success');
@@ -1491,9 +1552,7 @@ function toggleChatWidget() {
   widgetOpen = !widgetOpen;
   panel.classList.toggle('open', widgetOpen);
   fab.classList.toggle('active', widgetOpen);
-  if (widgetOpen) {
-    setTimeout(function() { document.getElementById('widgetInput').focus(); }, 300);
-  }
+  if (widgetOpen) setTimeout(function() { document.getElementById('widgetInput').focus(); }, 300);
 }
 
 function addWidgetMessage(role, text) {
@@ -1518,8 +1577,8 @@ function showWidgetTyping() {
 }
 
 function hideWidgetTyping() {
-  var typing = document.getElementById('widget-typing');
-  if (typing) typing.remove();
+  var t = document.getElementById('widget-typing');
+  if (t) t.remove();
 }
 
 async function sendWidgetChat() {
@@ -1537,44 +1596,12 @@ async function sendWidgetChat() {
     });
     var data = await res.json();
     hideWidgetTyping();
-    if (data.success && data.reply) {
-      addWidgetMessage('bot', data.reply);
-    } else {
-      addWidgetMessage('bot', 'I apologize, but I am having trouble responding right now. Please try again or contact us directly.');
-    }
+    addWidgetMessage('bot', (data.success && data.reply) ? data.reply : 'I apologize, but I am having trouble responding right now. Please try again or contact us directly.');
   } catch (err) {
     hideWidgetTyping();
-    console.error('[WIDGET CHAT] Error:', err);
     addWidgetMessage('bot', 'Connection error. Please check your internet and try again.');
   }
 }
 </script>
-
-<!-- ═══ FLOATING CHAT WIDGET ═══ -->
-<div class="chat-widget-container">
-  <button class="chat-widget-fab" id="chatFab" onclick="toggleChatWidget()" aria-label="Open chat">
-    <span class="fab-open"><i class="fas fa-comment-dots"></i></span>
-    <span class="fab-close"><i class="fas fa-times"></i></span>
-  </button>
-
-  <div class="chat-widget-panel" id="chatWidgetPanel">
-    <div class="chat-widget-header">
-      <div class="header-logo">{-}</div>
-      <div class="header-info">
-        <strong>EnlightLab AI</strong>
-        <span>Online</span>
-      </div>
-      <button class="header-close" onclick="toggleChatWidget()" aria-label="Close chat"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="chat-widget-messages" id="widgetMessages">
-      <div class="msg bot">Hi! I'm the EnlightLab AI assistant. How can I help you today?</div>
-      <div class="msg bot">I can answer questions about our AI services, pricing, case studies, or help you book a consultation.</div>
-    </div>
-    <div class="chat-widget-input">
-      <input type="text" id="widgetInput" placeholder="Ask me anything..." onkeydown="if(event.key==='Enter')sendWidgetChat()">
-      <button onclick="sendWidgetChat()"><i class="fas fa-paper-plane"></i></button>
-    </div>
-  </div>
-</div>
 </body>
 </html>
