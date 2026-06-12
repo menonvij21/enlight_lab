@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -67,20 +68,15 @@ h3{font-size:1.15rem}
 .btn-primary:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 6px 24px rgba(30,63,255,.3)}
 .btn-outline{background:transparent;color:var(--blue);border:1.5px solid var(--blue)}
 .btn-outline:hover{background:var(--blue);color:var(--white)}
-
-/* Hero live call button */
 .btn-call-hero{display:inline-flex;align-items:center;gap:9px;padding:11px 22px;border-radius:7px;font-weight:600;font-size:.9rem;cursor:pointer;transition:var(--transition);border:2px solid var(--blue);background:transparent;color:var(--blue);font-family:inherit}
 .btn-call-hero:hover{background:var(--blue);color:var(--white)}
 .btn-call-hero .call-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:pulse 1.5s infinite}
-
 .hero-illustration{display:flex;align-items:center;justify-content:center}
-.hero-illustration img{max-width:460px;width:100%}
 .hero-illus-placeholder{width:100%;max-width:460px;aspect-ratio:1;background:linear-gradient(135deg,#e8eeff 0%,#dce4ff 100%);border-radius:var(--radius-xl);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .illus-chat{position:absolute;display:flex;flex-direction:column;gap:12px;width:80%}
 .illus-bubble{padding:16px 20px;border-radius:var(--radius-lg);font-size:.85rem}
 .illus-bubble.bot{background:var(--white);border:1px solid var(--border);border-bottom-left-radius:4px;color:var(--text);max-width:80%;box-shadow:var(--shadow)}
 .illus-bubble.user{background:var(--blue);color:var(--white);border-bottom-right-radius:4px;max-width:80%;align-self:flex-end}
-.illus-robot{font-size:3.5rem;margin-bottom:8px;text-align:left}
 .illus-input-bar{background:var(--white);border:1px solid var(--border);border-radius:40px;padding:10px 16px;display:flex;align-items:center;gap:8px;margin-top:10px;box-shadow:var(--shadow)}
 .illus-input-bar span{flex:1;font-size:.78rem;color:var(--text-3)}
 .illus-icons{display:flex;gap:6px;font-size:.9rem;color:var(--text-3)}
@@ -90,25 +86,25 @@ h3{font-size:1.15rem}
   .hero-illus-placeholder{max-width:320px;margin:0 auto}
 }
 
-/* ─────────────────── BLUE STRIP / ABOUT BANNER ─────────────────── */
+/* ─────────────────── ABOUT BANNER ─────────────────── */
 .about-banner{background:var(--navy);padding:72px 0}
 .about-banner .container{text-align:center}
 .about-banner h2{color:var(--white);font-size:clamp(1.6rem,2.5vw,2rem);margin-bottom:20px}
 .about-banner p{color:rgba(255,255,255,.78);max-width:820px;margin:0 auto 12px;font-size:.97rem}
 
-/* ─────────────────── MISSION / ABOUT BODY ─────────────────── */
+/* ─────────────────── ABOUT BODY ─────────────────── */
 .about-body{padding:80px 0}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 .mission-card{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:40px;height:100%}
 .mission-card h3{margin-bottom:14px;font-size:1.1rem}
 .mission-card p{color:var(--text-2);font-size:.93rem;line-height:1.7}
-.about-img{border-radius:var(--radius-lg);overflow:hidden;height:320px;background:linear-gradient(135deg,#1530CC,#3D5AFF);display:flex;align-items:center;justify-content:center;font-size:6rem}
+.about-img{border-radius:var(--radius-lg);overflow:hidden;height:320px;background:linear-gradient(135deg,#1530CC,#3D5AFF);display:flex;align-items:center;justify-content:center}
 @media(max-width:860px){.about-grid{grid-template-columns:1fr}}
 
 /* ─────────────────── WHY US ─────────────────── */
 .why-us{padding:80px 0;background:var(--off-white)}
 .why-main-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
-.why-side-img{grid-row:1/3;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600"><rect fill="%23e0e4f0" width="400" height="600"/><circle cx="200" cy="280" r="120" fill="%23c0c8e8" opacity=".5"/></svg>') center/cover;border-radius:var(--radius-lg);min-height:340px;filter:grayscale(1);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:5rem}
+.why-side-img{grid-row:1/3;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600"><rect fill="%23e0e4f0" width="400" height="600"/><circle cx="200" cy="280" r="120" fill="%23c0c8e8" opacity=".5"/></svg>') center/cover;border-radius:var(--radius-lg);min-height:340px;filter:grayscale(1);overflow:hidden;display:flex;align-items:center;justify-content:center}
 .why-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;transition:var(--transition)}
 .why-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
 .why-card-icon{font-size:1.6rem;color:var(--blue);margin-bottom:14px}
@@ -129,14 +125,11 @@ h3{font-size:1.15rem}
 .service-tab-card:hover{border-color:var(--blue);box-shadow:var(--shadow-md)}
 .stc-text h3{font-size:1.1rem;margin-bottom:10px}
 .stc-text p{color:var(--text-2);font-size:.9rem;line-height:1.65;margin-bottom:16px}
-.stc-illus{background:linear-gradient(135deg,#e8eeff,#dce4ff);border-radius:var(--radius-lg);height:160px;display:flex;align-items:center;justify-content:center;font-size:4rem}
+.stc-illus{background:linear-gradient(135deg,#e8eeff,#dce4ff);border-radius:var(--radius-lg);height:160px;display:flex;align-items:center;justify-content:center}
 @media(max-width:640px){.service-tab-card{grid-template-columns:1fr}.stc-illus{display:none}}
 
 /* ─────────────────── ALLIANCES ─────────────────── */
 .alliances{background:var(--navy);padding:72px 0}
-.alliances .section-header h2{color:var(--white)}
-.alliances .section-tag{color:rgba(255,255,255,.6)}
-.alliances .section-header p{color:rgba(255,255,255,.65)}
 .alliances-text-cta{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:52px}
 .alliances-text h2{color:var(--white);margin-bottom:14px}
 .alliances-text p{color:rgba(255,255,255,.7);font-size:.93rem;margin-bottom:24px}
@@ -152,7 +145,6 @@ h3{font-size:1.15rem}
 .metrics-title h2{margin-bottom:14px}
 .metrics-title p{color:var(--text-2);font-size:.93rem}
 .metrics-bars{display:flex;flex-direction:column;gap:28px}
-.metric-row{}
 .metric-row-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
 .metric-label{font-size:.88rem;font-weight:700;color:var(--blue)}
 .metric-sub-label{font-size:.8rem;color:var(--text-3)}
@@ -161,7 +153,7 @@ h3{font-size:1.15rem}
 .metric-bar-fill{height:100%;background:var(--blue);border-radius:40px;transition:width 1.2s ease}
 @media(max-width:640px){.metrics-wrapper{grid-template-columns:1fr}}
 
-/* ─────────────────── EXECUTION FRAMEWORK ─────────────────── */
+/* ─────────────────── EXECUTION ─────────────────── */
 .execution{padding:80px 0}
 .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .step-card{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;transition:var(--transition)}
@@ -178,18 +170,17 @@ h3{font-size:1.15rem}
 .industry-card{border-radius:var(--radius-lg);overflow:hidden;position:relative;height:180px;background:linear-gradient(135deg,#1c2e6b,#2d4dcc);display:flex;align-items:flex-end;padding:20px;cursor:pointer;transition:var(--transition)}
 .industry-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
 .industry-card h3{color:var(--white);font-size:1rem;position:relative;z-index:1}
-.industry-card .ind-emoji{position:absolute;top:20px;left:20px;font-size:2.2rem;opacity:.6}
 @media(max-width:860px){.industries-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.industries-grid{grid-template-columns:1fr}}
 
-/* ─────────────────── CASE STUDIES ─────────────────── */
+/* ─────────────────── CASES ─────────────────── */
 .cases{background:var(--navy);padding:80px 0}
 .cases .section-header h2{color:var(--white)}
 .cases .section-tag{color:rgba(255,255,255,.6)}
 .cases-list{display:flex;flex-direction:column;gap:0}
 .case-item{display:grid;grid-template-columns:300px 1fr;gap:0;border-top:1px solid rgba(255,255,255,.12);padding:40px 0;align-items:center}
 .case-item:last-child{border-bottom:1px solid rgba(255,255,255,.12)}
-.case-img{background:rgba(255,255,255,.1);border-radius:var(--radius-lg);height:160px;margin-right:40px;display:flex;align-items:center;justify-content:center;font-size:4rem}
+.case-img{background:rgba(255,255,255,.1);border-radius:var(--radius-lg);height:160px;margin-right:40px;display:flex;align-items:center;justify-content:center}
 .case-body h3{color:var(--white);margin-bottom:10px;font-size:1.1rem}
 .case-body p{color:rgba(255,255,255,.65);font-size:.9rem;line-height:1.65;max-width:620px;margin-bottom:18px}
 .case-link{color:var(--white);font-size:.88rem;font-weight:600;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px}
@@ -201,7 +192,6 @@ h3{font-size:1.15rem}
 .testimonial-card{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;transition:var(--transition)}
 .testimonial-card:hover{box-shadow:var(--shadow-md)}
 .stars{color:#F4B942;font-size:.85rem;margin-bottom:14px;letter-spacing:2px}
-.stars i{margin-right:2px}
 .testimonial-card p{color:var(--text-2);font-size:.9rem;line-height:1.7;margin-bottom:20px}
 .tauthor{display:flex;align-items:center;gap:12px}
 .tauthor-av{width:40px;height:40px;border-radius:50%;background:var(--blue);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0}
@@ -219,7 +209,7 @@ h3{font-size:1.15rem}
 .faq-a{display:none;padding:0 24px 20px;color:var(--text-2);font-size:.9rem;line-height:1.7}
 .faq-item.open .faq-a{display:block}
 
-/* ─────────────────── AI AGENTS SECTION ─────────────────── */
+/* ─────────────────── AI AGENTS ─────────────────── */
 .ai-agents{padding:80px 0}
 .agents-intro{text-align:center;margin-bottom:52px}
 .agents-intro h2{margin-bottom:12px}
@@ -272,13 +262,8 @@ h3{font-size:1.15rem}
 .inbound-info h3{margin-bottom:12px}
 .inbound-info p{color:var(--text-2);font-size:.93rem;margin-bottom:24px;line-height:1.7}
 .phone-display{background:var(--navy);border-radius:var(--radius-xl);padding:44px;text-align:center;color:var(--white)}
-.pd-label{font-size:.8rem;color:rgba(255,255,255,.55);margin-bottom:12px;text-transform:uppercase;letter-spacing:.08em}
-.pd-number{font-size:1.8rem;font-weight:700;letter-spacing:.05em;margin-bottom:6px}
-.pd-sub{font-size:.8rem;color:rgba(255,255,255,.5);margin-bottom:24px}
-.pd-status{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border-radius:40px;padding:8px 18px;font-size:.8rem}
-.pd-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:pulse 2s infinite}
 
-/* Voice call button styles */
+/* Voice call button */
 .voice-call-btn{display:flex;align-items:center;gap:10px;background:#4ADE80;color:#052e16;border:none;border-radius:40px;padding:14px 32px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;font-family:inherit;margin:0 auto}
 .voice-call-btn:hover{transform:scale(1.04);box-shadow:0 6px 24px rgba(74,222,128,.4)}
 .voice-call-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
@@ -288,13 +273,13 @@ h3{font-size:1.15rem}
 .voice-live-indicator.visible{display:flex}
 .voice-status-text{font-size:.8rem;color:rgba(255,255,255,.55);min-height:20px;text-align:center;margin-top:8px}
 
-/* Chat widget */
+/* Chat */
 .chat-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:40px}
 .chat-info h3{margin-bottom:12px}
 .chat-info p{color:var(--text-2);font-size:.93rem;margin-bottom:24px}
 .chat-demo{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
 .chat-header{background:var(--blue);padding:16px 20px;display:flex;align-items:center;gap:12px;color:var(--white)}
-.chat-header-av{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1rem}
+.chat-header-av{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center}
 .chat-header-info strong{display:block;font-size:.9rem}
 .chat-header-info span{font-size:.75rem;opacity:.75}
 .chat-messages{padding:20px;height:280px;overflow-y:auto;display:flex;flex-direction:column;gap:12px}
@@ -310,9 +295,7 @@ h3{font-size:1.15rem}
 .chat-input-area input:focus{border-color:var(--blue)}
 .chat-send-btn{width:36px;height:36px;border-radius:50%;background:var(--blue);color:var(--white);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;transition:var(--transition)}
 .chat-send-btn:hover{background:var(--blue-dark)}
-@media(max-width:860px){
-  .outbound-grid,.inbound-wrapper,.chat-wrapper{grid-template-columns:1fr}
-}
+@media(max-width:860px){.outbound-grid,.inbound-wrapper,.chat-wrapper{grid-template-columns:1fr}}
 
 /* Success state */
 .booking-success{text-align:center;padding:40px 20px}
@@ -321,7 +304,7 @@ h3{font-size:1.15rem}
 .booking-success p{color:var(--text-2);font-size:.93rem;margin-bottom:24px}
 .ref-badge{display:inline-block;background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius);padding:8px 18px;font-size:.83rem;font-weight:700;color:var(--text);margin-bottom:20px}
 
-/* ─────────────────── CONTACT SECTION ─────────────────── */
+/* ─────────────────── CONTACT ─────────────────── */
 .contact{padding:80px 0;background:var(--off-white)}
 .contact-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:60px;align-items:start}
 .contact-info h2{margin-bottom:12px}
@@ -370,13 +353,18 @@ footer{background:var(--white);padding:60px 0 0}
 .marquee-track{display:flex;gap:48px;width:max-content;animation:marquee 24s linear infinite}
 .marquee-item{font-size:.88rem;font-weight:700;color:var(--text-3);white-space:nowrap;flex-shrink:0}
 
+/* ─────────────────── TECH ─────────────────── */
+.tech-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.tech-badge{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius);padding:14px 12px;text-align:center;font-size:.8rem;font-weight:600;color:var(--text-2);transition:var(--transition)}
+.tech-badge:hover{border-color:var(--blue);color:var(--blue)}
+.tech-emoji{display:block;font-size:1.3rem;margin-bottom:6px}
+@media(max-width:640px){.tech-grid{grid-template-columns:repeat(3,1fr)}}
+
 /* ─────────────────── ANIMATIONS ─────────────────── */
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 @keyframes typing-bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.fade-in-up{animation:fadeUp .5s ease both}
+@keyframes ring-expand{0%{transform:scale(.85);border-color:rgba(74,222,128,.6);opacity:1}100%{transform:scale(1.6);border-color:rgba(74,222,128,0);opacity:0}}
 
 /* ─────────────────── TOAST ─────────────────── */
 .toast{position:fixed;bottom:24px;right:24px;background:var(--text);color:var(--white);border-radius:var(--radius);padding:12px 20px;font-size:.88rem;display:flex;align-items:center;gap:10px;z-index:9999;transform:translateY(100px);opacity:0;transition:var(--transition);max-width:340px}
@@ -385,18 +373,10 @@ footer{background:var(--white);padding:60px 0 0}
 .toast.error{background:#991b1b}
 .toast-close{background:none;border:none;color:inherit;cursor:pointer;margin-left:auto;opacity:.7;font-size:.85rem}
 
-/* ─────────────────── MISC ─────────────────── */
-.tech-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
-.tech-badge{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius);padding:14px 12px;text-align:center;font-size:.8rem;font-weight:600;color:var(--text-2);transition:var(--transition)}
-.tech-badge:hover{border-color:var(--blue);color:var(--blue)}
-.tech-emoji{display:block;font-size:1.3rem;margin-bottom:6px}
-@media(max-width:640px){.tech-grid{grid-template-columns:repeat(3,1fr)}}
-
 /* ═══ FLOATING CHAT WIDGET ═══ */
 .chat-widget-container{position:fixed;bottom:24px;right:24px;z-index:9999;font-family:'DM Sans',sans-serif}
-.chat-widget-fab{width:56px;height:56px;border-radius:50%;background:var(--blue);color:var(--white);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(30,63,255,.35);transition:all .3s cubic-bezier(.4,0,.2,1);font-size:1.2rem;position:relative;overflow:hidden}
+.chat-widget-fab{width:56px;height:56px;border-radius:50%;background:var(--blue);color:var(--white);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(30,63,255,.35);transition:all .3s cubic-bezier(.4,0,.2,1);font-size:1.2rem}
 .chat-widget-fab:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(30,63,255,.45)}
-.chat-widget-fab:active{transform:scale(.95)}
 .chat-widget-fab .fab-open{display:block}
 .chat-widget-fab .fab-close{display:none}
 .chat-widget-fab.active .fab-open{display:none}
@@ -426,26 +406,17 @@ footer{background:var(--white);padding:60px 0 0}
 .call-modal-overlay.open .call-modal{transform:translateY(0) scale(1)}
 .call-modal-close{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.7);cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:var(--transition)}
 .call-modal-close:hover{background:rgba(255,255,255,.2);color:white}
-
-/* Animated ring icon */
 .call-modal-icon-wrap{position:relative;width:96px;height:96px;margin:0 auto 28px;display:flex;align-items:center;justify-content:center}
 .call-ring{position:absolute;border-radius:50%;border:2px solid rgba(74,222,128,0);width:100%;height:100%}
-.call-ring-1{animation:none}
-.call-ring-2{animation:none}
-.call-modal-icon{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-light));display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:white;position:relative;z-index:1;transition:background .4s}
-.call-modal-icon.live{background:linear-gradient(135deg,#16a34a,#22c55e)}
 .ringing .call-ring-1{animation:ring-expand 2s ease-out infinite}
 .ringing .call-ring-2{animation:ring-expand 2s ease-out .6s infinite}
-@keyframes ring-expand{0%{transform:scale(.85);border-color:rgba(74,222,128,.6);opacity:1}100%{transform:scale(1.6);border-color:rgba(74,222,128,0);opacity:0}}
-
-.call-modal h3{color:white;font-size:1.35rem;margin-bottom:10px;transition:all .3s}
-.call-modal-sub{color:rgba(255,255,255,.6);font-size:.88rem;margin-bottom:28px;line-height:1.65;max-width:320px;margin-left:auto;margin-right:auto;transition:all .3s}
-
-/* Live badge */
+.call-modal-icon{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-light));display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:white;position:relative;z-index:1;transition:background .4s}
+.call-modal-icon.live{background:linear-gradient(135deg,#16a34a,#22c55e)}
+.call-modal h3{color:white;font-size:1.35rem;margin-bottom:10px}
+.call-modal-sub{color:rgba(255,255,255,.6);font-size:.88rem;margin-bottom:28px;line-height:1.65;max-width:320px;margin-left:auto;margin-right:auto}
 .live-badge{display:none;align-items:center;justify-content:center;gap:8px;background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.3);border-radius:40px;padding:8px 20px;font-size:.82rem;color:#4ADE80;margin:0 auto 20px;width:fit-content}
 .live-badge.visible{display:flex}
 .live-badge-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:pulse 1.2s infinite;flex-shrink:0}
-
 .call-modal-status{font-size:.82rem;color:rgba(255,255,255,.45);min-height:20px;margin-bottom:18px}
 .call-modal-features{display:flex;flex-direction:column;gap:8px;margin-bottom:28px}
 .call-modal-feature{display:flex;align-items:center;gap:10px;font-size:.83rem;color:rgba(255,255,255,.6);text-align:left}
@@ -453,9 +424,8 @@ footer{background:var(--white);padding:60px 0 0}
 .call-modal-footer{font-size:.73rem;color:rgba(255,255,255,.25);margin-top:20px}
 
 /* Sticky call pill */
-.sticky-call-pill{position:fixed;bottom:96px;right:24px;z-index:9990;background:linear-gradient(135deg,var(--blue),var(--blue-light));color:white;border:none;border-radius:40px;padding:13px 22px;font-size:.84rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:9px;box-shadow:0 4px 24px rgba(30,63,255,.4);transition:all .3s;font-family:'DM Sans',sans-serif;letter-spacing:-.01em;opacity:0;pointer-events:none;transform:translateY(8px)}
+.sticky-call-pill{position:fixed;bottom:96px;right:24px;z-index:9990;background:linear-gradient(135deg,var(--blue),var(--blue-light));color:white;border:none;border-radius:40px;padding:13px 22px;font-size:.84rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:9px;box-shadow:0 4px 24px rgba(30,63,255,.4);transition:all .3s;font-family:'DM Sans',sans-serif;opacity:0;pointer-events:none;transform:translateY(8px)}
 .sticky-call-pill.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
-.sticky-call-pill.hidden{opacity:0;pointer-events:none;transform:translateY(8px)}
 .sticky-call-pill:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(30,63,255,.55)}
 .sticky-call-pill .scp-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;flex-shrink:0;animation:pulse 1.4s infinite}
 @media(max-width:480px){.sticky-call-pill{bottom:88px;right:16px;padding:11px 16px;font-size:.8rem}}
@@ -466,10 +436,7 @@ footer{background:var(--white);padding:60px 0 0}
 <!-- ───── NAVBAR ───── -->
 <nav class="navbar" id="navbar">
   <div class="container">
-    <a href="#" class="logo">
-      <span class="logo-bracket">{-}</span>
-      <span>Enlight Lab</span>
-    </a>
+    <a href="#" class="logo"><span class="logo-bracket">{-}</span><span>Enlight Lab</span></a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
       <li class="has-dropdown"><a href="#services">Services</a></li>
@@ -478,9 +445,7 @@ footer{background:var(--white);padding:60px 0 0}
       <li><a href="#blog">Blogs</a></li>
       <li><a href="#contact" class="btn btn-proposal">Get a Proposal</a></li>
     </ul>
-    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
-    </div>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
   </div>
 </nav>
 
@@ -502,7 +467,7 @@ footer{background:var(--white);padding:60px 0 0}
     <div class="hero-illustration">
       <div class="hero-illus-placeholder">
         <div class="illus-chat">
-          <div class="illus-robot"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="14" width="32" height="26" rx="6" fill="#1E3FFF"/><rect x="16" y="22" width="6" height="6" rx="3" fill="white"/><rect x="26" y="22" width="6" height="6" rx="3" fill="white"/><rect x="18" y="32" width="12" height="3" rx="1.5" fill="white" opacity=".6"/><rect x="21" y="8" width="6" height="8" rx="3" fill="#3D5AFF"/><rect x="0" y="22" width="6" height="10" rx="3" fill="#3D5AFF"/><rect x="42" y="22" width="6" height="10" rx="3" fill="#3D5AFF"/></svg></div>
+          <div style="margin-bottom:8px"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="14" width="32" height="26" rx="6" fill="#1E3FFF"/><rect x="16" y="22" width="6" height="6" rx="3" fill="white"/><rect x="26" y="22" width="6" height="6" rx="3" fill="white"/><rect x="18" y="32" width="12" height="3" rx="1.5" fill="white" opacity=".6"/><rect x="21" y="8" width="6" height="8" rx="3" fill="#3D5AFF"/><rect x="0" y="22" width="6" height="10" rx="3" fill="#3D5AFF"/><rect x="42" y="22" width="6" height="10" rx="3" fill="#3D5AFF"/></svg></div>
           <div class="illus-bubble bot">Hi! How can I assist your business today?</div>
           <div class="illus-bubble user">Tell me about your AI solutions</div>
           <div class="illus-input-bar">
@@ -558,7 +523,7 @@ footer{background:var(--white);padding:60px 0 0}
     <div class="why-main-grid">
       <div class="why-card"><div class="why-card-icon"><i class="fas fa-lightbulb"></i></div><h3>Value-Driven Outcomes</h3><p>Our primary focus is to create meaningful value for our clients — helping them drive revenue growth, strengthen their technology foundations, and achieve sustainable business progress.</p></div>
       <div class="why-card"><div class="why-card-icon"><i class="fas fa-code"></i></div><h3>Commitment to Delivery</h3><p>We are deeply committed to delivering every project within agreed timelines, without compromising on quality. Reliability and accountability guide our approach to every client engagement.</p></div>
-      <div class="why-side-img"><svg width="140" height="140" viewBox="0 0 140 140" fill="none"><circle cx="70" cy="50" r="22" fill="white" opacity=".15"/><circle cx="70" cy="50" r="14" fill="white" opacity=".25"/><rect x="40" y="80" width="60" height="36" rx="8" fill="white" opacity=".12"/><rect x="48" y="88" width="20" height="20" rx="4" fill="white" opacity=".2"/><rect x="74" y="88" width="20" height="8" rx="2" fill="white" opacity=".2"/><rect x="74" y="100" width="14" height="4" rx="2" fill="white" opacity=".15"/><path d="M55 45 L65 55 L80 38" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/></svg></div>
+      <div class="why-side-img"><svg width="140" height="140" viewBox="0 0 140 140" fill="none"><circle cx="70" cy="50" r="22" fill="white" opacity=".15"/><circle cx="70" cy="50" r="14" fill="white" opacity=".25"/><rect x="40" y="80" width="60" height="36" rx="8" fill="white" opacity=".12"/><path d="M55 45 L65 55 L80 38" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/></svg></div>
       <div class="why-card"><div class="why-card-icon"><i class="fas fa-chart-bar"></i></div><h3>Execution Excellence</h3><p>Our high-performance delivery mindset enables us to execute efficiently, adapt quickly, and consistently deliver dependable results across complex engineering challenges.</p></div>
       <div class="why-card"><div class="why-card-icon"><i class="fas fa-search"></i></div><h3>Collaboration &amp; Ownership</h3><p>Leadership, to us, means inspiring progress and delivering results. We believe great results come from strong collaboration and shared ownership of every goal.</p></div>
     </div>
@@ -578,21 +543,21 @@ footer{background:var(--white);padding:60px 0 0}
     <div class="tab-content active" id="tab-ai">
       <div class="services-tab-grid">
         <div class="service-tab-card"><div class="stc-text"><h3>AI Agent Development</h3><p>We design and deploy task-specific AI agents that automate operations, enhance support, and boost productivity by working like your best teammates alongside existing systems.</p><a href="#ai-agents" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><rect x="18" y="20" width="36" height="28" rx="8" fill="#1E3FFF" opacity=".15"/><rect x="26" y="28" width="8" height="8" rx="4" fill="#1E3FFF" opacity=".7"/><rect x="42" y="28" width="8" height="8" rx="4" fill="#1E3FFF" opacity=".7"/><rect x="30" y="42" width="12" height="3" rx="1.5" fill="#1E3FFF" opacity=".4"/><rect x="33" y="12" width="6" height="10" rx="3" fill="#1E3FFF" opacity=".5"/><rect x="8" y="30" width="8" height="12" rx="4" fill="#1E3FFF" opacity=".3"/><rect x="56" y="30" width="8" height="12" rx="4" fill="#1E3FFF" opacity=".3"/></svg></div></div>
-        <div class="service-tab-card"><div class="stc-text"><h3>AI Consulting</h3><p>From use-case discovery to workflow automation and model selection, we help you integrate AI safely that accelerates efficiency, drives growth, and delivers measurable business impact.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="20" stroke="#1E3FFF" stroke-width="2" opacity=".3"/><circle cx="36" cy="36" r="12" stroke="#1E3FFF" stroke-width="2" opacity=".5"/><circle cx="36" cy="36" r="5" fill="#1E3FFF" opacity=".8"/><line x1="36" y1="10" x2="36" y2="20" stroke="#1E3FFF" stroke-width="2" opacity=".5"/><line x1="36" y1="52" x2="36" y2="62" stroke="#1E3FFF" stroke-width="2" opacity=".5"/><line x1="10" y1="36" x2="20" y2="36" stroke="#1E3FFF" stroke-width="2" opacity=".5"/><line x1="52" y1="36" x2="62" y2="36" stroke="#1E3FFF" stroke-width="2" opacity=".5"/></svg></div></div>
+        <div class="service-tab-card"><div class="stc-text"><h3>AI Consulting</h3><p>From use-case discovery to workflow automation and model selection, we help you integrate AI safely that accelerates efficiency, drives growth, and delivers measurable business impact.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="20" stroke="#1E3FFF" stroke-width="2" opacity=".3"/><circle cx="36" cy="36" r="12" stroke="#1E3FFF" stroke-width="2" opacity=".5"/><circle cx="36" cy="36" r="5" fill="#1E3FFF" opacity=".8"/></svg></div></div>
         <div class="service-tab-card"><div class="stc-text"><h3>Claude AI Development Services</h3><p>Delivering enterprise-grade Claude AI solutions that transform how organizations build, debug, and maintain software at scale.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><path d="M20 52L36 16L52 52" stroke="#1E3FFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/><path d="M26 40H46" stroke="#1E3FFF" stroke-width="3" stroke-linecap="round" opacity=".4"/></svg></div></div>
       </div>
     </div>
     <div class="tab-content" id="tab-de">
       <div class="services-tab-grid">
         <div class="service-tab-card"><div class="stc-text"><h3>Mobile App Development</h3><p>Native or cross-platform mobile apps built for performance, usability, and scale.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="60" height="72" viewBox="0 0 60 72" fill="none"><rect x="8" y="4" width="44" height="64" rx="8" fill="#1E3FFF" opacity=".15"/><rect x="14" y="12" width="32" height="44" rx="3" fill="#1E3FFF" opacity=".2"/><circle cx="30" cy="62" r="3" fill="#1E3FFF" opacity=".5"/></svg></div></div>
-        <div class="service-tab-card"><div class="stc-text"><h3>Web Development</h3><p>Modern, high-performance web applications built with cutting-edge frameworks and technologies.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="60" viewBox="0 0 72 60" fill="none"><rect x="4" y="4" width="64" height="44" rx="6" fill="#1E3FFF" opacity=".15"/><rect x="4" y="4" width="64" height="10" rx="6" fill="#1E3FFF" opacity=".2"/><circle cx="14" cy="9" r="2.5" fill="#1E3FFF" opacity=".5"/><circle cx="22" cy="9" r="2.5" fill="#1E3FFF" opacity=".3"/><circle cx="30" cy="9" r="2.5" fill="#1E3FFF" opacity=".2"/><rect x="12" y="22" width="20" height="3" rx="1.5" fill="#1E3FFF" opacity=".4"/><rect x="12" y="30" width="32" height="3" rx="1.5" fill="#1E3FFF" opacity=".25"/><rect x="24" y="52" width="24" height="4" rx="2" fill="#1E3FFF" opacity=".3"/></svg></div></div>
+        <div class="service-tab-card"><div class="stc-text"><h3>Web Development</h3><p>Modern, high-performance web applications built with cutting-edge frameworks and technologies.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="60" viewBox="0 0 72 60" fill="none"><rect x="4" y="4" width="64" height="44" rx="6" fill="#1E3FFF" opacity=".15"/><rect x="4" y="4" width="64" height="10" rx="6" fill="#1E3FFF" opacity=".2"/></svg></div></div>
         <div class="service-tab-card"><div class="stc-text"><h3>MVP Development</h3><p>Build fast, validate smarter. Launch your minimum viable product with speed and confidence in 8 weeks.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><path d="M36 8L44 28H64L48 40L54 60L36 48L18 60L24 40L8 28H28L36 8Z" fill="#1E3FFF" opacity=".2" stroke="#1E3FFF" stroke-width="2" stroke-linejoin="round"/></svg></div></div>
       </div>
     </div>
     <div class="tab-content" id="tab-cd">
       <div class="services-tab-grid">
-        <div class="service-tab-card"><div class="stc-text"><h3>CTO as a Service</h3><p>Elite fractional CTO leadership to guide your technology strategy, architecture, and team execution.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="26" r="14" fill="#1E3FFF" opacity=".2" stroke="#1E3FFF" stroke-width="2" opacity=".4"/><path d="M16 58c0-11 9-18 20-18s20 7 20 18" stroke="#1E3FFF" stroke-width="2.5" stroke-linecap="round" opacity=".5"/></svg></div></div>
-        <div class="service-tab-card"><div class="stc-text"><h3>DevOps &amp; Infra Consulting</h3><p>Automate CI/CD pipelines, optimize cloud infrastructure, and ensure reliable deployments at scale.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><path d="M20 44a16 16 0 1 1 32 0" stroke="#1E3FFF" stroke-width="2.5" stroke-linecap="round" opacity=".5"/><ellipse cx="36" cy="50" rx="20" ry="8" fill="#1E3FFF" opacity=".15" stroke="#1E3FFF" stroke-width="1.5"/><line x1="36" y1="28" x2="36" y2="42" stroke="#1E3FFF" stroke-width="2" stroke-linecap="round" opacity=".6"/></svg></div></div>
+        <div class="service-tab-card"><div class="stc-text"><h3>CTO as a Service</h3><p>Elite fractional CTO leadership to guide your technology strategy, architecture, and team execution.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="26" r="14" fill="#1E3FFF" opacity=".2" stroke="#1E3FFF" stroke-width="2"/><path d="M16 58c0-11 9-18 20-18s20 7 20 18" stroke="#1E3FFF" stroke-width="2.5" stroke-linecap="round" opacity=".5"/></svg></div></div>
+        <div class="service-tab-card"><div class="stc-text"><h3>DevOps &amp; Infra Consulting</h3><p>Automate CI/CD pipelines, optimize cloud infrastructure, and ensure reliable deployments at scale.</p><a href="#contact" class="btn btn-primary">To know more</a></div><div class="stc-illus"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><path d="M20 44a16 16 0 1 1 32 0" stroke="#1E3FFF" stroke-width="2.5" stroke-linecap="round" opacity=".5"/><ellipse cx="36" cy="50" rx="20" ry="8" fill="#1E3FFF" opacity=".15" stroke="#1E3FFF" stroke-width="1.5"/></svg></div></div>
       </div>
     </div>
     <div class="tab-content" id="tab-cm">
@@ -610,7 +575,7 @@ footer{background:var(--white);padding:60px 0 0}
       <div class="alliances-text">
         <p style="color:rgba(255,255,255,.6);font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Build &amp; Scale Faster With Our</p>
         <h2>30+ Alliances</h2>
-        <p>Harness the power of world-class cloud platforms for unmatched performance, scalability, and security. Benefit from technologies that deliver efficiency, integration, and reliability.</p>
+        <p>Harness the power of world-class cloud platforms for unmatched performance, scalability, and security.</p>
         <a href="#contact" class="btn btn-white">Get Started &nbsp;→</a>
       </div>
       <div class="alliances-logos">
@@ -624,7 +589,7 @@ footer{background:var(--white);padding:60px 0 0}
   </div>
 </section>
 
-<!-- ───── EXECUTION FRAMEWORK ───── -->
+<!-- ───── EXECUTION ───── -->
 <section class="execution">
   <div class="container">
     <div class="section-header"><span class="section-tag">Our Process</span><h2>Project Execution Framework from Strategy to Shipping</h2><p>From the first conversation to the final handover, our approach is designed to keep your project moving smoothly, confidently, and strategically.</p></div>
@@ -658,19 +623,19 @@ footer{background:var(--white);padding:60px 0 0}
   <div class="container">
     <div class="section-header"><span class="section-tag">Industries</span><h2>Industry We Serve</h2><p>Where innovation meets impact — transforming industries through strategic technology solutions.</p></div>
     <div class="industries-grid">
-      <div class="industry-card"><i class="fas fa-hospital" style="font-size:2rem;opacity:.7"></i><h3>Healthcare</h3></div>
-      <div class="industry-card"><i class="fas fa-credit-card" style="font-size:2rem;opacity:.7"></i><h3>FinTech</h3></div>
-      <div class="industry-card"><i class="fas fa-laptop-code" style="font-size:2rem;opacity:.7"></i><h3>Technology &amp; Startup</h3></div>
-      <div class="industry-card"><i class="fas fa-graduation-cap" style="font-size:2rem;opacity:.7"></i><h3>Education</h3></div>
-      <div class="industry-card"><i class="fas fa-home" style="font-size:2rem;opacity:.7"></i><h3>Real Estate</h3></div>
-      <div class="industry-card"><i class="fas fa-shopping-cart" style="font-size:2rem;opacity:.7"></i><h3>Ecommerce</h3></div>
-      <div class="industry-card"><i class="fas fa-shield-alt" style="font-size:2rem;opacity:.7"></i><h3>Insurance</h3></div>
-      <div class="industry-card"><i class="fas fa-plane" style="font-size:2rem;opacity:.7"></i><h3>Travel &amp; Hospitality</h3></div>
+      <div class="industry-card"><i class="fas fa-hospital" style="font-size:2rem;opacity:.7;position:absolute;top:20px;left:20px"></i><h3>Healthcare</h3></div>
+      <div class="industry-card"><i class="fas fa-credit-card" style="font-size:2rem;opacity:.7;position:absolute;top:20px;left:20px"></i><h3>FinTech</h3></div>
+      <div class="industry-card"><i class="fas fa-laptop-code" style="font-size:2rem;opacity:.7;position:absolute;top:20px;left:20px"></i><h3>Technology &amp; Startup</h3></div>
+      <div class="industry-card"><i class="fas fa-graduation-cap" style="font-size:2rem;opacity:.7;position:absolute;top:20px;left:20px"></i><h3>Education</h3></div>
+      <div class="industry-card"><i class="fas fa-home" style="font-size:2rem;opacity:.7;position:absolute;top:20px;left:20px"></i><h3>Real Estate</h3></div>
+      <div class="industry-card"><i class="fas fa-shopping-cart" style="font-size:2rem;opacity:.7;position:absolute;top:20px;left:20px"></i><h3>Ecommerce</h3></div>
+      <div class="industry-card"><i class="fas fa-shield-alt" style="font-size:2rem;opacity:.7;position:absolute;top:20px;left:20px"></i><h3>Insurance</h3></div>
+      <div class="industry-card"><i class="fas fa-plane" style="font-size:2rem;opacity:.7;position:absolute;top:20px;left:20px"></i><h3>Travel &amp; Hospitality</h3></div>
     </div>
   </div>
 </section>
 
-<!-- ───── CASE STUDIES ───── -->
+<!-- ───── CASES ───── -->
 <section class="cases" id="cases">
   <div class="container">
     <div class="section-header"><span class="section-tag" style="color:rgba(255,255,255,.5)">Case Studies</span><h2>How We Help Clients Scale Fast</h2></div>
@@ -708,9 +673,7 @@ footer{background:var(--white);padding:60px 0 0}
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     AI AGENTS SECTION
-═══════════════════════════════════════════════════════════ -->
+<!-- ═══ AI AGENTS SECTION ═══ -->
 <section class="ai-agents" id="ai-agents">
   <div class="container">
     <div class="agents-intro">
@@ -798,7 +761,7 @@ footer{background:var(--white);padding:60px 0 0}
       </div>
     </div>
 
-    <!-- INBOUND / VOICE CALL PANEL -->
+    <!-- INBOUND PANEL -->
     <div class="agent-panel" id="panel-inbound">
       <div class="inbound-wrapper">
         <div class="inbound-info">
@@ -865,7 +828,7 @@ footer{background:var(--white);padding:60px 0 0}
     <div class="section-header"><span class="section-tag">Technology</span><h2>Engineered with World-Class Technology</h2></div>
     <div class="tech-grid">
       <div class="tech-badge"><span class="tech-emoji" style="color:#61DAFB;font-weight:700">Rx</span>ReactJS</div>
-      <div class="tech-badge"><span class="tech-emoji" style="color:#000;font-weight:700">Nx</span>NextJS</div>
+      <div class="tech-badge"><span class="tech-emoji" style="font-weight:700">Nx</span>NextJS</div>
       <div class="tech-badge"><span class="tech-emoji" style="color:#DD0031;font-weight:700">Ng</span>Angular</div>
       <div class="tech-badge"><span class="tech-emoji">🟢</span>NodeJS</div>
       <div class="tech-badge"><span class="tech-emoji" style="color:#3776AB;font-weight:700">Py</span>Python</div>
@@ -873,7 +836,7 @@ footer{background:var(--white);padding:60px 0 0}
       <div class="tech-badge"><span class="tech-emoji" style="color:#FF9900;font-weight:700">Aw</span>AWS</div>
       <div class="tech-badge"><span class="tech-emoji" style="color:#0078D4;font-weight:700">Az</span>Azure</div>
       <div class="tech-badge"><span class="tech-emoji" style="color:#4285F4;font-weight:700">Gc</span>GCP</div>
-      <div class="tech-badge"><span class="tech-emoji" style="color:#555;font-weight:700">iO</span>iOS</div>
+      <div class="tech-badge"><span class="tech-emoji" style="font-weight:700">iO</span>iOS</div>
       <div class="tech-badge"><span class="tech-emoji" style="color:#3DDC84;font-weight:700">An</span>Android</div>
       <div class="tech-badge"><span class="tech-emoji" style="color:#2496ED;font-weight:700">Do</span>Docker</div>
     </div>
@@ -918,7 +881,7 @@ footer{background:var(--white);padding:60px 0 0}
           <div class="form-group"><label>Service Interested In</label><select id="cf-service"><option value="">Select a service…</option><option>AI Agent Development</option><option>AI Consulting</option><option>Mobile Development</option><option>Web Development</option><option>MVP Development</option><option>DevOps Consulting</option><option>Staff Augmentation</option></select></div>
           <div class="form-group"><label>Tell Us About Your Project</label><textarea id="cf-message" rows="4" placeholder="Describe your needs…"></textarea></div>
           <div class="consent-row"><input type="checkbox" id="cf-consent"><label for="cf-consent">I agree to be contacted regarding my project inquiry. *</label></div>
-          <button class="btn btn-primary btn-block" onclick="submitContact()"><i class="fas fa-paper-plane"></i> &nbsp;Send Message</button>
+          <button class="btn btn-primary btn-block" onclick="submitContact()"><i class="fas fa-paper-plane"></i>&nbsp;Send Message</button>
           <p class="form-disclaimer"><i class="fas fa-lock"></i> Your information is secure and will never be shared.</p>
         </div>
         <div class="success-msg" id="cf-success">
@@ -970,7 +933,7 @@ footer{background:var(--white);padding:60px 0 0}
 <!-- ═══ LIVE CALL MODAL ═══ -->
 <div class="call-modal-overlay" id="callModalOverlay" onclick="handleCallModalBackdrop(event)">
   <div class="call-modal">
-    <button class="call-modal-close" onclick="closeCallModal()" aria-label="Close"><i class="fas fa-times"></i></button>
+    <button class="call-modal-close" onclick="closeCallModal()"><i class="fas fa-times"></i></button>
     <div class="call-modal-icon-wrap" id="callRingWrap">
       <div class="call-ring call-ring-1"></div>
       <div class="call-ring call-ring-2"></div>
@@ -980,10 +943,7 @@ footer{background:var(--white);padding:60px 0 0}
     </div>
     <h3 id="callModalTitle">Talk to Our AI Agent</h3>
     <p class="call-modal-sub" id="callModalSub">Start a live voice conversation right in your browser. No downloads, no hold times — just speak naturally.</p>
-    <div class="live-badge" id="callLiveBadge">
-      <div class="live-badge-dot"></div>
-      Live — AI is listening
-    </div>
+    <div class="live-badge" id="callLiveBadge"><div class="live-badge-dot"></div>Live — AI is listening</div>
     <div class="call-modal-status" id="callModalStatus"></div>
     <div class="call-modal-features" id="callModalFeatures">
       <div class="call-modal-feature"><i class="fas fa-check-circle"></i> Ask anything about services, pricing &amp; timelines</div>
@@ -1006,7 +966,7 @@ footer{background:var(--white);padding:60px 0 0}
 
 <!-- ═══ FLOATING CHAT WIDGET ═══ -->
 <div class="chat-widget-container">
-  <button class="chat-widget-fab" id="chatFab" onclick="toggleChatWidget()" aria-label="Open chat">
+  <button class="chat-widget-fab" id="chatFab" onclick="toggleChatWidget()">
     <span class="fab-open"><i class="fas fa-comment-dots"></i></span>
     <span class="fab-close"><i class="fas fa-times"></i></span>
   </button>
@@ -1014,7 +974,7 @@ footer{background:var(--white);padding:60px 0 0}
     <div class="chat-widget-header">
       <div class="header-logo">{-}</div>
       <div class="header-info"><strong>EnlightLab AI</strong><span>Online</span></div>
-      <button class="header-close" onclick="toggleChatWidget()" aria-label="Close chat"><i class="fas fa-times"></i></button>
+      <button class="header-close" onclick="toggleChatWidget()"><i class="fas fa-times"></i></button>
     </div>
     <div class="chat-widget-messages" id="widgetMessages">
       <div class="msg bot">Hi! I'm the EnlightLab AI assistant. How can I help you today?</div>
@@ -1027,35 +987,52 @@ footer{background:var(--white);padding:60px 0 0}
   </div>
 </div>
 
-<!-- FIX 1: Retell SDK script loaded BEFORE the main script block -->
-<script src="https://cdn.jsdelivr.net/npm/retell-client-js-sdk@latest/dist/index.umd.js"></script>
+<!-- ═══════════════════════════════════════════════════════
+     RETELL SDK — loaded via ESM so RetellWebClient is
+     available on window before any call buttons fire.
+     This replaces the broken UMD CDN approach.
+════════════════════════════════════════════════════════ -->
+<script type="module">
+  import { RetellWebClient } from 'https://cdn.jsdelivr.net/npm/retell-client-js-sdk@3/+esm';
+  window.RetellWebClient = RetellWebClient;
+  // Signal that SDK is ready
+  window._retellReady = true;
+  document.dispatchEvent(new Event('retell-ready'));
+</script>
 
 <script>
 // ═══════════════════════════════════════════════════════════════
-//  SYSTEM CONFIG
+//  HELPERS — create a RetellWebClient safely, waiting for SDK
+// ═══════════════════════════════════════════════════════════════
+function createRetellClient() {
+  if (typeof window.RetellWebClient === 'undefined') {
+    throw new Error('Retell SDK not loaded yet. Please try again in a moment.');
+  }
+  return new window.RetellWebClient();
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  CONFIG
 // ═══════════════════════════════════════════════════════════════
 var systemConfig = null;
 (async function loadConfig() {
   try {
     var res = await fetch('/api/calls/config');
     var data = await res.json();
-    if (data.success) { systemConfig = data; }
-  } catch (e) { console.warn('[CONFIG] Failed:', e); }
+    if (data.success) systemConfig = data;
+  } catch (e) { console.warn('[CONFIG]', e); }
 })();
 
 // ═══════════════════════════════════════════════════════════════
 //  NAVBAR
 // ═══════════════════════════════════════════════════════════════
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
-  // FIX 4: Show sticky pill only after scrolling past the hero
   var pill = document.getElementById('stickyCallPill');
   if (window.scrollY > window.innerHeight * 0.7) {
     pill.classList.add('visible');
-    pill.classList.remove('hidden');
   } else {
     pill.classList.remove('visible');
-    pill.classList.add('hidden');
   }
 });
 
@@ -1066,10 +1043,10 @@ function toggleMenu() {
 // ═══════════════════════════════════════════════════════════════
 //  SERVICE TABS
 // ═══════════════════════════════════════════════════════════════
-document.querySelectorAll('.tab-btn').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
-    document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
+document.querySelectorAll('.tab-btn').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
+    document.querySelectorAll('.tab-content').forEach(function (c) { c.classList.remove('active'); });
     btn.classList.add('active');
     document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
   });
@@ -1081,7 +1058,7 @@ document.querySelectorAll('.tab-btn').forEach(function(btn) {
 function toggleFaq(el) {
   var item = el.closest('.faq-item');
   var wasOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(function(i) { i.classList.remove('open'); });
+  document.querySelectorAll('.faq-item.open').forEach(function (i) { i.classList.remove('open'); });
   if (!wasOpen) item.classList.add('open');
 }
 
@@ -1089,8 +1066,8 @@ function toggleFaq(el) {
 //  AGENT TABS
 // ═══════════════════════════════════════════════════════════════
 function switchAgent(id, btn) {
-  document.querySelectorAll('.agent-tab').forEach(function(t) { t.classList.remove('active'); });
-  document.querySelectorAll('.agent-panel').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.agent-tab').forEach(function (t) { t.classList.remove('active'); });
+  document.querySelectorAll('.agent-panel').forEach(function (p) { p.classList.remove('active'); });
   btn.classList.add('active');
   document.getElementById('panel-' + id).classList.add('active');
   if (id === 'chat') initChatAgent();
@@ -1100,18 +1077,30 @@ function switchAgent(id, btn) {
 //  TOAST
 // ═══════════════════════════════════════════════════════════════
 function showToast(msg, type) {
-  type = type || 'info';
   var t = document.getElementById('toast');
   document.getElementById('toastMsg').textContent = msg;
-  t.className = 'toast show ' + type;
-  setTimeout(function() { t.classList.remove('show'); }, 4000);
+  t.className = 'toast show ' + (type || 'info');
+  setTimeout(function () { t.classList.remove('show'); }, 4000);
 }
-function hideToast() {
-  document.getElementById('toast').classList.remove('show');
+function hideToast() { document.getElementById('toast').classList.remove('show'); }
+
+// ═══════════════════════════════════════════════════════════════
+//  SHARED: fetch web-call token from backend
+// ═══════════════════════════════════════════════════════════════
+async function fetchWebCallToken() {
+  var res = await fetch('/api/calls/web-call', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  var data = await res.json();
+  if (!data.success || !data.accessToken) {
+    throw new Error(data.message || 'Backend did not return an access token');
+  }
+  return data.accessToken;
 }
 
 // ═══════════════════════════════════════════════════════════════
-//  RETELL WEB VOICE CALL (Inbound panel)
+//  INBOUND PANEL — voice call
 // ═══════════════════════════════════════════════════════════════
 var retellClient = null;
 var voiceCallActive = false;
@@ -1121,19 +1110,20 @@ async function toggleVoiceCall() {
 }
 
 async function startVoiceCall() {
-  var btn = document.getElementById('voiceCallBtn');
-  var label = document.getElementById('voiceCallLabel');
-  var icon = document.getElementById('voiceCallIcon');
+  var btn    = document.getElementById('voiceCallBtn');
+  var label  = document.getElementById('voiceCallLabel');
+  var icon   = document.getElementById('voiceCallIcon');
   var status = document.getElementById('voiceCallStatus');
+
   btn.disabled = true;
-  label.textContent = 'Connecting...';
-  status.textContent = 'Setting up your call...';
+  label.textContent = 'Connecting…';
+  status.textContent = 'Setting up your call…';
+
   try {
-    var res = await fetch('/api/calls/web-call', { method: 'POST', headers: { 'Content-Type': 'application/json' } });
-    var data = await res.json();
-    if (!data.success || !data.accessToken) throw new Error(data.message || 'Failed to get call token');
-    retellClient = new RetellWebClient();
-    retellClient.on('call_started', function() {
+    var token = await fetchWebCallToken();
+    retellClient = createRetellClient();
+
+    retellClient.on('call_started', function () {
       voiceCallActive = true;
       btn.disabled = false;
       btn.classList.add('active');
@@ -1142,39 +1132,51 @@ async function startVoiceCall() {
       status.textContent = '';
       document.getElementById('voiceLiveIndicator').classList.add('visible');
     });
-    retellClient.on('call_ended', function() {
+
+    retellClient.on('call_ended', function () {
       resetVoiceCallUI();
       showToast('Call ended. Thanks for talking with our AI!', 'success');
     });
-    retellClient.on('error', function(err) {
-      console.error('[VOICE] Error:', err);
+
+    retellClient.on('error', function (err) {
+      console.error('[VOICE]', err);
       status.textContent = 'Call error. Please try again.';
       resetVoiceCallUI();
     });
-    await retellClient.startCall({ accessToken: data.accessToken, sampleRate: 24000, captureDeviceId: 'default', playbackDeviceId: 'default' });
+
+    await retellClient.startCall({
+      accessToken: token,
+      sampleRate: 24000,
+      captureDeviceId: 'default',
+      playbackDeviceId: 'default',
+    });
+
   } catch (err) {
-    console.error('[VOICE] Start error:', err);
+    console.error('[VOICE]', err);
     document.getElementById('voiceCallStatus').textContent = err.message || 'Could not start call. Check microphone permissions.';
-    resetVoiceCallUI();
-    document.getElementById('voiceCallBtn').disabled = false;
+    btn.disabled = false;
+    label.textContent = 'Start Voice Call';
+    icon.className = 'fas fa-phone';
   }
 }
 
 function endVoiceCall() {
-  if (retellClient) { retellClient.stopCall(); retellClient = null; }
+  if (retellClient) { try { retellClient.stopCall(); } catch(e){} retellClient = null; }
   resetVoiceCallUI();
 }
 
 function resetVoiceCallUI() {
   voiceCallActive = false;
   var btn = document.getElementById('voiceCallBtn');
-  var label = document.getElementById('voiceCallLabel');
-  var icon = document.getElementById('voiceCallIcon');
   if (btn) { btn.disabled = false; btn.classList.remove('active'); }
+  var icon = document.getElementById('voiceCallIcon');
   if (icon) icon.className = 'fas fa-phone';
+  var label = document.getElementById('voiceCallLabel');
   if (label) label.textContent = 'Start Voice Call';
   var li = document.getElementById('voiceLiveIndicator');
   if (li) li.classList.remove('visible');
+  var status = document.getElementById('voiceCallStatus');
+  if (status) status.textContent = '';
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -1186,19 +1188,12 @@ var modalRetellClient = null;
 function openCallModal() {
   document.getElementById('callModalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
-  document.getElementById('stickyCallPill').classList.add('hidden');
-  document.getElementById('stickyCallPill').classList.remove('visible');
 }
 
 function closeCallModal() {
   if (modalCallActive) endModalCall();
   document.getElementById('callModalOverlay').classList.remove('open');
   document.body.style.overflow = '';
-  // Restore pill visibility based on scroll position
-  if (window.scrollY > window.innerHeight * 0.7) {
-    document.getElementById('stickyCallPill').classList.add('visible');
-    document.getElementById('stickyCallPill').classList.remove('hidden');
-  }
 }
 
 function handleCallModalBackdrop(e) {
@@ -1211,9 +1206,9 @@ async function toggleModalVoiceCall() {
 }
 
 async function startModalCall() {
-  var btn = document.getElementById('callModalBtn');
-  var label = document.getElementById('callModalBtnLabel');
-  var icon = document.getElementById('callModalBtnIcon');
+  var btn    = document.getElementById('callModalBtn');
+  var label  = document.getElementById('callModalBtnLabel');
+  var icon   = document.getElementById('callModalBtnIcon');
   var status = document.getElementById('callModalStatus');
 
   btn.disabled = true;
@@ -1221,13 +1216,10 @@ async function startModalCall() {
   status.textContent = 'Setting up your call…';
 
   try {
-    var res = await fetch('/api/calls/web-call', { method: 'POST', headers: { 'Content-Type': 'application/json' } });
-    var data = await res.json();
-    if (!data.success || !data.accessToken) throw new Error(data.message || 'Failed to get call token');
+    var token = await fetchWebCallToken();
+    modalRetellClient = createRetellClient();
 
-    modalRetellClient = new RetellWebClient();
-
-    modalRetellClient.on('call_started', function() {
+    modalRetellClient.on('call_started', function () {
       modalCallActive = true;
       btn.disabled = false;
       btn.classList.add('active');
@@ -1243,20 +1235,20 @@ async function startModalCall() {
       document.getElementById('callModalSub').textContent = 'Speak naturally — ask anything. Interrupt, redirect, or end the call at any time.';
     });
 
-    modalRetellClient.on('call_ended', function() {
+    modalRetellClient.on('call_ended', function () {
       resetModalCallUI();
       closeCallModal();
       showToast('Call ended. Thanks for trying our AI agent!', 'success');
     });
 
-    modalRetellClient.on('error', function(err) {
+    modalRetellClient.on('error', function (err) {
       console.error('[MODAL VOICE]', err);
       status.textContent = 'Call error. Please try again.';
       resetModalCallUI();
     });
 
     await modalRetellClient.startCall({
-      accessToken: data.accessToken,
+      accessToken: token,
       sampleRate: 24000,
       captureDeviceId: 'default',
       playbackDeviceId: 'default',
@@ -1272,17 +1264,17 @@ async function startModalCall() {
 }
 
 function endModalCall() {
-  if (modalRetellClient) { modalRetellClient.stopCall(); modalRetellClient = null; }
+  if (modalRetellClient) { try { modalRetellClient.stopCall(); } catch(e){} modalRetellClient = null; }
   resetModalCallUI();
 }
 
 function resetModalCallUI() {
   modalCallActive = false;
   var btn = document.getElementById('callModalBtn');
-  var label = document.getElementById('callModalBtnLabel');
-  var icon = document.getElementById('callModalBtnIcon');
   if (btn) { btn.disabled = false; btn.classList.remove('active'); }
+  var label = document.getElementById('callModalBtnLabel');
   if (label) label.textContent = 'Start Call';
+  var icon = document.getElementById('callModalBtnIcon');
   if (icon) icon.className = 'fas fa-phone';
   document.getElementById('callLiveBadge').classList.remove('visible');
   document.getElementById('callModalIcon').classList.remove('live');
@@ -1306,8 +1298,8 @@ function initChatAgent() {
   fetch('/api/chat/reset', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ sessionId: chatSessionId })
-  }).catch(function(e) { console.warn('[CHAT] Reset failed:', e); });
+    body: JSON.stringify({ sessionId: chatSessionId }),
+  }).catch(function (e) { console.warn('[CHAT] Reset failed:', e); });
 }
 
 function addChatMessage(role, text) {
@@ -1323,18 +1315,13 @@ function addChatMessage(role, text) {
 
 function showTyping() {
   var messages = document.getElementById('chatMessages');
-  var typing = document.createElement('div');
-  typing.className = 'typing-indicator';
-  typing.id = 'typing-indicator';
-  typing.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
-  messages.appendChild(typing);
+  var t = document.createElement('div');
+  t.className = 'typing-indicator'; t.id = 'typing-indicator';
+  t.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+  messages.appendChild(t);
   messages.scrollTop = messages.scrollHeight;
 }
-
-function hideTyping() {
-  var t = document.getElementById('typing-indicator');
-  if (t) t.remove();
-}
+function hideTyping() { var t = document.getElementById('typing-indicator'); if (t) t.remove(); }
 
 async function sendChat() {
   var input = document.getElementById('chatInput');
@@ -1361,7 +1348,6 @@ async function sendChat() {
 // ═══════════════════════════════════════════════════════════════
 //  OUTBOUND BOOKING
 // ═══════════════════════════════════════════════════════════════
-var obCurrentStep = 1;
 var obSelectedSlot = null;
 var obData = {};
 
@@ -1374,17 +1360,17 @@ function generateSlots() {
     day.setDate(d.getDate() + offset++);
     if (day.getDay() === 0 || day.getDay() === 6) continue;
     added++;
-    ['10:00 AM','12:00 PM','3:00 PM','5:00 PM'].forEach(function(time) {
+    ['10:00 AM','12:00 PM','3:00 PM','5:00 PM'].forEach(function (time) {
       var h = parseInt(time.split(':')[0]);
       var ampm = time.split(' ')[1];
       var hour = h + (ampm === 'PM' && h !== 12 ? 12 : 0);
       var slotDate = new Date(day.getFullYear(), day.getMonth(), day.getDate(), hour, 0, 0);
-      var label = day.toLocaleDateString('en',{weekday:'short',month:'short',day:'numeric'});
+      var label = day.toLocaleDateString('en', { weekday: 'short', month: 'short', day: 'numeric' });
       var el = document.createElement('div');
       el.className = 'time-slot';
       el.innerHTML = '<span class="slot-day">' + label + '</span>' + time;
-      el.onclick = function() {
-        document.querySelectorAll('.time-slot').forEach(function(e) {
+      el.onclick = function () {
+        document.querySelectorAll('.time-slot').forEach(function (e) {
           e.classList.remove('selected');
           e.querySelector('.slot-day').className = 'slot-day';
         });
@@ -1398,30 +1384,22 @@ function generateSlots() {
   }
 }
 
-// FIX 5: Corrected step indicator — active step gets blue color too
 function obSetStep(n) {
-  ['ob-form-1','ob-form-2','ob-form-3','ob-form-4'].forEach(function(id, i) {
+  ['ob-form-1','ob-form-2','ob-form-3','ob-form-4'].forEach(function (id, i) {
     document.getElementById(id).style.display = (i === n - 1) ? 'block' : 'none';
   });
-  ['sp1','sp2','sp3'].forEach(function(id, i) {
+  ['sp1','sp2','sp3'].forEach(function (id, i) {
     var el = document.getElementById(id);
-    var isActive = (i === n - 1);
-    var isDone = (i < n - 1);
+    var isActive = (i === n - 1), isDone = (i < n - 1);
     el.classList.toggle('active', isActive);
     el.classList.toggle('done', isDone);
     var numEl = el.querySelector('.sp-num');
-    if (isActive || isDone) {
-      numEl.style.background = 'var(--blue)';
-      numEl.style.color = 'var(--white)';
-    } else {
-      numEl.style.background = '';
-      numEl.style.color = '';
-    }
+    numEl.style.background = (isActive || isDone) ? 'var(--blue)' : '';
+    numEl.style.color = (isActive || isDone) ? 'var(--white)' : '';
   });
-  ['spline1','spline2'].forEach(function(id, i) {
+  ['spline1','spline2'].forEach(function (id, i) {
     document.getElementById(id).classList.toggle('done', i < n - 1);
   });
-  obCurrentStep = n;
 }
 
 function obNextStep(from) {
@@ -1431,29 +1409,30 @@ function obNextStep(from) {
     var phone = document.getElementById('ob-phone').value.trim();
     var industry = document.getElementById('ob-industry').value;
     var consent = document.getElementById('ob-consent').checked;
-    if (!name) return showToast('Please enter your name', 'error');
+    if (!name)                       return showToast('Please enter your name', 'error');
     if (!email || !email.includes('@')) return showToast('Please enter a valid email', 'error');
-    if (!phone) return showToast('Please enter your phone number', 'error');
-    if (!industry) return showToast('Please select your industry', 'error');
-    if (!consent) return showToast('Please accept the consent to proceed', 'error');
-    obData.name = name;
-    obData.email = email;
-    obData.phone = document.getElementById('ob-cc').value + phone;
-    obData.company = document.getElementById('ob-company').value.trim();
-    obData.industry = industry;
-    obData.message = document.getElementById('ob-message').value.trim();
+    if (!phone)                      return showToast('Please enter your phone number', 'error');
+    if (!industry)                   return showToast('Please select your industry', 'error');
+    if (!consent)                    return showToast('Please accept the consent to proceed', 'error');
+    obData = {
+      name: name, email: email,
+      phone: document.getElementById('ob-cc').value + phone,
+      company: document.getElementById('ob-company').value.trim(),
+      industry: industry,
+      message: document.getElementById('ob-message').value.trim(),
+    };
     generateSlots();
     obSetStep(2);
   } else if (from === 2) {
     if (!obSelectedSlot) return showToast('Please select a time slot', 'error');
     obData.slot = obSelectedSlot;
     var reviewHtml = '<table style="width:100%;border-collapse:collapse">' +
-      '<tr><td style="padding:4px 0;color:var(--text-3);width:130px">Name</td><td style="font-weight:600;color:var(--text)">' + obData.name + '</td></tr>' +
-      '<tr><td style="padding:4px 0;color:var(--text-3)">Phone</td><td style="font-weight:600;color:var(--text)">' + obData.phone + '</td></tr>' +
-      '<tr><td style="padding:4px 0;color:var(--text-3)">Email</td><td style="font-weight:600;color:var(--text)">' + obData.email + '</td></tr>' +
-      '<tr><td style="padding:4px 0;color:var(--text-3)">Industry</td><td style="font-weight:600;color:var(--text)">' + obData.industry + '</td></tr>' +
+      '<tr><td style="padding:4px 0;color:var(--text-3);width:130px">Name</td><td style="font-weight:600">' + obData.name + '</td></tr>' +
+      '<tr><td style="padding:4px 0;color:var(--text-3)">Phone</td><td style="font-weight:600">' + obData.phone + '</td></tr>' +
+      '<tr><td style="padding:4px 0;color:var(--text-3)">Email</td><td style="font-weight:600">' + obData.email + '</td></tr>' +
+      '<tr><td style="padding:4px 0;color:var(--text-3)">Industry</td><td style="font-weight:600">' + obData.industry + '</td></tr>' +
       '<tr><td style="padding:4px 0;color:var(--text-3)">Scheduled</td><td style="font-weight:600;color:var(--blue)">' + obData.slot.label + ' at ' + obData.slot.time + '</td></tr>' +
-      (obData.message ? '<tr><td style="padding:4px 0;color:var(--text-3)">Notes</td><td style="font-weight:600;color:var(--text)">' + obData.message + '</td></tr>' : '') +
+      (obData.message ? '<tr><td style="padding:4px 0;color:var(--text-3)">Notes</td><td style="font-weight:600">' + obData.message + '</td></tr>' : '') +
       '</table>';
     document.getElementById('ob-review-box').innerHTML = reviewHtml;
     obSetStep(3);
@@ -1467,19 +1446,17 @@ async function obConfirm() {
   btn.disabled = true;
   btn.textContent = 'Scheduling...';
   try {
-    var payload = {
-      name: obData.name, email: obData.email, phone: obData.phone,
-      company: obData.company || '', industry: obData.industry,
-      message: obData.message || '',
-      slotDate: new Date(obData.slot.day).toISOString().split('T')[0],
-      slotTime: obData.slot.time,
-      slotLabel: obData.slot.label,
-      slotTimestamp: obData.slot.timestamp,
-    };
     var res = await fetch('/api/calls/schedule', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({
+        name: obData.name, email: obData.email, phone: obData.phone,
+        company: obData.company || '', industry: obData.industry,
+        message: obData.message || '',
+        slotDate: new Date(obData.slot.day).toISOString().split('T')[0],
+        slotTime: obData.slot.time, slotLabel: obData.slot.label,
+        slotTimestamp: obData.slot.timestamp,
+      }),
     });
     var data = await res.json();
     if (!res.ok || !data.success) throw new Error(data.message || 'Scheduling failed');
@@ -1490,8 +1467,8 @@ async function obConfirm() {
     obSetStep(4);
     showToast('Call scheduled successfully!', 'success');
   } catch (err) {
-    var ref = 'EL-' + Math.random().toString(36).substr(2,6).toUpperCase();
-    document.getElementById('ob-success-msg').textContent = 'Your demo request is confirmed for ' + obData.slot.label + ' at ' + obData.slot.time + '. Our team will contact you shortly.';
+    var ref = 'EL-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+    document.getElementById('ob-success-msg').textContent = 'Your demo request is confirmed. Our team will contact you shortly.';
     document.getElementById('ob-ref').textContent = 'Ref: ' + ref;
     obSetStep(4);
     showToast('Request received!', 'success');
@@ -1502,8 +1479,10 @@ async function obConfirm() {
 }
 
 function obReset() {
-  obCurrentStep = 1; obSelectedSlot = null;
-  ['ob-name','ob-email','ob-phone','ob-company','ob-message'].forEach(function(id) { document.getElementById(id).value = ''; });
+  obSelectedSlot = null; obData = {};
+  ['ob-name','ob-email','ob-phone','ob-company','ob-message'].forEach(function (id) {
+    document.getElementById(id).value = '';
+  });
   document.getElementById('ob-consent').checked = false;
   document.getElementById('ob-industry').value = '';
   obSetStep(1);
@@ -1518,26 +1497,25 @@ async function submitContact() {
   var email = document.getElementById('cf-email').value.trim();
   var phone = document.getElementById('cf-phone').value.trim();
   var consent = document.getElementById('cf-consent').checked;
-  if (!fname) return showToast('Please enter your first name', 'error');
-  if (!lname) return showToast('Please enter your last name', 'error');
+  if (!fname)                        return showToast('Please enter your first name', 'error');
+  if (!lname)                        return showToast('Please enter your last name', 'error');
   if (!email || !email.includes('@')) return showToast('Please enter a valid email', 'error');
-  if (!phone) return showToast('Please enter your phone number', 'error');
-  if (!consent) return showToast('Please accept the consent checkbox', 'error');
+  if (!phone)                        return showToast('Please enter your phone number', 'error');
+  if (!consent)                      return showToast('Please accept the consent checkbox', 'error');
   var countryCode = document.getElementById('cf-cc').value;
-  var rawPhone = phone.replace(/\D/g,'');
-  var fullPhone = rawPhone.startsWith('+') ? rawPhone : countryCode + rawPhone;
-  var payload = {
-    firstName: fname, lastName: lname, email: email,
-    countryCode: countryCode, phone: rawPhone, fullPhone: fullPhone,
-    company: document.getElementById('cf-company').value.trim(),
-    service: document.getElementById('cf-service').value,
-    message: document.getElementById('cf-message').value.trim(),
-  };
+  var rawPhone = phone.replace(/\D/g, '');
   try {
     await fetch('/api/contact/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({
+        firstName: fname, lastName: lname, email: email,
+        countryCode: countryCode, phone: rawPhone,
+        fullPhone: countryCode + rawPhone,
+        company: document.getElementById('cf-company').value.trim(),
+        service: document.getElementById('cf-service').value,
+        message: document.getElementById('cf-message').value.trim(),
+      }),
     });
   } catch (err) { console.warn('[submitContact]', err.message); }
   document.getElementById('contactFormWrap').style.display = 'none';
@@ -1557,7 +1535,7 @@ function toggleChatWidget() {
   widgetOpen = !widgetOpen;
   panel.classList.toggle('open', widgetOpen);
   fab.classList.toggle('active', widgetOpen);
-  if (widgetOpen) setTimeout(function() { document.getElementById('widgetInput').focus(); }, 300);
+  if (widgetOpen) setTimeout(function () { document.getElementById('widgetInput').focus(); }, 300);
 }
 
 function addWidgetMessage(role, text) {
@@ -1573,18 +1551,13 @@ function addWidgetMessage(role, text) {
 
 function showWidgetTyping() {
   var messages = document.getElementById('widgetMessages');
-  var typing = document.createElement('div');
-  typing.className = 'typing-indicator';
-  typing.id = 'widget-typing';
-  typing.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
-  messages.appendChild(typing);
+  var t = document.createElement('div');
+  t.className = 'typing-indicator'; t.id = 'widget-typing';
+  t.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+  messages.appendChild(t);
   messages.scrollTop = messages.scrollHeight;
 }
-
-function hideWidgetTyping() {
-  var t = document.getElementById('widget-typing');
-  if (t) t.remove();
-}
+function hideWidgetTyping() { var t = document.getElementById('widget-typing'); if (t) t.remove(); }
 
 async function sendWidgetChat() {
   var input = document.getElementById('widgetInput');
